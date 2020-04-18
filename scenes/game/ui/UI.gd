@@ -14,6 +14,7 @@ onready var task_button := $Actions/Container/Task as Button
 
 var ship = null
 
+
 func _ready() -> void:
 	pass # Replace with function body.
 
@@ -22,7 +23,7 @@ func setup(the_ship: Ship) -> void:
 	crew_list.set_crew_members(ship.get_crew_members())
 
 func update_ui(hour: int) -> void:
-	label_date.text = "hour: %s" % hour
+	label_date.text = "%s hour%s" % [hour, "" if hour <= 1 else "s"]
 	distance_progress.max_value = 30
 	distance_progress.value = ship.distance_covered
 

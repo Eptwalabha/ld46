@@ -22,7 +22,7 @@ func _pick_productivity(hour: int) -> float:
 	if is_dead:
 		return 0.0
 	if is_infected:
-		var day_infected = ceil((hour - infected_since) / 24)
+		var day_infected = ceil((hour - infected_since) / 24.0)
 		match day_infected:
 			1: return 1.0
 			2: return .9
@@ -46,7 +46,7 @@ func infectiousness(hour) -> float:
 	else:
 		return 0.0
 
-func update_crew_state(hour) -> void:
+func update_crew_state(_hour: int) -> void:
 	thirst += 1
 	hunger += 1
 	if current_task is Task:

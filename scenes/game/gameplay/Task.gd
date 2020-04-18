@@ -4,6 +4,7 @@ extends Node
 signal task_completed
 signal task_failed
 
+export(int) var start_in := 0
 export(int) var hour_to_complete := 1
 export(int) var time_before_fail := 100
 export(String) var description := "description"

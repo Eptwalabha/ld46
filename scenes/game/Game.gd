@@ -55,10 +55,10 @@ func check_ship_state() -> void:
 func spawn_random_events() -> void:
 	pass
 
-func _on_Task_completed(task: Task) -> void:
+func _on_Task_completed(_task: Task) -> void:
 	pass
 
-func _on_Task_failed(task: Task) -> void:
+func _on_Task_failed(_task: Task) -> void:
 	pass
 
 func _on_GameUI_next_event_toggled(button_pressed) -> void:
@@ -68,4 +68,4 @@ func _on_GameUI_next_event_toggled(button_pressed) -> void:
 		next_event()
 
 func _on_GameUI_next_hour_clicked() -> void:
-	next_hour()
+	var _events = next_hour()
