@@ -1,6 +1,8 @@
 class_name CrewMember
 extends Node2D
 
+signal crew_state_update
+
 export(String) var crew_name = "no name"
 export(bool) var is_infected := false
 
@@ -49,6 +51,7 @@ func update_crew_state(hour) -> void:
 	hunger += 1
 	if current_task is Task:
 		exhaustion += 1
+	emit_signal("crew_state_update")
 
 func is_alive() -> bool:
 	return not is_dead
