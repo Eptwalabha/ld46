@@ -15,7 +15,7 @@ var is_dead := false
 func _ready() -> void:
 	crew_name = name
 
-func productivity(hour) -> float:
+func productivity(hour: int) -> float:
 	var pick_productivity = _pick_productivity(hour)
 	return pick_productivity
 

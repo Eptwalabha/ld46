@@ -68,3 +68,4 @@ margin_bottom = 0.271454
 [connection signal="pressed" from="Actions/HBoxContainer/NextHour" to="." method="_on_NextHour_pressed"]
 [connection signal="pressed" from="Actions/HBoxContainer/NextEvent" to="." method="_on_NextEvent_pressed"]
 [connection signal="toggled" from="Actions/HBoxContainer/Task" to="." method="_on_Task_toggled"]
+[connection signal="on_window_closed" from="TaskList" to="." method="_on_TaskList_on_window_closed"]

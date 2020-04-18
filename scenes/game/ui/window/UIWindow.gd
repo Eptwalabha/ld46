@@ -2,6 +2,8 @@ tool
 class_name UIWindow
 extends Control
 
+signal on_window_closed(window_name)
+signal on_window_opened
 
 export(String) var title := "title" setget _set_window_title
 export(bool) var closable := true setget _set_window_closable
@@ -9,6 +11,15 @@ export(bool) var closable := true setget _set_window_closable
 
 func _ready() -> void:
 	print("title %s" % title)
+
+
+func close() -> void:
+	emit_signal("on_window_closed", self)
+	hide()
+
+func open() -> void:
+	emit_signal("on_window_opened")
+	show()
 
 func _set_window_title(new_title) -> void:
 	title = new_title
@@ -19,4 +30,4 @@ func _set_window_closable(is_closable) -> void:
 	$MarginContainer/Content/Header/Content/Close.visible = closable
 
 func _on_Close_pressed() -> void:
-	hide()
+	close()

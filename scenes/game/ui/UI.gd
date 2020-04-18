@@ -18,6 +18,16 @@ func _on_NextHour_pressed() -> void:
 func _on_NextEvent_pressed() -> void:
 	emit_signal("next_event_clicked")
 
-
 func _on_Task_toggled(button_pressed: bool) -> void:
-	$TaskList.visible = button_pressed
+	if button_pressed:
+		$TaskList.open()
+	else:
+		$TaskList.close()
+
+
+func _on_TaskList_on_window_closed(window) -> void:
+	match window.title:
+		"ui_task_list": 
+			$Actions/HBoxContainer/Task.pressed = false
+		_ :
+			pass

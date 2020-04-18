@@ -29,7 +29,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/game/Ship.gd"
 }, {
-"base": "Reference",
+"base": "Node2D",
 "class": "ShipRoom",
 "language": "GDScript",
 "path": "res://scenes/game/room/ShipRoom.gd"
