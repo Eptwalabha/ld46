@@ -12,9 +12,8 @@ var exhaustion := 0
 var infected_since := 0
 var sleeping := false
 var is_dead := false
-var current_task := 0
-var tasks := []
 var efficiency := 1.0
+var location : String = ""
 
 func productivity(hour: int) -> float:
 	var pick_productivity = _pick_productivity(hour)
@@ -48,18 +47,15 @@ func infectiousness(hour) -> float:
 	else:
 		return 0.0
 
-func update_crew_state(hour: int) -> void:
+func update_state(hour: int) -> void:
 	thirst += 1
 	hunger += 1
-	if tasks.size() > 0:
-		exhaustion += 1
 	efficiency = productivity(hour)
 	emit_signal("crew_state_update")
 
-func work(_hour: int) -> void:
-	var ongoing_tasks_size = tasks.size()
-	if ongoing_tasks_size > 0 and current_task < ongoing_tasks_size:
-		tasks[current_task].worked_on(efficiency)
+func work_on(task) -> void:
+	exhaustion += 1
+	task.worked_on(efficiency)
 
 func is_alive() -> bool:
 	return not is_dead

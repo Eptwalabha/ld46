@@ -13,3 +13,7 @@ func add_task_to_list(task) -> void:
 	var t = UITaskResource.instance()
 	t.set_task(task)
 	list_container.add_child(t)
+
+func refresh() -> void:
+	for line in list_container.get_children():
+		line.refresh()

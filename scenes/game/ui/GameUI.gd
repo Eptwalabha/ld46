@@ -26,10 +26,12 @@ func set_ship(the_ship: Ship) -> void:
 func set_tasks(tasks: Array) -> void:
 	tasks_list.set_tasks_list(tasks)
 
-func update_ui(hour: int) -> void:
+func refresh(hour: int) -> void:
 	label_date.text = "%s hour%s" % [hour, "" if hour <= 1 else "s"]
 	distance_progress.max_value = 30
 	distance_progress.value = ship.distance_covered
+#	crew_list.refresh()
+	tasks_list.refresh()
 
 func next_event_over() -> void:
 	next_event.pressed = false

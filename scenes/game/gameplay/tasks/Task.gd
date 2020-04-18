@@ -15,7 +15,11 @@ export(NodePath) var room := null
 
 var hour_spent := 0.0
 var task_since := 0
-var crew_assigned := []
+var task_id : int = 0
+var location : String = ""
+
+func _init() -> void:
+	task_id = GameData.get_id()
 
 func update_task(hour) -> void:
 	if hour - task_since > time_before_fail:
@@ -30,3 +34,6 @@ func worked_on(hour: float) -> void:
 
 func penalty(_ship: Ship) -> void:
 	pass
+
+func is_active() -> bool:
+	return true
