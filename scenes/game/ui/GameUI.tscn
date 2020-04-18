@@ -9,13 +9,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
 __meta__ = {
-"_edit_horizontal_guides_": [ 20.1274, 489.934, 454.0 ],
+"_edit_horizontal_guides_": [ 20.1274, 519.0, 498.798 ],
 "_edit_use_anchors_": false,
 "_edit_vertical_guides_": [ 19.8228, 1003.76 ]
 }
 
 [node name="Actions" type="MarginContainer" parent="."]
-anchor_top = 0.875
+anchor_top = 0.865
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = -6.10352e-05
@@ -27,45 +27,91 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Actions"]
+[node name="Container" type="HBoxContainer" parent="Actions"]
 margin_left = 10.0
 margin_top = 10.0
 margin_right = 1014.0
-margin_bottom = 65.0
+margin_bottom = 71.0
 
-[node name="NextHour" type="Button" parent="Actions/HBoxContainer"]
+[node name="NextHour" type="Button" parent="Actions/Container"]
 margin_right = 73.0
-margin_bottom = 55.0
+margin_bottom = 61.0
 text = "next hour"
 
-[node name="NextEvent" type="Button" parent="Actions/HBoxContainer"]
+[node name="NextEvent" type="Button" parent="Actions/Container"]
 margin_left = 77.0
 margin_right = 157.0
-margin_bottom = 55.0
+margin_bottom = 61.0
 toggle_mode = true
 text = "next event"
 
-[node name="Date" type="Label" parent="Actions/HBoxContainer"]
+[node name="Stats" type="VBoxContainer" parent="Actions/Container"]
 margin_left = 161.0
-margin_top = 20.0
-margin_right = 261.0
-margin_bottom = 34.0
+margin_right = 916.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 150, 0 )
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Actions/Container/Stats"]
+margin_right = 755.0
+margin_bottom = 14.0
+text = "ui_game_info"
+align = 1
+
+[node name="Time" type="HBoxContainer" parent="Actions/Container/Stats"]
+margin_top = 18.0
+margin_right = 755.0
+margin_bottom = 32.0
+
+[node name="Label" type="Label" parent="Actions/Container/Stats/Time"]
+margin_right = 120.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 120, 0 )
+text = "ui_time_spent"
+align = 2
+
+[node name="Date" type="Label" parent="Actions/Container/Stats/Time"]
+margin_left = 124.0
+margin_right = 224.0
+margin_bottom = 14.0
 rect_min_size = Vector2( 100, 0 )
 text = "0"
 
-[node name="Task" type="Button" parent="Actions/HBoxContainer"]
-margin_left = 265.0
-margin_right = 303.0
-margin_bottom = 55.0
+[node name="Distance" type="HBoxContainer" parent="Actions/Container/Stats"]
+margin_top = 36.0
+margin_right = 755.0
+margin_bottom = 50.0
+
+[node name="Label" type="Label" parent="Actions/Container/Stats/Distance"]
+margin_right = 120.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 120, 0 )
+text = "ui_reachin_earth"
+align = 2
+
+[node name="Progress" type="ProgressBar" parent="Actions/Container/Stats/Distance"]
+margin_left = 124.0
+margin_right = 755.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="Task" type="Button" parent="Actions/Container"]
+margin_left = 920.0
+margin_right = 958.0
+margin_bottom = 61.0
 toggle_mode = true
 pressed = true
 text = "task"
 align = 2
 
-[node name="Crew" type="Button" parent="Actions/HBoxContainer"]
-margin_left = 307.0
-margin_right = 349.0
-margin_bottom = 55.0
+[node name="Crew" type="Button" parent="Actions/Container"]
+margin_left = 962.0
+margin_right = 1004.0
+margin_bottom = 61.0
 toggle_mode = true
 pressed = true
 text = "crew"
@@ -73,22 +119,22 @@ align = 2
 
 [node name="TaskList" parent="." instance=ExtResource( 1 )]
 anchor_left = 1.0
-anchor_bottom = 0.757
+anchor_bottom = 0.833
 margin_left = -241.0
 margin_top = 20.0
 margin_right = -21.0
-margin_bottom = -0.200012
+margin_bottom = 0.199951
 
 [node name="CrewList" parent="." instance=ExtResource( 3 )]
 anchor_right = 0.0
-anchor_bottom = 0.757
+anchor_bottom = 0.833
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 271.0
-margin_bottom = -0.200012
-[connection signal="pressed" from="Actions/HBoxContainer/NextHour" to="." method="_on_NextHour_pressed"]
-[connection signal="toggled" from="Actions/HBoxContainer/NextEvent" to="." method="_on_NextEvent_toggled"]
-[connection signal="toggled" from="Actions/HBoxContainer/Task" to="." method="_on_Task_toggled"]
-[connection signal="toggled" from="Actions/HBoxContainer/Crew" to="." method="_on_Crew_toggled"]
+margin_bottom = 0.199951
+[connection signal="pressed" from="Actions/Container/NextHour" to="." method="_on_NextHour_pressed"]
+[connection signal="toggled" from="Actions/Container/NextEvent" to="." method="_on_NextEvent_toggled"]
+[connection signal="toggled" from="Actions/Container/Task" to="." method="_on_Task_toggled"]
+[connection signal="toggled" from="Actions/Container/Crew" to="." method="_on_Crew_toggled"]
 [connection signal="on_window_closed" from="TaskList" to="." method="_on_UI_window_closed"]
 [connection signal="on_window_closed" from="CrewList" to="." method="_on_UI_window_closed"]

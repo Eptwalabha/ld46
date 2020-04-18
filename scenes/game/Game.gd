@@ -31,17 +31,18 @@ func next_hour() -> Array:
 	ui.update_ui(hour)
 	update_crew_state()
 	update_ongoing_tasks()
+	update_ship_state()
 	check_ship_state()
 	spawn_random_events()
-	return []
-
-func update_daily_tasks() -> Array:
 	return []
 
 func update_ongoing_tasks() -> void:
 	for task in ongoing_task:
 		if task is Task:
 			task.update_task(hour)
+
+func update_ship_state() -> void:
+	ship.update_covered_distance()
 
 func update_crew_state() -> void:
 	var crew_members = ship.get_crew_members()
