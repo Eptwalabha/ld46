@@ -29,7 +29,7 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/game/Ship.gd"
 }, {
-"base": "Node2D",
+"base": "Reference",
 "class": "ShipRoom",
 "language": "GDScript",
 "path": "res://scenes/game/room/ShipRoom.gd"
@@ -38,6 +38,16 @@ _global_script_classes=[ {
 "class": "Task",
 "language": "GDScript",
 "path": "res://scenes/game/gameplay/Task.gd"
+}, {
+"base": "UIWindow",
+"class": "UICrewList",
+"language": "GDScript",
+"path": "res://scenes/game/ui/crew/UICrewList.gd"
+}, {
+"base": "MarginContainer",
+"class": "UICrewMember",
+"language": "GDScript",
+"path": "res://scenes/game/ui/crew/UICrewMember.gd"
 }, {
 "base": "UIWindow",
 "class": "UITaskList",
@@ -56,6 +66,8 @@ _global_script_class_icons={
 "Ship": "",
 "ShipRoom": "",
 "Task": "",
+"UICrewList": "",
+"UICrewMember": "",
 "UITaskList": "",
 "UIWindow": ""
 }

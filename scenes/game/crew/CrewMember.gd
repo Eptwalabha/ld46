@@ -1,7 +1,7 @@
 class_name CrewMember
 extends Node2D
 
-export(String) var crew_name = ""
+export(String) var crew_name = "no name"
 export(bool) var is_infected := false
 
 var thirst := 0
@@ -11,9 +11,6 @@ var infected_since := 0
 var sleeping := false
 var current_task = null
 var is_dead := false
-
-func _ready() -> void:
-	crew_name = name
 
 func productivity(hour: int) -> float:
 	var pick_productivity = _pick_productivity(hour)

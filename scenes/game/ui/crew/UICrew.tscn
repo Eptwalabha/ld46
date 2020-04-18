@@ -1,0 +1,113 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://scenes/game/ui/crew/UICrewMember.gd" type="Script" id=2]
+
+[node name="CrewMember" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 10
+custom_constants/margin_top = 5
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 5
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 10.0
+margin_top = 5.0
+margin_right = 1014.0
+margin_bottom = 595.0
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+margin_right = 32.0
+margin_bottom = 590.0
+rect_min_size = Vector2( 32, 32 )
+custom_constants/margin_top = 5
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/MarginContainer"]
+margin_top = 5.0
+margin_right = 32.0
+margin_bottom = 590.0
+texture = ExtResource( 1 )
+expand = true
+stretch_mode = 6
+
+[node name="HBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 36.0
+margin_right = 1004.0
+margin_bottom = 590.0
+size_flags_horizontal = 3
+
+[node name="Name" type="MarginContainer" parent="HBoxContainer/HBoxContainer2"]
+margin_right = 968.0
+margin_bottom = 24.0
+custom_constants/margin_top = 5
+custom_constants/margin_bottom = 5
+
+[node name="Label" type="Label" parent="HBoxContainer/HBoxContainer2/Name"]
+margin_top = 5.0
+margin_right = 968.0
+margin_bottom = 19.0
+text = "crew name"
+align = 1
+valign = 1
+
+[node name="Health" type="HBoxContainer" parent="HBoxContainer/HBoxContainer2"]
+margin_top = 28.0
+margin_right = 968.0
+margin_bottom = 42.0
+
+[node name="Label" type="Label" parent="HBoxContainer/HBoxContainer2/Health"]
+margin_right = 100.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 100, 0 )
+text = "ui_infected"
+align = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/HBoxContainer2/Health"]
+margin_left = 104.0
+margin_right = 968.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+step = 1.0
+
+[node name="Thirst" type="HBoxContainer" parent="HBoxContainer/HBoxContainer2"]
+margin_top = 46.0
+margin_right = 968.0
+margin_bottom = 60.0
+
+[node name="Label" type="Label" parent="HBoxContainer/HBoxContainer2/Thirst"]
+margin_right = 100.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 100, 0 )
+text = "ui_thirst"
+align = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/HBoxContainer2/Thirst"]
+margin_left = 104.0
+margin_right = 968.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+step = 1.0
+
+[node name="Hunger" type="HBoxContainer" parent="HBoxContainer/HBoxContainer2"]
+margin_top = 64.0
+margin_right = 968.0
+margin_bottom = 78.0
+
+[node name="Label" type="Label" parent="HBoxContainer/HBoxContainer2/Hunger"]
+margin_right = 100.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 100, 0 )
+text = "ui_hunger"
+align = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer/HBoxContainer2/Hunger"]
+margin_left = 104.0
+margin_right = 968.0
+margin_bottom = 14.0
+size_flags_horizontal = 3
+step = 1.0

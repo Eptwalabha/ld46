@@ -1,7 +1,7 @@
 class_name Ship
 extends Node2D
 
-var speed : int = 2
+var speed_ua : float = 2 / 24
 
 func _ready() -> void:
 	pass

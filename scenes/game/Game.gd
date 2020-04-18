@@ -7,6 +7,11 @@ onready var ship := $Ship as Ship
 var ongoing_task = []
 
 var hour : int = 0
+var ua : float = 0.0
+var ua_goal := 30 # neptune
+
+func _ready() -> void:
+	$GameUI.setup($Ship)
 
 func next_event() -> void:
 	var new_events = []
