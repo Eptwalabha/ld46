@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node2D",
+"class": "AndroidCrew",
+"language": "GDScript",
+"path": "res://scenes/game/crew/member/AndroidCrew.gd"
+}, {
+"base": "Node2D",
 "class": "CrewMember",
 "language": "GDScript",
 "path": "res://scenes/game/crew/CrewMember.gd"
@@ -22,7 +27,7 @@ _global_script_classes=[ {
 "base": "Control",
 "class": "GameUI",
 "language": "GDScript",
-"path": "res://scenes/game/ui/UI.gd"
+"path": "res://scenes/game/ui/GameUI.gd"
 }, {
 "base": "Node",
 "class": "PhysicalState",
@@ -42,7 +47,7 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Task",
 "language": "GDScript",
-"path": "res://scenes/game/gameplay/Task.gd"
+"path": "res://scenes/game/gameplay/tasks/Task.gd"
 }, {
 "base": "UIWindow",
 "class": "UICrewList",
@@ -54,10 +59,15 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/game/ui/crew/UICrewMember.gd"
 }, {
+"base": "MarginContainer",
+"class": "UITask",
+"language": "GDScript",
+"path": "res://scenes/game/ui/tasks/UITask.gd"
+}, {
 "base": "UIWindow",
 "class": "UITaskList",
 "language": "GDScript",
-"path": "res://scenes/game/ui/task/UITaskList.gd"
+"path": "res://scenes/game/ui/tasks/UITaskList.gd"
 }, {
 "base": "Control",
 "class": "UIWindow",
@@ -65,6 +75,7 @@ _global_script_classes=[ {
 "path": "res://scenes/game/ui/window/UIWindow.gd"
 } ]
 _global_script_class_icons={
+"AndroidCrew": "",
 "CrewMember": "",
 "Game": "",
 "GameUI": "",
@@ -74,6 +85,7 @@ _global_script_class_icons={
 "Task": "",
 "UICrewList": "",
 "UICrewMember": "",
+"UITask": "",
 "UITaskList": "",
 "UIWindow": ""
 }

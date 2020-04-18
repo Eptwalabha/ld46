@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://scenes/game/ui/task/UITaskList.tscn" type="PackedScene" id=1]
-[ext_resource path="res://scenes/game/ui/UI.gd" type="Script" id=2]
+[ext_resource path="res://scenes/game/ui/tasks/UITaskList.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/game/ui/GameUI.gd" type="Script" id=2]
 [ext_resource path="res://scenes/game/ui/crew/UICrewList.tscn" type="PackedScene" id=3]
 
 [node name="GameUI" type="Control"]
@@ -136,5 +136,3 @@ margin_bottom = 0.199951
 [connection signal="toggled" from="Actions/Container/NextEvent" to="." method="_on_NextEvent_toggled"]
 [connection signal="toggled" from="Actions/Container/Task" to="." method="_on_Task_toggled"]
 [connection signal="toggled" from="Actions/Container/Crew" to="." method="_on_Crew_toggled"]
-[connection signal="on_window_closed" from="TaskList" to="." method="_on_UI_window_closed"]
-[connection signal="on_window_closed" from="CrewList" to="." method="_on_UI_window_closed"]

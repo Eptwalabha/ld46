@@ -1,18 +1,28 @@
 class_name Game
 extends Node
 
+var TaskResource = load("res://scenes/game/gameplay/tasks/Task.tscn")
+
 onready var ui := $GameUI as GameUI
 onready var ship := $Ship as Ship
 
 var ongoing_task = []
-
 var hour : int = 0
 var ua : float = 0.0
 var ua_goal := 30 # neptune
 var until_next_event := false
 
+
 func _ready() -> void:
-	$GameUI.setup($Ship)
+	$GameUI.set_ship(ship)
+	var t : Task = TaskResource.instance()
+	t.title = "super new task lol"
+	var crew = ship.get_crew_members()
+	t.crew_assigned = [crew[0], crew[1]]
+	t.hour_cost = 5
+	crew[0].tasks = [t]
+	crew[1].tasks = [t]
+	$GameUI.set_tasks([t])
 
 func next_event() -> void:
 	var new_events = []
@@ -40,13 +50,14 @@ func update_ongoing_tasks() -> void:
 	for task in ongoing_task:
 		if task is Task:
 			task.update_task(hour)
+	for crew in ship.get_crew_members():
+		crew.work(hour)
 
 func update_ship_state() -> void:
 	ship.update_covered_distance()
 
 func update_crew_state() -> void:
-	var crew_members = ship.get_crew_members()
-	for crew in crew_members:
+	for crew in ship.get_crew_members():
 		crew.update_crew_state(hour)
 
 func check_ship_state() -> void:

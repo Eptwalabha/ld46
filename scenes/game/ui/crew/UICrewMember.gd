@@ -7,13 +7,14 @@ onready var thirst_progress := $Container/Stats/Thirst/Progress as ProgressBar
 onready var health_progress := $Container/Stats/Health/Progress as ProgressBar
 onready var exhaustion_progress := $Container/Stats/Exhaustion/Progress as ProgressBar
 
-var crew = null
+var crew : CrewMember = null
 
 func _ready() -> void:
 	_update_with_crew_info()
 
 func set_crew_member(my_crew: CrewMember) -> void:
 	crew = my_crew
+	# warning-ignore:return_value_discarded
 	crew.connect("crew_state_update", self, "_update_state")
 
 func _update_with_crew_info() -> void:

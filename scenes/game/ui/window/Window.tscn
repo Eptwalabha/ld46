@@ -45,9 +45,8 @@ margin_right = 1004.0
 margin_bottom = 29.0
 
 [node name="Title" type="Label" parent="MarginContainer/Content/Header/Content"]
-margin_top = -1.0
 margin_right = 980.0
-margin_bottom = 23.0
+margin_bottom = 24.0
 rect_min_size = Vector2( 0, 24 )
 size_flags_horizontal = 3
 text = "title"

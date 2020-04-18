@@ -1,3 +1,4 @@
+class_name AndroidCrew
 extends "res://scenes/game/crew/CrewMember.gd"
 
 var need_maintenance := false
