@@ -18,7 +18,7 @@ func close(close: bool) -> void:
 
 func _set_window_title(new_title) -> void:
 	title = new_title
-	$MarginContainer/Content/Header/Content/Title.text = title
+	$MarginContainer/Content/Header/Content/Title.text = tr(title)
 
 func _set_window_closable(is_closable) -> void:
 	closable = is_closable

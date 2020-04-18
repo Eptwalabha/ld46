@@ -17,15 +17,42 @@ var schedule = {}
 
 func _ready() -> void:
 	$GameUI.set_ship(ship)
-	for crew in ship.get_crew_members():
-		crew_members[crew.crew_name] = crew
 	var t : Task = TaskResource.instance()
 	t.title = "super new task lol"
 	t.hour_cost = 5
 	tasks[t.task_id] = t
-	schedule["jack"] = [t.task_id]
-	schedule["hal"] = [t.task_id]
+
+	for crew in ship.get_crew_members():
+		var crew_name = crew.crew_name
+		crew_members[crew_name] = crew
+		schedule[crew_name] = []
+		if crew_name == "jack" or crew_name == "hal":
+			schedule[crew_name] = [t.task_id]
+
 	$GameUI.set_tasks([t])
+
+func get_assigned_crew(task_id: int) -> Array:
+	var assigned_crew_members = []
+	for crew_name in crew_members:
+		if schedule[crew_name].has(task_id):
+			assigned_crew_members.push_back(crew_members[crew_name])
+	return assigned_crew_members
+
+func get_task(task_id: int) -> Task:
+	return tasks[task_id]
+
+func get_crew_members() -> Array:
+	return crew_members
+
+func assign_crew_to_task(task_id, crew_to_assign) -> void:
+	for crew_name in schedule:
+		var crew_tasks = schedule[crew_name]
+		var is_one_assigned = crew_to_assign.has(crew_name)
+		var has_already_this_task = crew_tasks.has(task_id)
+		if is_one_assigned and not has_already_this_task:
+			schedule[crew_name].push_back(task_id)
+		elif not is_one_assigned and has_already_this_task:
+			schedule[crew_name].remove(crew_tasks.find(task_id))
 
 func next_event() -> void:
 	var new_events = []
@@ -46,7 +73,12 @@ func next_hour() -> Array:
 #	update_equipments()
 	update_ship()
 	spawn_random_events()
-	ui.refresh(hour)
+	var update_data = {
+		'hour': hour,
+		'crew_members': crew_members,
+		'tasks': tasks,
+	}
+	ui.refresh(update_data)
 	return []
 
 func update_tasks() -> void:
