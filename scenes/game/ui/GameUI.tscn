@@ -42,6 +42,7 @@ text = "next hour"
 margin_left = 77.0
 margin_right = 157.0
 margin_bottom = 55.0
+toggle_mode = true
 text = "next event"
 
 [node name="Date" type="Label" parent="Actions/HBoxContainer"]
@@ -86,7 +87,7 @@ margin_top = 20.0
 margin_right = 271.0
 margin_bottom = -0.200012
 [connection signal="pressed" from="Actions/HBoxContainer/NextHour" to="." method="_on_NextHour_pressed"]
-[connection signal="pressed" from="Actions/HBoxContainer/NextEvent" to="." method="_on_NextEvent_pressed"]
+[connection signal="toggled" from="Actions/HBoxContainer/NextEvent" to="." method="_on_NextEvent_toggled"]
 [connection signal="toggled" from="Actions/HBoxContainer/Task" to="." method="_on_Task_toggled"]
 [connection signal="toggled" from="Actions/HBoxContainer/Crew" to="." method="_on_Crew_toggled"]
 [connection signal="on_window_closed" from="TaskList" to="." method="_on_UI_window_closed"]

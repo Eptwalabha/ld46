@@ -2,7 +2,7 @@ class_name GameUI
 extends Control
 
 signal next_hour_clicked
-signal next_event_clicked
+signal next_event_toggled(button_pressed)
 
 onready var label_date := $Actions/HBoxContainer/Date as Label
 onready var crew_list := $CrewList as UICrewList
@@ -16,11 +16,14 @@ func setup(ship: Ship) -> void:
 func update_ui(hour: int) -> void:
 	label_date.text = "hour: %s" % hour
 
+func next_event_over() -> void:
+	$Actions/HBoxContainer/NextEvent.pressed = false
+
 func _on_NextHour_pressed() -> void:
 	emit_signal("next_hour_clicked")
 
-func _on_NextEvent_pressed() -> void:
-	emit_signal("next_event_clicked")
+func _on_NextEvent_toggled(button_pressed: bool) -> void:
+	emit_signal("next_event_toggled", button_pressed)
 
 func _on_Task_toggled(button_pressed: bool) -> void:
 	$TaskList.close(not button_pressed)
@@ -36,4 +39,3 @@ func _on_UI_window_closed(window) -> void:
 			$Actions/HBoxContainer/Crew.pressed = false
 		_ :
 			pass
-
