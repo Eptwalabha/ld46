@@ -14,20 +14,56 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/game/crew/CrewMember.gd"
 }, {
+"base": "Node",
+"class": "Game",
+"language": "GDScript",
+"path": "res://scenes/game/Game.gd"
+}, {
+"base": "Control",
+"class": "GameUI",
+"language": "GDScript",
+"path": "res://scenes/game/ui/UI.gd"
+}, {
 "base": "Node2D",
+"class": "Ship",
+"language": "GDScript",
+"path": "res://scenes/game/Ship.gd"
+}, {
+"base": "Reference",
 "class": "ShipRoom",
 "language": "GDScript",
 "path": "res://scenes/game/room/ShipRoom.gd"
+}, {
+"base": "Node",
+"class": "Task",
+"language": "GDScript",
+"path": "res://scenes/game/gameplay/Task.gd"
+}, {
+"base": "UIWindow",
+"class": "UITaskList",
+"language": "GDScript",
+"path": "res://scenes/game/ui/task/UITaskList.gd"
+}, {
+"base": "Control",
+"class": "UIWindow",
+"language": "GDScript",
+"path": "res://scenes/game/ui/window/UIWindow.gd"
 } ]
 _global_script_class_icons={
 "CrewMember": "",
-"ShipRoom": ""
+"Game": "",
+"GameUI": "",
+"Ship": "",
+"ShipRoom": "",
+"Task": "",
+"UITaskList": "",
+"UIWindow": ""
 }
 
 [application]
 
 config/name="ld46"
-run/main_scene="res://scenes/splash/SplashScreen.tscn"
+run/main_scene="res://scenes/game/Game.tscn"
 boot_splash/image="res://assets/splash-screen/godot-logo-white.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"

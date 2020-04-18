@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/game/ui/task/UITaskList.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/game/ui/UI.gd" type="Script" id=2]
+
+[node name="GameUI" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Actions" type="MarginContainer" parent="."]
+anchor_top = 0.875
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -6.10352e-05
+custom_constants/margin_right = 10
+custom_constants/margin_top = 10
+custom_constants/margin_left = 10
+custom_constants/margin_bottom = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Actions"]
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 1014.0
+margin_bottom = 65.0
+
+[node name="NextHour" type="Button" parent="Actions/HBoxContainer"]
+margin_right = 73.0
+margin_bottom = 55.0
+text = "next hour"
+
+[node name="NextEvent" type="Button" parent="Actions/HBoxContainer"]
+margin_left = 77.0
+margin_right = 157.0
+margin_bottom = 55.0
+text = "next event"
+
+[node name="Date" type="Label" parent="Actions/HBoxContainer"]
+margin_left = 161.0
+margin_top = 20.0
+margin_right = 261.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 100, 0 )
+text = "0"
+
+[node name="Task" type="Button" parent="Actions/HBoxContainer"]
+margin_left = 265.0
+margin_right = 303.0
+margin_bottom = 55.0
+toggle_mode = true
+pressed = true
+text = "task"
+align = 2
+
+[node name="TaskList" parent="." instance=ExtResource( 1 )]
+anchor_left = 1.0
+anchor_bottom = 0.595
+margin_left = -257.676
+margin_top = 36.2715
+margin_right = -37.6759
+margin_bottom = 0.271454
+[connection signal="pressed" from="Actions/HBoxContainer/NextHour" to="." method="_on_NextHour_pressed"]
+[connection signal="pressed" from="Actions/HBoxContainer/NextEvent" to="." method="_on_NextEvent_pressed"]
+[connection signal="toggled" from="Actions/HBoxContainer/Task" to="." method="_on_Task_toggled"]
