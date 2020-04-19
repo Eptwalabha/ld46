@@ -2,8 +2,8 @@ tool
 class_name UIWindow
 extends Control
 
-signal on_window_closed(window_name)
-signal on_window_opened
+signal on_window_closed(window)
+signal on_window_opened(window)
 
 export(String) var title := "title" setget _set_window_title
 export(bool) var closable := true setget _set_window_closable
@@ -13,7 +13,7 @@ func close(close: bool) -> void:
 		emit_signal("on_window_closed", self)
 		hide()
 	else:
-		emit_signal("on_window_opened")
+		emit_signal("on_window_opened", self)
 		show()
 
 func _set_window_title(new_title) -> void:

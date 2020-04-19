@@ -28,6 +28,7 @@ func open(task: Task, crew_members: Array) -> void:
 		crew_list.add_child(assign_button)
 		if assign_button.connect("pressed", self, "_on_assignment_requested"):
 			hide()
+	emit_signal("on_window_opened", self)
 	show()
 
 func _on_assignment_requested() -> void:

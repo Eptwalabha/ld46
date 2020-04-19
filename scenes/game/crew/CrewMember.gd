@@ -48,12 +48,16 @@ func infectiousness(hour) -> float:
 		return 0.0
 
 func update_state(hour: int) -> void:
+	if is_dead:
+		return
 	thirst += 1
 	hunger += 1
 	efficiency = productivity(hour)
 	emit_signal("crew_state_update")
 
 func work_on(task) -> void:
+	if is_dead:
+		return
 	exhaustion += 1
 	task.worked_on(efficiency)
 

@@ -2,6 +2,7 @@ class_name Game
 extends Node
 
 var TaskResource = load("res://scenes/game/gameplay/tasks/Task.tscn")
+var TASK_STATE = preload("res://script/game_enum.gd").TASK_STATE
 
 onready var ui := $GameUI as GameUI
 onready var ship := $Ship as Ship
@@ -19,12 +20,12 @@ func _ready() -> void:
 	$GameUI.set_ship(ship)
 	var t : Task = TaskResource.instance()
 	t.title = "super new task lol"
-	t.hour_cost = 5
+	t.time_to_complete = 5
 	tasks[t.task_id] = t
 	var t2 : Task = TaskResource.instance()
 	t2.title = "other super task"
 	t2.description = "[bold]super[/bold]\nit works"
-	t2.hour_cost = 5
+	t2.time_to_complete = 10
 	t2.max_crew = 5
 	tasks[t2.task_id] = t2
 
@@ -95,10 +96,34 @@ func update_tasks() -> void:
 		if schedule[crew_name].size() == 0:
 			continue
 		var crew = crew_members[crew_name]
-		var task_id = schedule[crew_name][0]
+		for i in range(schedule[crew_name].size()):
+			var task_id = schedule[crew_name][i]
+			var task = tasks[task_id]
+			if task.state == TASK_STATE.ONGOING and crew.location == task.location:
+				print("%s works on task %s" % [crew_name, task_id])
+				crew.work_on(task)
+				break
+
+	for task_id in tasks:
 		var task = tasks[task_id]
-		if task.is_active() and crew.location == task.location:
-			crew.work_on(task)
+		if task.is_active():
+			continue
+		match task.state:
+			TASK_STATE.COMPLETE:
+				apply_task_effect(task_id)
+			TASK_STATE.EXPIRED:
+				apply_task_effect(task_id)
+			_: pass
+		
+		if task.state == TASK_STATE.DONE:
+			for crew_name in schedule:
+				if schedule[crew_name].size() == 0:
+					continue
+
+func apply_task_effect(task_id: int) -> void:
+	var task = tasks[task_id]
+	var effects = task.get_effect()
+	task.end_task(hour)
 
 func update_ship() -> void:
 	ship.update_covered_distance()

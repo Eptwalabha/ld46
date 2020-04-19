@@ -20,7 +20,8 @@ __meta__ = {
 anchor_top = 0.865
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -6.10352e-05
+margin_left = 20.0
+margin_right = -21.0
 custom_constants/margin_right = 10
 custom_constants/margin_top = 10
 custom_constants/margin_left = 10
@@ -32,7 +33,7 @@ __meta__ = {
 [node name="Container" type="HBoxContainer" parent="Actions"]
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 1014.0
+margin_right = 973.0
 margin_bottom = 71.0
 
 [node name="NextHour" type="Button" parent="Actions/Container"]
@@ -49,7 +50,7 @@ text = "next event"
 
 [node name="Stats" type="VBoxContainer" parent="Actions/Container"]
 margin_left = 161.0
-margin_right = 916.0
+margin_right = 875.0
 margin_bottom = 61.0
 rect_min_size = Vector2( 150, 0 )
 size_flags_horizontal = 3
@@ -58,14 +59,14 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Actions/Container/Stats"]
-margin_right = 755.0
+margin_right = 714.0
 margin_bottom = 14.0
 text = "ui_game_info"
 align = 1
 
 [node name="Time" type="HBoxContainer" parent="Actions/Container/Stats"]
 margin_top = 18.0
-margin_right = 755.0
+margin_right = 714.0
 margin_bottom = 32.0
 
 [node name="Label" type="Label" parent="Actions/Container/Stats/Time"]
@@ -84,7 +85,7 @@ text = "0"
 
 [node name="Distance" type="HBoxContainer" parent="Actions/Container/Stats"]
 margin_top = 36.0
-margin_right = 755.0
+margin_right = 714.0
 margin_bottom = 50.0
 
 [node name="Label" type="Label" parent="Actions/Container/Stats/Distance"]
@@ -96,14 +97,14 @@ align = 2
 
 [node name="Progress" type="ProgressBar" parent="Actions/Container/Stats/Distance"]
 margin_left = 124.0
-margin_right = 755.0
+margin_right = 714.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
 
 [node name="Crew" type="Button" parent="Actions/Container"]
-margin_left = 920.0
-margin_right = 962.0
+margin_left = 879.0
+margin_right = 921.0
 margin_bottom = 61.0
 toggle_mode = true
 pressed = true
@@ -111,8 +112,8 @@ text = "crew"
 align = 2
 
 [node name="Task" type="Button" parent="Actions/Container"]
-margin_left = 966.0
-margin_right = 1004.0
+margin_left = 925.0
+margin_right = 963.0
 margin_bottom = 61.0
 toggle_mode = true
 pressed = true
@@ -159,4 +160,5 @@ margin_right = 0.0959473
 [connection signal="task_infos_requested" from="TaskList" to="." method="_on_TaskList_task_infos_requested"]
 [connection signal="assignment_requested" from="TaskDetail" to="." method="_on_TaskDetail_assignment_requested"]
 [connection signal="on_window_closed" from="TaskDetail" to="." method="_on_UI_window_closed"]
+[connection signal="on_window_opened" from="TaskDetail" to="." method="_on_UI_window_opened"]
 [connection signal="assign_crew_members" from="AssignCrew" to="." method="_on_AssignCrew_assign_crew_members"]

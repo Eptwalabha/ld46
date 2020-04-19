@@ -57,6 +57,12 @@ func _on_UI_window_closed(window) -> void:
 		"ui_task_title_window": tasks_list.deselect_all()
 		_ : pass
 
+func _on_UI_window_opened(window) -> void:
+	match window.title:
+		"ui_task_title_window":
+			tasks_list.select_task(window.task_id)
+		_ : pass
+
 func _on_TaskList_task_infos_requested(task_id) -> void:
 	var assigned_crew = []
 	for crew in game.get_assigned_crew(task_id):
@@ -79,3 +85,4 @@ func _on_AssignCrew_assign_crew_members(task_id, crew_members) -> void:
 	var task = game.get_task(task_id)
 	task_detail.open(task, crew_members)
 	tasks_list.refresh()
+
