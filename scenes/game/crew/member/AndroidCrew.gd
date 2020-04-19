@@ -1,5 +1,5 @@
 class_name AndroidCrew
-extends "res://scenes/game/crew/CrewMember.gd"
+extends CrewMember
 
 var need_maintenance := false
 var in_maintenance := false
@@ -16,7 +16,12 @@ func update_state(hour) -> void:
 	need_maintenance = hour_without_maintenance > 5 * 24
 	emit_signal("crew_state_update")
 
-func productivity(_hour: int) -> float:
+func productivity() -> float:
 	if in_maintenance:
 		return 0.0
 	return 1.0
+
+func exposed_to_virus(factor: float) -> void:
+	if current_health_state.exposed_to_virus(factor):
+		change_contagion_state($ContagionStates/Contagious)
+

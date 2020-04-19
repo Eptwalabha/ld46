@@ -17,47 +17,24 @@ var location : String = ""
 var task_count = 0
 var current_task = 0
 
-func productivity(hour: int) -> float:
-	var pick_productivity = _pick_productivity(hour)
-	return pick_productivity
+var current_activity_state
+var current_mental_state
+var current_health_state
+
+func productivity() -> float:
+	return 1.0
 
 func is_human() -> bool:
 	return true
 
-func _pick_productivity(hour: int) -> float:
-	if is_dead:
-		return 0.0
-	if is_infected:
-		var day_infected = ceil((hour - infected_since) / 24.0)
-		match day_infected:
-			1: return 1.0
-			2: return .9
-			3: return .7
-			4: return .3
-			_: return .2
-	else:
-		return 1.0
-
-func infectiousness(hour) -> float:
-	if is_dead:
-		return 1.0
-	if is_infected:
-		var day_infected = ceil((hour - infected_since) / 24)
-		match day_infected:
-			1: return 0.0
-			2: return .3
-			3: return .7
-			4: return 1.0
-			_: return 1.0
-	else:
-		return 0.0
+func infectiousness() -> float:
+	return current_health_state.get_factor()
 
 func update_state(hour: int) -> void:
-	if is_dead:
-		return
+	current_health_state.update()
 	thirst += 1
 	hunger += 1
-	efficiency = productivity(hour)
+	efficiency = productivity()
 	emit_signal("crew_state_update")
 
 func work_on(task) -> void:
@@ -68,7 +45,14 @@ func work_on(task) -> void:
 	task.worked_on(crew_name, efficiency)
 
 func is_alive() -> bool:
-	return not is_dead
+	return true
 
 func get_health() -> int:
 	return 0
+
+func exposed_to_virus(factor: float) -> void:
+	pass
+
+func change_contagion_state(new_state) -> void:
+	new_state.enter()
+	current_health_state = new_state

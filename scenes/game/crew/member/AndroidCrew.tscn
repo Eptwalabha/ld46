@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/game/crew/CrewMember.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/game/crew/member/AndroidCrew.gd" type="Script" id=2]
+[ext_resource path="res://scenes/game/gameplay/states/contagion/HealthyState.gd" type="Script" id=3]
+[ext_resource path="res://scenes/game/gameplay/states/contagion/ContagiousState.gd" type="Script" id=4]
 
 [node name="AndroidCrew" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+
+[node name="Healthy" type="Node" parent="ContagionStates" index="0"]
+script = ExtResource( 3 )
+
+[node name="Contagious" type="Node" parent="ContagionStates" index="1"]
+script = ExtResource( 4 )

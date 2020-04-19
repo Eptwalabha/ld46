@@ -1,4 +1,4 @@
-class_name PhysicalState
+class_name ActivityState
 extends Node
 
 func update() -> void:

@@ -9,10 +9,20 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node2D",
+"base": "Node",
+"class": "ActivityState",
+"language": "GDScript",
+"path": "res://scenes/game/gameplay/states/ActivityState.gd"
+}, {
+"base": "CrewMember",
 "class": "AndroidCrew",
 "language": "GDScript",
 "path": "res://scenes/game/crew/member/AndroidCrew.gd"
+}, {
+"base": "Node",
+"class": "ContagionState",
+"language": "GDScript",
+"path": "res://scenes/game/gameplay/states/contagion/ContagionState.gd"
 }, {
 "base": "Node2D",
 "class": "CrewMember",
@@ -34,10 +44,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/game/ui/GameUI.gd"
 }, {
-"base": "Node",
-"class": "PhysicalState",
+"base": "CrewMember",
+"class": "HumanCrew",
 "language": "GDScript",
-"path": "res://scenes/game/gameplay/states/PhysicalState.gd"
+"path": "res://scenes/game/crew/member/HumanCrew.gd"
 }, {
 "base": "Node2D",
 "class": "Ship",
@@ -110,12 +120,14 @@ _global_script_classes=[ {
 "path": "res://scenes/game/ui/window/UIWindow.gd"
 } ]
 _global_script_class_icons={
+"ActivityState": "",
 "AndroidCrew": "",
+"ContagionState": "",
 "CrewMember": "",
 "CrewStat": "",
 "Game": "",
 "GameUI": "",
-"PhysicalState": "",
+"HumanCrew": "",
 "Ship": "",
 "ShipRoom": "",
 "Task": "",
