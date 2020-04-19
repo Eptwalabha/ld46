@@ -14,10 +14,12 @@ margin_bottom = 34.0
 margin_bottom = 29.0
 
 [node name="Title" parent="MarginContainer/Content/Header/Content" index="0"]
+margin_right = 979.0
 margin_bottom = 24.0
 text = "ui_window_task_details"
 
 [node name="Close" parent="MarginContainer/Content/Header/Content" index="1"]
+margin_left = 983.0
 margin_bottom = 24.0
 
 [node name="Body" parent="MarginContainer/Content" index="1"]
@@ -31,30 +33,30 @@ size_flags_vertical = 3
 
 [node name="Title" type="Label" parent="MarginContainer/Content/Body/Task" index="0"]
 margin_right = 1004.0
-margin_bottom = 14.0
+margin_bottom = 16.0
 
 [node name="Label1" type="Label" parent="MarginContainer/Content/Body/Task" index="1"]
-margin_top = 18.0
+margin_top = 20.0
 margin_right = 1004.0
-margin_bottom = 32.0
+margin_bottom = 36.0
 text = "ui_task_description"
 
 [node name="Description" type="ScrollContainer" parent="MarginContainer/Content/Body/Task" index="2"]
-margin_top = 36.0
+margin_top = 40.0
 margin_right = 1004.0
-margin_bottom = 530.0
+margin_bottom = 528.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Text" type="RichTextLabel" parent="MarginContainer/Content/Body/Task/Description" index="0"]
 margin_right = 1004.0
-margin_bottom = 494.0
+margin_bottom = 488.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 bbcode_enabled = true
 
 [node name="Label2" type="Label" parent="MarginContainer/Content/Body/Task" index="3"]
-margin_top = 534.0
+margin_top = 532.0
 margin_right = 1004.0
 margin_bottom = 548.0
 text = "ui_task_crew_members"

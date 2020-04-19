@@ -11,5 +11,5 @@ func _ready() -> void:
 	label.text = tr(stat_name)
 	progress.max_value = max_value
 
-func update_progress(value: int) -> void:
+func update_progress(value) -> void:
 	progress.value = value

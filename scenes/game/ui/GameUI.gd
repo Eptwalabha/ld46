@@ -10,6 +10,7 @@ onready var crew_list := $Container/Columns/CrewList as UICrewList
 onready var tasks_list := $Container/Columns/TaskList as UITaskList
 onready var task_detail := $Container/Columns/Middle/Task/TaskDetail as UITaskDetail
 onready var crew_assignment := $Container/Columns/Middle/Task/AssignCrew as UIAssignCrew
+onready var crew_details := $Container/Columns/Middle/CrewDetails as UICrewDetails
 onready var next_event := $Container/Actions/Container/NextEvent as Button
 onready var next_hour := $Container/Actions/Container/NextHour as Button
 onready var crew_button := $Container/Actions/Container/Crew as Button
@@ -38,6 +39,7 @@ func refresh(hour: int) -> void:
 	crew_list.refresh()
 	tasks_list.refresh()
 	task_detail.refresh()
+#	crew_details.refresh()
 
 func next_event_over() -> void:
 	next_event.pressed = false
@@ -62,6 +64,7 @@ func _on_UI_window_closed(window) -> void:
 		"ui_crew_list" : crew_button.pressed = false
 		"ui_task_title_window": tasks_list.deselect_all()
 		_ : pass
+	print(window.title)
 
 func _on_UI_window_opened(window) -> void:
 	match window.title:

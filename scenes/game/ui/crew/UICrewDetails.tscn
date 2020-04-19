@@ -7,8 +7,23 @@
 [node name="CrewDetails" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 
+[node name="Header" parent="MarginContainer/Content" index="0"]
+margin_bottom = 34.0
+
+[node name="Content" parent="MarginContainer/Content/Header" index="0"]
+margin_bottom = 29.0
+
 [node name="Title" parent="MarginContainer/Content/Header/Content" index="0"]
+margin_right = 979.0
+margin_bottom = 24.0
 text = "ui_window_crew_details"
+
+[node name="Close" parent="MarginContainer/Content/Header/Content" index="1"]
+margin_left = 983.0
+margin_bottom = 24.0
+
+[node name="Body" parent="MarginContainer/Content" index="1"]
+margin_top = 38.0
 
 [node name="Control" type="Control" parent="MarginContainer/Content/Body" index="0"]
 margin_right = 1004.0
@@ -30,13 +45,13 @@ margin_bottom = 46.0
 [node name="Vignette" parent="MarginContainer/Content/Body/Control/Crew/Stats" index="0" instance=ExtResource( 2 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_right = 46.0
+margin_right = 45.0
 margin_bottom = 46.0
 
 [node name="Task" type="VBoxContainer" parent="MarginContainer/Content/Body/Control/Crew" index="1"]
 margin_top = 50.0
 margin_right = 1004.0
-margin_bottom = 526.0
+margin_bottom = 524.0
 size_flags_vertical = 3
 __meta__ = {
 "_edit_use_anchors_": false
@@ -44,64 +59,64 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="MarginContainer/Content/Body/Control/Crew/Task" index="0"]
 margin_right = 1004.0
-margin_bottom = 14.0
+margin_bottom = 16.0
 text = "ui_crew_tasks"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Content/Body/Control/Crew/Task" index="1"]
-margin_top = 18.0
+margin_top = 20.0
 margin_right = 1004.0
-margin_bottom = 476.0
+margin_bottom = 474.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Content/Body/Control/Crew/Task/ScrollContainer" index="0"]
 
 [node name="Menu" type="HBoxContainer" parent="MarginContainer/Content/Body/Control/Crew" index="2"]
-margin_top = 530.0
+margin_top = 528.0
 margin_right = 1004.0
 margin_bottom = 552.0
 size_flags_vertical = 9
 
 [node name="Medical" type="HBoxContainer" parent="MarginContainer/Content/Body/Control/Crew/Menu" index="0"]
-margin_right = 672.0
-margin_bottom = 22.0
+margin_right = 668.0
+margin_bottom = 24.0
 size_flags_horizontal = 3
 
 [node name="Check" type="ToolButton" parent="MarginContainer/Content/Body/Control/Crew/Menu/Medical" index="0"]
-margin_right = 112.0
-margin_bottom = 22.0
+margin_right = 113.0
+margin_bottom = 24.0
 text = "ui_action_check"
 
 [node name="Heal" type="ToolButton" parent="MarginContainer/Content/Body/Control/Crew/Menu/Medical" index="1"]
-margin_left = 116.0
-margin_right = 218.0
-margin_bottom = 22.0
+margin_left = 117.0
+margin_right = 220.0
+margin_bottom = 24.0
 text = "ui_action_heal"
 
 [node name="Mask" type="ToolButton" parent="MarginContainer/Content/Body/Control/Crew/Menu/Medical" index="2"]
-margin_left = 222.0
-margin_right = 331.0
-margin_bottom = 22.0
+margin_left = 224.0
+margin_right = 333.0
+margin_bottom = 24.0
 text = "ui_action_mask"
 
 [node name="Human" type="HBoxContainer" parent="MarginContainer/Content/Body/Control/Crew/Menu" index="1"]
-margin_left = 676.0
+margin_left = 672.0
 margin_right = 1004.0
-margin_bottom = 22.0
+margin_bottom = 24.0
 
 [node name="Break" type="ToolButton" parent="MarginContainer/Content/Body/Control/Crew/Menu/Human" index="0"]
-margin_right = 110.0
-margin_bottom = 22.0
+margin_right = 112.0
+margin_bottom = 24.0
 text = "ui_action_break"
 
 [node name="Drink" type="ToolButton" parent="MarginContainer/Content/Body/Control/Crew/Menu/Human" index="1"]
-margin_left = 114.0
-margin_right = 221.0
-margin_bottom = 22.0
+margin_left = 116.0
+margin_right = 223.0
+margin_bottom = 24.0
 text = "ui_action_drink"
 
 [node name="Food" type="ToolButton" parent="MarginContainer/Content/Body/Control/Crew/Menu/Human" index="2"]
-margin_left = 225.0
-margin_right = 328.0
-margin_bottom = 22.0
+margin_left = 227.0
+margin_right = 332.0
+margin_bottom = 24.0
 text = "ui_action_food"
