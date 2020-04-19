@@ -3,16 +3,17 @@ extends ContagionState
 
 var contaminated = false
 
-func get_factor() -> float:
-	return 0.0
-
 func update() -> String:
+	crew.contagion_detected = false
 	if contaminated:
 		return "sick"
 	return ""
 
 func state_name() -> String:
 	return "healthy"
+
+func get_factor() -> float:
+	return 0.0
 
 func exposed_to_virus(contamination_factor: float) -> void:
 	contaminated = contaminated or randf() < contamination_factor

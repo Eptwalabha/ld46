@@ -1,7 +1,8 @@
-class_name ActivityStateSleep
+class_name ActivityStateSleeping
 extends ActivityState
 
 func update() -> String:
+	crew.consecutive_hours_of_work = 0
 	crew.exhaustion -= 2
 	if crew.exhaustion < 0:
 		crew.exhaustion = 0

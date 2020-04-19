@@ -75,6 +75,7 @@ func _on_TaskList_task_infos_requested(task_id) -> void:
 	var task = game.get_task(task_id)
 	tasks_list.select_task(task_id)
 	task_detail.open(task)
+	crew_assignment.close(true)
 
 func _on_TaskDetail_assignment_requested(task_id) -> void:
 	var crew_members = game.get_crew_members()

@@ -6,9 +6,9 @@ export(bool) var is_infected := false
 
 var efficiency := 1.0
 var location : String = ""
-#var task_count = 0
 var current_task = 0
 var scheduled_tasks = []
+var contagion_detected = false
 
 #var current_mental_state
 var current_health_state
@@ -56,3 +56,9 @@ func change_state(type: String, new_state: String) -> void:
 			new_state_node.enter()
 	else:
 		printerr("WARNING: unknown %s state '%s'" % [type, new_state])
+
+func viral_test() -> bool:
+	var is_contamined = current_health_state.is_contaminated()
+	if is_contamined:
+		contagion_detected = true
+	return is_contamined

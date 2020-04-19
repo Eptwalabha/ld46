@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/game/crew/CrewMember.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/game/crew/member/HumanCrew.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/game/gameplay/states/activity/NoActivityState.gd" type="Script" id=7]
 [ext_resource path="res://scenes/game/gameplay/states/activity/HumanWorkingState.gd" type="Script" id=8]
 [ext_resource path="res://scenes/game/gameplay/states/activity/SleepActivityState.gd" type="Script" id=9]
+[ext_resource path="res://scenes/game/gameplay/states/activity/HealingState.gd" type="Script" id=10]
 
 [node name="HumanCrew" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
@@ -35,3 +36,4 @@ script = ExtResource( 8 )
 script = ExtResource( 9 )
 
 [node name="Healing" type="Node" parent="ActivityStates" index="3"]
+script = ExtResource( 10 )

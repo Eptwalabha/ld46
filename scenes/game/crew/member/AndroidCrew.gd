@@ -36,7 +36,7 @@ func is_human() -> bool:
 func is_corrupted() -> bool:
 	return corruption_level > 0
 
-func corruption_level() -> int:
+func get_corruption_level() -> int:
 	return corruption_level
 
 func productivity() -> float:
@@ -45,3 +45,5 @@ func productivity() -> float:
 func exposed_to_virus(factor: float) -> void:
 	current_health_state.exposed_to_virus(factor)
 
+func cleaned() -> void:
+	change_state("health", "healthy")

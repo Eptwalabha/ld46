@@ -45,4 +45,7 @@ crew_name = "jack"
 crew_name = "dave"
 
 [node name="HumanCrew3" parent="Crew" instance=ExtResource( 4 )]
+crew_name = "helen"
+
+[node name="HumanCrew4" parent="Crew" instance=ExtResource( 4 )]
 crew_name = "dallas"

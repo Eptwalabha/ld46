@@ -10,6 +10,7 @@ func enter() -> void:
 func update() -> String:
 	contamination_amount -= 1
 	if contamination_amount <= 0:
+		crew.contagion_detected = false
 		return "healthy"
 	return ""
 

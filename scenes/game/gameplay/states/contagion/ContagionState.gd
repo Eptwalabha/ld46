@@ -1,6 +1,11 @@
 class_name ContagionState
 extends Node
 
+var crew
+
+func _ready() -> void:
+	crew = get_parent().get_parent()
+
 func enter() -> void:
 	pass
 

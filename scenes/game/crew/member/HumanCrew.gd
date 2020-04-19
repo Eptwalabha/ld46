@@ -7,6 +7,7 @@ var wake_up_since := 0
 var thirst := 0
 var hunger := 0
 var exhaustion := 0
+var consecutive_hours_of_work := 0
 
 func _ready() -> void:
 	states = {
@@ -43,7 +44,7 @@ func work_on(task) -> void:
 func productivity() -> float:
 	var health_ratio = current_health_state.productivity()
 	var activity_productivity = current_activity_state.productivity()
-	return (health_ratio + activity_productivity) / 2.0
+	return health_ratio * activity_productivity
 
 func exposed_to_virus(factor: float) -> void:
 	factor = factor if not wearing_mask else factor / 2.0
@@ -55,3 +56,7 @@ func infectiousness() -> float:
 
 func is_alive() -> bool:
 	return not current_health_state.is_dead()
+
+func healed() -> void:
+	if is_alive():
+		change_state("health", "healed")

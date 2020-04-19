@@ -12,7 +12,17 @@ func state_name() -> String:
 	return "working"
 
 func productivity() -> float:
-	return 1.0
+	var sleep_ratio = 1.0 if crew.wake_up_since < 24 else .5
+	if crew.consecutive_hours_of_work < 7:
+		return sleep_ratio
+	var work_ratio = 0
+	if crew.consecutive_hours_of_work < 5:
+		work_ratio = .8
+	elif crew.consecutive_hours_of_work < 7:
+		work_ratio = .6
+	else:
+		work_ratio = .4
+	return sleep_ratio * work_ratio
 
 func work_on(task) -> void:
 	crew.current_task = task.task_id
