@@ -37,20 +37,20 @@ margin_right = 973.0
 margin_bottom = 71.0
 
 [node name="NextHour" type="Button" parent="Actions/Container"]
-margin_right = 73.0
+margin_right = 85.0
 margin_bottom = 61.0
-text = "next hour"
+text = "ui_btn_next"
 
 [node name="NextEvent" type="Button" parent="Actions/Container"]
-margin_left = 77.0
-margin_right = 157.0
+margin_left = 89.0
+margin_right = 216.0
 margin_bottom = 61.0
 toggle_mode = true
-text = "next event"
+text = "ui_btn_next_event"
 
 [node name="Stats" type="VBoxContainer" parent="Actions/Container"]
-margin_left = 161.0
-margin_right = 875.0
+margin_left = 220.0
+margin_right = 778.0
 margin_bottom = 61.0
 rect_min_size = Vector2( 150, 0 )
 size_flags_horizontal = 3
@@ -59,14 +59,14 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Actions/Container/Stats"]
-margin_right = 714.0
+margin_right = 558.0
 margin_bottom = 14.0
 text = "ui_game_info"
 align = 1
 
 [node name="Time" type="HBoxContainer" parent="Actions/Container/Stats"]
 margin_top = 18.0
-margin_right = 714.0
+margin_right = 558.0
 margin_bottom = 32.0
 
 [node name="Label" type="Label" parent="Actions/Container/Stats/Time"]
@@ -85,39 +85,39 @@ text = "0"
 
 [node name="Distance" type="HBoxContainer" parent="Actions/Container/Stats"]
 margin_top = 36.0
-margin_right = 714.0
+margin_right = 558.0
 margin_bottom = 50.0
 
 [node name="Label" type="Label" parent="Actions/Container/Stats/Distance"]
 margin_right = 120.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 120, 0 )
-text = "ui_reachin_earth"
+text = "ui_progress_goal"
 align = 2
 
 [node name="Progress" type="ProgressBar" parent="Actions/Container/Stats/Distance"]
 margin_left = 124.0
-margin_right = 714.0
+margin_right = 558.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
 
 [node name="Crew" type="Button" parent="Actions/Container"]
-margin_left = 879.0
-margin_right = 921.0
+margin_left = 782.0
+margin_right = 869.0
 margin_bottom = 61.0
 toggle_mode = true
 pressed = true
-text = "crew"
+text = "ui_btn_crew"
 align = 2
 
 [node name="Task" type="Button" parent="Actions/Container"]
-margin_left = 925.0
+margin_left = 873.0
 margin_right = 963.0
 margin_bottom = 61.0
 toggle_mode = true
 pressed = true
-text = "task"
+text = "ui_btn_tasks"
 align = 2
 
 [node name="TaskList" parent="." instance=ExtResource( 1 )]

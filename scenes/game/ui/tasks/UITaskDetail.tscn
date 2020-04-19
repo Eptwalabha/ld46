@@ -44,7 +44,7 @@ bbcode_enabled = true
 margin_top = 534.0
 margin_right = 1004.0
 margin_bottom = 548.0
-text = "ui_task_crew_member"
+text = "ui_task_crew_members"
 
 [node name="Crew" type="HBoxContainer" parent="MarginContainer/Content/Body/Task" index="4"]
 margin_top = 552.0

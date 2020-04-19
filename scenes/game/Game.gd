@@ -20,7 +20,6 @@ var schedule = {}
 func _ready() -> void:
 	$GameUI.set_ship(ship)
 	$TaskFactory.game = self
-
 	tasks = task_factory.get_common_chores()
 	$GameUI.set_tasks(tasks)
 

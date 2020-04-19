@@ -120,6 +120,14 @@ config/icon="res://icon.png"
 
 GameData="*res://script/game_data.gd"
 
+[locale]
+
+locale_filter=[ 1, [ "en", "fr" ] ]
+translation_remaps={
+
+}
+translations=PoolStringArray( "res://assets/tr/translation.en.translation", "res://assets/tr/translation.fr.translation" )
+
 [rendering]
 
 quality/driver/driver_name="GLES2"
