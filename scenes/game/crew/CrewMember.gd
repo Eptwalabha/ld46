@@ -15,6 +15,7 @@ var is_dead := false
 var efficiency := 1.0
 var location : String = ""
 var task_count = 0
+var current_task = 0
 
 func productivity(hour: int) -> float:
 	var pick_productivity = _pick_productivity(hour)
@@ -59,8 +60,9 @@ func update_state(hour: int) -> void:
 func work_on(task) -> void:
 	if is_dead:
 		return
+	current_task = task.task_id
 	exhaustion += 1
-	task.worked_on(efficiency)
+	task.worked_on(crew_name, efficiency)
 
 func is_alive() -> bool:
 	return not is_dead

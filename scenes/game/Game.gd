@@ -21,11 +21,24 @@ func _ready() -> void:
 	var t : Task = TaskResource.instance()
 	t.title = "super new task lol"
 	t.time_to_complete = 5
+	t.is_daily = true
+	t.on_complete = {
+		"ship-max-speed": +.2,
+		"ship-speed": +.2
+	}
 	tasks[t.task_id] = t
 	var t2 : Task = TaskResource.instance()
 	t2.title = "other super task"
 	t2.description = "[bold]super[/bold]\nit works"
 	t2.time_to_complete = 10
+	t2.expires = true
+	t2.expires_after = 2
+	t2.on_failure = {
+		"ship-speed": -.1,
+		"ship-max-speed": -.1,
+		"food": -2,
+		"water": -3
+	}
 	t2.max_crew = 5
 	tasks[t2.task_id] = t2
 
@@ -90,9 +103,11 @@ func next_hour() -> Array:
 	return []
 
 func update_tasks() -> void:
+	# tasks timer
 	for task_id in tasks:
 		tasks[task_id].update_task(hour)
 
+	# for each task scheduled
 	for crew_name in schedule:
 		if schedule[crew_name].size() == 0:
 			continue
@@ -101,7 +116,6 @@ func update_tasks() -> void:
 			var task_id = schedule[crew_name][i]
 			var task = tasks[task_id]
 			if task.state == TASK_STATE.ONGOING and crew.location == task.location:
-				print("%s works on task %s" % [crew_name, task_id])
 				crew.work_on(task)
 				break
 
@@ -111,16 +125,16 @@ func update_tasks() -> void:
 			continue
 		match task.state:
 			TASK_STATE.COMPLETE:
-				apply_task_effect(task_id)
+				apply_task_effect(task)
 			TASK_STATE.EXPIRED:
-				apply_task_effect(task_id)
+				apply_task_effect(task)
 			_: pass
 		
 		if task.state == TASK_STATE.DONE:
 			for crew_name in schedule:
 				if schedule[crew_name].size() == 0:
 					continue
-
+	
 	update_task_and_crew_count()
 
 func update_task_and_crew_count() -> void:
@@ -132,15 +146,36 @@ func update_task_and_crew_count() -> void:
 				counter[task_id] += 1
 			else:
 				counter[task_id] = 1
-	
-	for task_id in counter:
-		tasks[task_id].crew_count = counter[task_id]
+	for task_id in tasks:
+		var c = 0 if not counter.has(task_id) else counter[task_id]
+		tasks[task_id].crew_count = c
 
 
-func apply_task_effect(task_id: int) -> void:
-	var task = tasks[task_id]
+func apply_task_effect(task: Task) -> void:
 	var effects = task.get_effect()
+	for effect_key in effects:
+		var data = effects[effect_key]
+		match effect_key:
+			"ship-speed": ship.change_speed(data)
+			"ship-max-speed": ship.change_max_speed(data)
+			"ship-water": ship.change_water(data)
+			"ship-food": ship.change_food(data)
+			"room-contamination-level":
+				var nbr = data
+				if nbr > 0:
+					pass
+				else:
+					pass
+			_: pass
+
 	task.end_task(hour)
+	var m = schedule.keys()
+	if task.state != TASK_STATE.DONE:
+		m = task.crew_who_worked_on_it
+	for crew_name in m:
+		var i = schedule[crew_name].find(task.task_id)
+		if i != -1:
+			schedule[crew_name].remove(i)
 
 func update_ship() -> void:
 	ship.update_covered_distance()

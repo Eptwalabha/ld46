@@ -5,7 +5,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("ui_cancel"):
-		print("next")
+		pass
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
-	print("next")
+	pass

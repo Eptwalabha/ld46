@@ -29,8 +29,11 @@ func set_tasks(tasks: Array) -> void:
 	tasks_list.set_tasks_list(tasks)
 
 func refresh(hour: int) -> void:
-	label_date.text = "%s hour%s" % [hour, "" if hour <= 1 else "s"]
-	distance_progress.max_value = 30
+	var time_before_end = ship.hours_until_goal(game.ua_goal)
+	var p1 = "" if hour <= 1 else "s"
+	var p2 = "" if time_before_end <= 1 else "s"
+	label_date.text = "%s hour%s (%s hour%s to go)" % [hour, p1, time_before_end, p2]
+	distance_progress.max_value = game.ua_goal
 	distance_progress.value = ship.distance_covered
 #	crew_list.refresh(data.crew_members)
 	tasks_list.refresh()

@@ -6,9 +6,9 @@ signal task_expired(task_id)
 
 export(int) var start_at := 0
 export(float, .2) var time_to_complete := 1.0
-export(bool) var can_expire := false
+export(bool) var expires := false
 export(bool) var is_daily := false
-export(int) var expires_after := 999
+export(int) var expires_after := 99999
 export(Dictionary) var on_complete := {}
 export(Dictionary) var on_failure := {}
 export(int) var cooldown := 0
@@ -27,6 +27,7 @@ var location : String = ""
 var crew_count := 0
 var state := 0
 var TASK_STATE = preload("res://script/game_enum.gd").TASK_STATE
+var crew_who_worked_on_it = []
 
 func _init() -> void:
 	state = TASK_STATE.SCHEDULED
@@ -36,11 +37,13 @@ func update_task(hour) -> void:
 	if is_active():
 		if hour > start_at:
 			state = TASK_STATE.ONGOING
-			if can_expire and hour >= start_at + expires_after:
+			if expires and hour > start_at + expires_after:
 				state = TASK_STATE.EXPIRED
 				emit_signal("task_expired", [task_id])
 
-func worked_on(hour: float) -> void:
+func worked_on(crew_name: String, hour: float) -> void:
+	if not crew_who_worked_on_it.has(crew_name):
+		crew_who_worked_on_it.push_back(crew_name)
 	hour_spent += hour
 	if hour_spent >= time_to_complete:
 		state = TASK_STATE.COMPLETE

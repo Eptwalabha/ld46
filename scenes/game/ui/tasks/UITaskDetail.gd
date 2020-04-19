@@ -14,7 +14,6 @@ func open(task: Task, crew_members: Array) -> void:
 	if task_id != task.task_id:
 		task_id = task.task_id
 		task_title.text = tr(task.title)
-		print(task.description)
 		task_description.bbcode_text = tr(task.description)
 
 	for child in crew_list.get_children():
