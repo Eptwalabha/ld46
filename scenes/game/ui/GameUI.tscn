@@ -45,6 +45,7 @@ rect_min_size = Vector2( 0, 250 )
 size_flags_vertical = 2
 
 [node name="TaskDetail" parent="Container/Columns/Middle/Task" instance=ExtResource( 4 )]
+visible = false
 anchor_bottom = 0.0
 rect_min_size = Vector2( 0, 250 )
 closable = true

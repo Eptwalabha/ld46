@@ -77,7 +77,7 @@ func next_hour() -> Array:
 	update_crew()
 	update_tasks()
 #	update_equipments()
-	update_ship()
+	ship.update_state()
 	spawn_random_events()
 	ui.refresh(hour)
 	return []
@@ -146,6 +146,7 @@ func apply_task_effect(task: Task) -> void:
 			"ship-max-speed": ship.change_max_speed(data)
 			"ship-water": ship.change_water(data)
 			"ship-food": ship.change_food(data)
+			"ship-air-filter": ship.clean_air_filter(data)
 			"room-contamination-level":
 				var nbr = data
 				if nbr > 0:
@@ -162,9 +163,6 @@ func apply_task_effect(task: Task) -> void:
 		var i = schedule[crew_name].find(task.task_id)
 		if i != -1:
 			schedule[crew_name].remove(i)
-
-func update_ship() -> void:
-	ship.update_covered_distance()
 
 func update_crew() -> void:
 	for crew_id in crew_members:

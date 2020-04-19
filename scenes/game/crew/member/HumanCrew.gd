@@ -1,7 +1,7 @@
 class_name HumanCrew
 extends CrewMember
 
-export(bool) var wearing_mask := false
+export(bool) var mask_ttl := 0
 var wake_up_since := 0
 
 var thirst := 0
@@ -31,6 +31,9 @@ func update_state(_hour: int) -> void:
 	thirst += 1
 	hunger += 1
 	wake_up_since += 1
+	mask_ttl -= 1
+	if mask_ttl < 0:
+		mask_ttl = 0
 	var next_health_state = current_health_state.update()
 	change_state("health", next_health_state)
 	var next_activity_state = current_activity_state.update()
@@ -47,12 +50,12 @@ func productivity() -> float:
 	return health_ratio * activity_productivity
 
 func exposed_to_virus(factor: float) -> void:
-	factor = factor if not wearing_mask else factor / 2.0
+	factor /= 2.0 if is_protected() else 1.0
 	current_health_state.exposed_to_virus(factor)
 
 func infectiousness() -> float:
 	var factor = current_health_state.get_factor()
-	return factor if not wearing_mask else factor / 2.0
+	return factor / 2.0 if is_protected() else factor
 
 func is_alive() -> bool:
 	return not current_health_state.is_dead()
@@ -60,3 +63,6 @@ func is_alive() -> bool:
 func healed() -> void:
 	if is_alive():
 		change_state("health", "healed")
+
+func is_protected() -> bool:
+	return mask_ttl > 0
