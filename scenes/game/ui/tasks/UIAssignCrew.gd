@@ -4,7 +4,7 @@ extends UIWindow
 
 signal assign_crew_members(task_id, crew_members)
 
-onready var crew_list := $MarginContainer/Content/Body/Crew/List as VBoxContainer
+onready var crew_list := $MarginContainer/Content/Body/Crew/Scroll/List as VBoxContainer
 var task_id
 var max_crew
 var crew_selection = []

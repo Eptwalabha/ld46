@@ -26,10 +26,10 @@ func _ready() -> void:
 		var crew_name = crew.crew_name
 		crew_members[crew_name] = crew
 		schedule[crew_name] = []
-		if crew_name == "jack" or crew_name == "hal":
-			schedule[crew_name] = [t.task_id]
+	assign_crew_to_task(t.task_id, ["jack", "hal"])
 
 	$GameUI.set_tasks([t])
+	$GameUI.refresh(0)
 
 func get_assigned_crew(task_id: int) -> Array:
 	var assigned_crew_members = []
@@ -45,6 +45,9 @@ func get_crew_members() -> Array:
 	return crew_members
 
 func assign_crew_to_task(task_id, crew_to_assign) -> void:
+	if not tasks.has(task_id):
+		return
+
 	for crew_name in schedule:
 		var crew_tasks = schedule[crew_name]
 		var is_one_assigned = crew_to_assign.has(crew_name)
@@ -53,6 +56,8 @@ func assign_crew_to_task(task_id, crew_to_assign) -> void:
 			schedule[crew_name].push_back(task_id)
 		elif not is_one_assigned and has_already_this_task:
 			schedule[crew_name].remove(crew_tasks.find(task_id))
+
+	tasks[task_id].crew_count = crew_to_assign.size()
 
 func next_event() -> void:
 	var new_events = []
@@ -73,12 +78,7 @@ func next_hour() -> Array:
 #	update_equipments()
 	update_ship()
 	spawn_random_events()
-	var update_data = {
-		'hour': hour,
-		'crew_members': crew_members,
-		'tasks': tasks,
-	}
-	ui.refresh(update_data)
+	ui.refresh(hour)
 	return []
 
 func update_tasks() -> void:

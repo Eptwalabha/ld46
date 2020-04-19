@@ -5,6 +5,13 @@
 
 [node name="AssignCrew" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+title = "ui_window_assign_crew_members"
+
+[node name="ColorRect" parent="." index="0"]
+color = Color( 0.117647, 0.117647, 0.117647, 0.588235 )
+
+[node name="Title" parent="MarginContainer/Content/Header/Content" index="0"]
+text = "ui_window_assign_crew_members"
 
 [node name="Crew" type="VBoxContainer" parent="MarginContainer/Content/Body" index="0"]
 margin_right = 1004.0
@@ -12,7 +19,12 @@ margin_bottom = 552.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="List" type="VBoxContainer" parent="MarginContainer/Content/Body/Crew" index="0"]
+[node name="Scroll" type="ScrollContainer" parent="MarginContainer/Content/Body/Crew" index="0"]
+margin_right = 1004.0
+margin_bottom = 528.0
+size_flags_vertical = 3
+
+[node name="List" type="VBoxContainer" parent="MarginContainer/Content/Body/Crew/Scroll" index="0"]
 margin_right = 1004.0
 margin_bottom = 528.0
 size_flags_horizontal = 3

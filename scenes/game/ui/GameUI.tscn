@@ -146,14 +146,12 @@ margin_right = 0.0959473
 
 [node name="AssignCrew" parent="." instance=ExtResource( 5 )]
 visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -287.089
-margin_top = -217.515
-margin_right = 303.911
-margin_bottom = 158.485
+anchor_left = 0.284
+anchor_right = 0.746
+anchor_bottom = 0.43
+margin_left = 0.18399
+margin_top = 20.0
+margin_right = 0.0959473
 [connection signal="pressed" from="Actions/Container/NextHour" to="." method="_on_NextHour_pressed"]
 [connection signal="toggled" from="Actions/Container/NextEvent" to="." method="_on_NextEvent_toggled"]
 [connection signal="toggled" from="Actions/Container/Crew" to="." method="_on_Crew_toggled"]

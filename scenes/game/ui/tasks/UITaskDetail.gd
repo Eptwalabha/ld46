@@ -11,9 +11,11 @@ onready var crew_list := $MarginContainer/Content/Body/Task/Crew as HBoxContaine
 var task_id
 
 func open(task: Task, crew_members: Array) -> void:
-	task_id = task.task_id
-	task_title.text = tr(task.title)
-	task_description.bbcode_text = tr(task.description)
+	if task_id != task.task_id:
+		task_id = task.task_id
+		task_title.text = tr(task.title)
+		task_description.bbcode_text = tr(task.description)
+
 	for child in crew_list.get_children():
 		crew_list.remove_child(child)
 		child.queue_free()

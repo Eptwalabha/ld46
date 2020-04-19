@@ -18,13 +18,14 @@ func set_selected(is_selected: bool) -> void:
 	update_color()
 
 func update_color() -> void:
-	if selected:
-		color_rect.color = Color(0.0, 0.5, 0.0, 0.3)
-	else:
-		color_rect.color = Color(0, 0, 0, 0.3)
-		
+#	if selected:
+#		color_rect.color = Color(0.0, 0.5, 0.0, 0.3)
+#	else:
+#		color_rect.color = Color(0, 0, 0, 0.3)
+	color_rect.color.g = 0.5 if selected else 0.0
+
 func _on_CrewVignette_gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.is_pressed():
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.is_pressed():
 		selected = not selected
 		update_color()
 		emit_signal("selection_changed", selected)

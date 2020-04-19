@@ -17,6 +17,7 @@ var hour_spent := 0.0
 var task_since := 0
 var task_id : int = 0
 var location : String = ""
+var crew_count := 0
 
 func _init() -> void:
 	task_id = GameData.get_id()

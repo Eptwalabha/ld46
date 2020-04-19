@@ -28,13 +28,12 @@ func set_ship(the_ship: Ship) -> void:
 func set_tasks(tasks: Array) -> void:
 	tasks_list.set_tasks_list(tasks)
 
-func refresh(data: Dictionary) -> void:
-	var hour = data.hour
+func refresh(hour: int) -> void:
 	label_date.text = "%s hour%s" % [hour, "" if hour <= 1 else "s"]
 	distance_progress.max_value = 30
 	distance_progress.value = ship.distance_covered
 #	crew_list.refresh(data.crew_members)
-	tasks_list.refresh(data.tasks)
+	tasks_list.refresh()
 
 func next_event_over() -> void:
 	next_event.pressed = false
@@ -71,6 +70,10 @@ func _on_TaskDetail_assignment_requested(task_id) -> void:
 		assigned_crew.push_back(crew.crew_name)
 	var task = game.get_task(task_id)
 	crew_assignment.open(task, crew_members, assigned_crew)
+	task_detail.close(true)
 
 func _on_AssignCrew_assign_crew_members(task_id, crew_members) -> void:
 	game.assign_crew_to_task(task_id, crew_members)
+	var task = game.get_task(task_id)
+	task_detail.open(task, crew_members)
+	tasks_list.refresh()

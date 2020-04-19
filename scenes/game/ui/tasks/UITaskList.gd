@@ -17,12 +17,9 @@ func add_task_to_list(task) -> void:
 	t.set_task(task)
 	t.connect("task_infos_requested", self, "_on_task_infos_requested")
 
-func refresh(update: Dictionary) -> void:
+func refresh() -> void:
 	for line in list_container.get_children():
-		var task_id = line.task_id
-		if update.has(task_id):
-#			line.refresh(update[task_id].hour_spent, update[task_id].crew_assigned)
-			line.refresh(update[task_id].hour_spent, 0)
+		line.refresh()
 
 func _on_task_infos_requested(task_id: int) -> void:
 	emit_signal("task_infos_requested", task_id)
