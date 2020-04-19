@@ -21,7 +21,7 @@ func get_factor() -> float:
 		_: return 1.0
 	return 1.0
 
-func exposed_to_virus(contamination_factor: float) -> bool:
+func exposed_to_virus(contamination_factor: float) -> void:
 	if contamination_factor > 0.3:
 		contamination_amount = int(clamp(contamination_amount + 1, 0, max_amount))
 	return false

@@ -7,7 +7,7 @@ func get_factor() -> float:
 
 func update() -> String:
 	if contaminated:
-		return "sick"
+		return "contaminated"
 	return ""
 
 func exposed_to_virus(contamination_factor: float) -> void:

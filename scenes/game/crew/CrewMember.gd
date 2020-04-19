@@ -1,14 +1,9 @@
 class_name CrewMember
 extends Node2D
 
-signal crew_state_update
-
 export(String) var crew_name = "no name"
 export(bool) var is_infected := false
 
-var thirst := 0
-var hunger := 0
-var exhaustion := 0
 var infected_since := 0
 var sleeping := false
 var is_dead := false
@@ -17,9 +12,14 @@ var location : String = ""
 var task_count = 0
 var current_task = 0
 
-var current_activity_state
-var current_mental_state
+#var current_mental_state
 var current_health_state
+var current_activity_state
+
+var states = {
+	"health": {},
+	"activiy": {},
+}
 
 func productivity() -> float:
 	return 1.0
@@ -30,19 +30,11 @@ func is_human() -> bool:
 func infectiousness() -> float:
 	return current_health_state.get_factor()
 
-func update_state(hour: int) -> void:
-	current_health_state.update()
-	thirst += 1
-	hunger += 1
-	efficiency = productivity()
-	emit_signal("crew_state_update")
+func update_state(_hour: int) -> void:
+	pass
 
-func work_on(task) -> void:
-	if is_dead:
-		return
-	current_task = task.task_id
-	exhaustion += 1
-	task.worked_on(crew_name, efficiency)
+func work_on(_task) -> void:
+	pass
 
 func is_alive() -> bool:
 	return true
@@ -50,9 +42,18 @@ func is_alive() -> bool:
 func get_health() -> int:
 	return 0
 
-func exposed_to_virus(factor: float) -> void:
+func exposed_to_virus(_factor: float) -> void:
 	pass
 
-func change_contagion_state(new_state) -> void:
-	new_state.enter()
-	current_health_state = new_state
+func change_state(type: String, new_state: String) -> void:
+	if new_state == "":
+		return
+	if states[type].has(new_state):
+		var new_state_node = get_node(states[type][new_state])
+		if type == "activity" and new_state_node is ActivityState:
+			current_activity_state = new_state_node
+		elif type == "health" and new_state_node is ContagionState:
+			current_health_state = new_state_node
+		new_state_node.enter()
+	else:
+		printerr("WARNING: unknown %s state '%s'" % [type, new_state])
