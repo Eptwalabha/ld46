@@ -13,6 +13,9 @@ func update() -> String:
 		return "healthy"
 	return ""
 
+func state_name() -> String:
+	return "death"
+
 func get_factor() -> float:
 	match int(ceil(contamination_amount / 2.0)):
 		1: return .1

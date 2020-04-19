@@ -1,15 +1,14 @@
-class_name ActivityStateMaintenance
+class_name ActivityStateCleaned
 extends ActivityState
 
-var hours_left_in_maintenance := 12
+var hours_left_to_clean := 6
 
 func enter() -> void:
-	hours_left_in_maintenance = 12
+	hours_left_to_clean = 6
 
 func update() -> String:
-	hours_left_in_maintenance -= 1
-	if hours_left_in_maintenance == 0:
-		crew.corruption_level = 0
+	hours_left_to_clean -= 1
+	if hours_left_to_clean == 0:
 		return _next_state()
 	return ""
 
@@ -19,7 +18,7 @@ func _next_state() -> String:
 	return "idle"
 
 func state_name() -> String:
-	return "maintenance"
+	return "cleaning"
 
 func productivity() -> float:
 	return 0.0

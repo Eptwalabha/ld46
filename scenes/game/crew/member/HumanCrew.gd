@@ -11,16 +11,16 @@ var exhaustion := 0
 func _ready() -> void:
 	states = {
 		"health": {
-			"healthy": "ContagionStates/Healthy",
-			"sick": "ContagionStates/Sick",
-			"healed": "ContagionStates/Healed",
-			"dead": "ContagionStates/Dead",
+			"healthy": $ContagionStates/Healthy,
+			"sick": $ContagionStates/Sick,
+			"healed": $ContagionStates/Healed,
+			"dead": $ContagionStates/Dead,
 		},
 		"activity": {
-			"no-activity": "ActivityStates/NoActivity",
-			"working": "ActivityStates/Working",
-			"sleeping": "ActivityStates/Sleeping",
-			"healing": "ActivityStates/Healing",
+			"no-activity": $ActivityStates/NoActivity,
+			"working": $ActivityStates/Working,
+			"sleeping": $ActivityStates/Sleeping,
+			"healing": $ActivityStates/Healing,
 		},
 	}
 	change_state("health", "healthy")

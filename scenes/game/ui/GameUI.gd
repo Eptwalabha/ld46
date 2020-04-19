@@ -64,7 +64,6 @@ func _on_UI_window_closed(window) -> void:
 		"ui_crew_list" : crew_button.pressed = false
 		"ui_task_title_window": tasks_list.deselect_all()
 		_ : pass
-	print(window.title)
 
 func _on_UI_window_opened(window) -> void:
 	match window.title:

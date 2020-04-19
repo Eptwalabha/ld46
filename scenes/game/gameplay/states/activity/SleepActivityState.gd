@@ -8,3 +8,6 @@ func update() -> String:
 		crew.wake_up_since = 0
 		return "no-activity"
 	return ""
+
+func state_name() -> String:
+	return "sleeping"

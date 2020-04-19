@@ -11,6 +11,9 @@ func update() -> String:
 		return "sick"
 	return ""
 
+func state_name() -> String:
+	return "healthy"
+
 func exposed_to_virus(contamination_factor: float) -> void:
 	contaminated = contaminated or randf() < contamination_factor
 

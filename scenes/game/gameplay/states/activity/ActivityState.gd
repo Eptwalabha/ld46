@@ -12,6 +12,9 @@ func enter() -> void:
 func update() -> String:
 	return ""
 
+func state_name() -> String:
+	return ""
+
 func productivity() -> float:
 	return 0.0
 

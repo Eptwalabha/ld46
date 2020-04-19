@@ -1,21 +1,20 @@
 class_name AndroidCrew
 extends CrewMember
 
-var need_maintenance := false
-var in_maintenance := false
-var last_maintenance := 0
 var hours_before_next_maintenance := 100
+var corruption_level := 0
 
 func _ready() -> void:
 	states = {
 		"health": {
-			"healthy": "ContagionStates/Healthy",
-			"contaminated": "ContagionStates/Contaminated",
+			"healthy": $ContagionStates/Healthy,
+			"contaminated": $ContagionStates/Contaminated,
 		},
 		"activity": {
-			"idle": "ActivityStates/Idle",
-			"working": "ActivityStates/AndroidWorking",
-			"maintenance": "ActivityStates/Maintenance",
+			"idle": $ActivityStates/Idle,
+			"working": $ActivityStates/AndroidWorking,
+			"maintenance": $ActivityStates/Maintenance,
+			"cleaned": $ActivityStates/Cleaned,
 		},
 	}
 	change_state("health", "healthy")
@@ -33,6 +32,12 @@ func update_state(_hour: int) -> void:
 
 func is_human() -> bool:
 	return false
+
+func is_corrupted() -> bool:
+	return corruption_level > 0
+
+func corruption_level() -> int:
+	return corruption_level
 
 func productivity() -> float:
 	return current_activity_state.productivity()

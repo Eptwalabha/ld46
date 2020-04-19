@@ -12,6 +12,9 @@ func update() -> String:
 		return "death"
 	return ""
 
+func state_name() -> String:
+	return "sick"
+
 func get_factor() -> float:
 	if hour_in_state == 0:
 		return 0.0

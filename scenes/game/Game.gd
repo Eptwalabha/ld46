@@ -120,7 +120,8 @@ func update_tasks() -> void:
 func update_task_and_crew_count() -> void:
 	var counter = {}
 	for crew_name in schedule:
-		crew_members[crew_name].task_count = schedule[crew_name].size()
+#		crew_members[crew_name].task_count = schedule[crew_name].size()
+		crew_members[crew_name].scheduled_tasks = schedule[crew_name]
 		for task_id in schedule[crew_name]:
 			if counter.has(task_id) and counter[task_id].find(crew_name) == -1:
 				counter[task_id].push_back(crew_name)

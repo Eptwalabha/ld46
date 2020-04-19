@@ -10,6 +10,9 @@ func update() -> String:
 func get_factor() -> float:
 	return 0.0
 
+func state_name() -> String:
+	return ""
+
 func exposed_to_virus(_contamination_factor: float) -> void:
 	pass
 
