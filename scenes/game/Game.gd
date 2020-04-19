@@ -32,7 +32,7 @@ func _ready() -> void:
 	t2.description = "[bold]super[/bold]\nit works"
 	t2.time_to_complete = 10
 	t2.expires = true
-	t2.expires_after = 2
+	t2.expires_after = 5
 	t2.on_failure = {
 		"ship-speed": -.1,
 		"ship-max-speed": -.1,
@@ -46,8 +46,10 @@ func _ready() -> void:
 		var crew_name = crew.crew_name
 		crew_members[crew_name] = crew
 		schedule[crew_name] = []
-	assign_crew_to_task(t.task_id, ["jack", "hal"])
-	assign_crew_to_task(t2.task_id, ["jack", "hal", "dave"])
+	
+	schedule["jack"] = [0]
+	schedule["hal"] = [0]
+	schedule["dave"] = [1, 0]
 	update_task_and_crew_count()
 	$GameUI.set_tasks([t, t2])
 	$GameUI.refresh(0)
@@ -142,13 +144,18 @@ func update_task_and_crew_count() -> void:
 	for crew_name in schedule:
 		crew_members[crew_name].task_count = schedule[crew_name].size()
 		for task_id in schedule[crew_name]:
-			if counter.has(task_id):
-				counter[task_id] += 1
+			if counter.has(task_id) and counter[task_id].find(crew_name) == -1:
+				counter[task_id].push_back(crew_name)
 			else:
-				counter[task_id] = 1
+				counter[task_id] = [crew_name]
+
 	for task_id in tasks:
-		var c = 0 if not counter.has(task_id) else counter[task_id]
-		tasks[task_id].crew_count = c
+		if counter.has(task_id):
+			tasks[task_id].crew_count = counter[task_id].size()
+			tasks[task_id].assigned_crew = counter[task_id]
+		else:
+			tasks[task_id].crew_count = 0
+			tasks[task_id].assigned_crew = []
 
 
 func apply_task_effect(task: Task) -> void:

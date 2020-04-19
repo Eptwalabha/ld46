@@ -37,6 +37,7 @@ func refresh(hour: int) -> void:
 	distance_progress.value = ship.distance_covered
 #	crew_list.refresh(data.crew_members)
 	tasks_list.refresh()
+	task_detail.refresh()
 
 func next_event_over() -> void:
 	next_event.pressed = false
@@ -63,16 +64,13 @@ func _on_UI_window_closed(window) -> void:
 func _on_UI_window_opened(window) -> void:
 	match window.title:
 		"ui_task_title_window":
-			tasks_list.select_task(window.task_id)
+			tasks_list.select_task(window.task.task_id)
 		_ : pass
 
 func _on_TaskList_task_infos_requested(task_id) -> void:
-	var assigned_crew = []
-	for crew in game.get_assigned_crew(task_id):
-		assigned_crew.push_back(crew.crew_name)
 	var task = game.get_task(task_id)
 	tasks_list.select_task(task_id)
-	task_detail.open(task, assigned_crew)
+	task_detail.open(task)
 
 func _on_TaskDetail_assignment_requested(task_id) -> void:
 	var crew_members = game.get_crew_members()
@@ -86,6 +84,5 @@ func _on_TaskDetail_assignment_requested(task_id) -> void:
 func _on_AssignCrew_assign_crew_members(task_id, crew_members) -> void:
 	game.assign_crew_to_task(task_id, crew_members)
 	var task = game.get_task(task_id)
-	task_detail.open(task, crew_members)
+	task_detail.open(task)
 	tasks_list.refresh()
-

@@ -27,7 +27,9 @@ var location : String = ""
 var crew_count := 0
 var state := 0
 var TASK_STATE = preload("res://script/game_enum.gd").TASK_STATE
+
 var crew_who_worked_on_it = []
+var assigned_crew = []
 
 func _init() -> void:
 	state = TASK_STATE.SCHEDULED
