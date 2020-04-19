@@ -19,19 +19,19 @@ __meta__ = {
 margin_left = 10.0
 margin_top = 5.0
 margin_right = 1014.0
-margin_bottom = 101.0
+margin_bottom = 37.0
 size_flags_vertical = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="Container"]
 margin_right = 32.0
-margin_bottom = 96.0
+margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
 custom_constants/margin_top = 5
 
 [node name="TextureRect" type="TextureRect" parent="Container/MarginContainer"]
 margin_top = 5.0
 margin_right = 32.0
-margin_bottom = 96.0
+margin_bottom = 32.0
 texture = ExtResource( 1 )
 expand = true
 stretch_mode = 6
@@ -39,7 +39,7 @@ stretch_mode = 6
 [node name="Stats" type="VBoxContainer" parent="Container"]
 margin_left = 36.0
 margin_right = 1004.0
-margin_bottom = 96.0
+margin_bottom = 32.0
 size_flags_horizontal = 3
 
 [node name="Name" type="MarginContainer" parent="Container/Stats"]
@@ -56,78 +56,7 @@ text = "crew name"
 align = 1
 valign = 1
 
-[node name="Health" type="HBoxContainer" parent="Container/Stats"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Container/Stats"]
 margin_top = 28.0
 margin_right = 968.0
-margin_bottom = 42.0
-
-[node name="Label" type="Label" parent="Container/Stats/Health"]
-margin_right = 100.0
-margin_bottom = 14.0
-rect_min_size = Vector2( 100, 0 )
-text = "ui_infected"
-align = 2
-
-[node name="Progress" type="ProgressBar" parent="Container/Stats/Health"]
-margin_left = 104.0
-margin_right = 968.0
-margin_bottom = 14.0
-size_flags_horizontal = 3
-step = 1.0
-
-[node name="Thirst" type="HBoxContainer" parent="Container/Stats"]
-margin_top = 46.0
-margin_right = 968.0
-margin_bottom = 60.0
-
-[node name="Label" type="Label" parent="Container/Stats/Thirst"]
-margin_right = 100.0
-margin_bottom = 14.0
-rect_min_size = Vector2( 100, 0 )
-text = "ui_thirst"
-align = 2
-
-[node name="Progress" type="ProgressBar" parent="Container/Stats/Thirst"]
-margin_left = 104.0
-margin_right = 968.0
-margin_bottom = 14.0
-size_flags_horizontal = 3
-step = 1.0
-
-[node name="Hunger" type="HBoxContainer" parent="Container/Stats"]
-margin_top = 64.0
-margin_right = 968.0
-margin_bottom = 78.0
-
-[node name="Label" type="Label" parent="Container/Stats/Hunger"]
-margin_right = 100.0
-margin_bottom = 14.0
-rect_min_size = Vector2( 100, 0 )
-text = "ui_hunger"
-align = 2
-
-[node name="Progress" type="ProgressBar" parent="Container/Stats/Hunger"]
-margin_left = 104.0
-margin_right = 968.0
-margin_bottom = 14.0
-size_flags_horizontal = 3
-step = 1.0
-
-[node name="Exhaustion" type="HBoxContainer" parent="Container/Stats"]
-margin_top = 82.0
-margin_right = 968.0
-margin_bottom = 96.0
-
-[node name="Label" type="Label" parent="Container/Stats/Exhaustion"]
-margin_right = 100.0
-margin_bottom = 14.0
-rect_min_size = Vector2( 100, 0 )
-text = "ui_exhaustion"
-align = 2
-
-[node name="Progress" type="ProgressBar" parent="Container/Stats/Exhaustion"]
-margin_left = 104.0
-margin_right = 968.0
-margin_bottom = 14.0
-size_flags_horizontal = 3
-step = 1.0
+margin_bottom = 28.0

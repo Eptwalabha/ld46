@@ -1,27 +1,77 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/game/ui/tasks/UITaskList.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/game/ui/GameUI.gd" type="Script" id=2]
 [ext_resource path="res://scenes/game/ui/crew/UICrewList.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/game/ui/tasks/UITaskDetail.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/game/ui/tasks/UIAssignCrew.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/game/ui/crew/UICrewDetails.tscn" type="PackedScene" id=6]
 
-[node name="GameUI" type="Control"]
+[node name="GameUI" type="MarginContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_horizontal_guides_": [ 20.1274, 519.0, 498.798 ],
-"_edit_use_anchors_": false,
-"_edit_vertical_guides_": [ 19.8228, 1003.76, 271.0, 783.0 ]
-}
 
-[node name="Actions" type="MarginContainer" parent="."]
-anchor_top = 0.865
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 20.0
-margin_right = -21.0
+[node name="Container" type="VBoxContainer" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="Columns" type="HBoxContainer" parent="Container"]
+margin_right = 1024.0
+margin_bottom = 526.0
+size_flags_vertical = 3
+
+[node name="CrewList" parent="Container/Columns" instance=ExtResource( 3 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 200.0
+margin_bottom = 526.0
+rect_min_size = Vector2( 200, 0 )
+
+[node name="Middle" type="VBoxContainer" parent="Container/Columns"]
+margin_left = 204.0
+margin_right = 820.0
+margin_bottom = 526.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Task" type="Control" parent="Container/Columns/Middle"]
+margin_right = 616.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 0, 250 )
+size_flags_vertical = 2
+
+[node name="TaskDetail" parent="Container/Columns/Middle/Task" instance=ExtResource( 4 )]
+visible = false
+anchor_bottom = 0.0
+rect_min_size = Vector2( 0, 250 )
+
+[node name="AssignCrew" parent="Container/Columns/Middle/Task" instance=ExtResource( 5 )]
+visible = false
+anchor_bottom = 0.0
+rect_min_size = Vector2( 0, 250 )
+
+[node name="CrewDetails" parent="Container/Columns/Middle" instance=ExtResource( 6 )]
+visible = false
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 265.0
+margin_right = 616.0
+margin_bottom = 526.0
+size_flags_vertical = 11
+
+[node name="TaskList" parent="Container/Columns" instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 824.0
+margin_right = 1024.0
+margin_bottom = 526.0
+rect_min_size = Vector2( 200, 0 )
+
+[node name="Actions" type="MarginContainer" parent="Container"]
+margin_top = 530.0
+margin_right = 1024.0
+margin_bottom = 600.0
 custom_constants/margin_right = 10
 custom_constants/margin_top = 10
 custom_constants/margin_left = 10
@@ -30,135 +80,101 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Container" type="HBoxContainer" parent="Actions"]
+[node name="Container" type="HBoxContainer" parent="Container/Actions"]
 margin_left = 10.0
 margin_top = 10.0
-margin_right = 973.0
-margin_bottom = 71.0
+margin_right = 1014.0
+margin_bottom = 60.0
 
-[node name="NextHour" type="Button" parent="Actions/Container"]
+[node name="NextHour" type="Button" parent="Container/Actions/Container"]
 margin_right = 85.0
-margin_bottom = 61.0
+margin_bottom = 50.0
 text = "ui_btn_next"
 
-[node name="NextEvent" type="Button" parent="Actions/Container"]
+[node name="NextEvent" type="Button" parent="Container/Actions/Container"]
 margin_left = 89.0
 margin_right = 216.0
-margin_bottom = 61.0
+margin_bottom = 50.0
 toggle_mode = true
 text = "ui_btn_next_event"
 
-[node name="Stats" type="VBoxContainer" parent="Actions/Container"]
+[node name="Stats" type="VBoxContainer" parent="Container/Actions/Container"]
 margin_left = 220.0
-margin_right = 778.0
-margin_bottom = 61.0
+margin_right = 819.0
+margin_bottom = 50.0
 rect_min_size = Vector2( 150, 0 )
 size_flags_horizontal = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Actions/Container/Stats"]
-margin_right = 558.0
+[node name="Label" type="Label" parent="Container/Actions/Container/Stats"]
+margin_right = 599.0
 margin_bottom = 14.0
 text = "ui_game_info"
 align = 1
 
-[node name="Time" type="HBoxContainer" parent="Actions/Container/Stats"]
+[node name="Time" type="HBoxContainer" parent="Container/Actions/Container/Stats"]
 margin_top = 18.0
-margin_right = 558.0
+margin_right = 599.0
 margin_bottom = 32.0
 
-[node name="Label" type="Label" parent="Actions/Container/Stats/Time"]
+[node name="Label" type="Label" parent="Container/Actions/Container/Stats/Time"]
 margin_right = 120.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 120, 0 )
 text = "ui_time_spent"
 align = 2
 
-[node name="Date" type="Label" parent="Actions/Container/Stats/Time"]
+[node name="Date" type="Label" parent="Container/Actions/Container/Stats/Time"]
 margin_left = 124.0
 margin_right = 224.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 100, 0 )
 text = "0"
 
-[node name="Distance" type="HBoxContainer" parent="Actions/Container/Stats"]
+[node name="Distance" type="HBoxContainer" parent="Container/Actions/Container/Stats"]
 margin_top = 36.0
-margin_right = 558.0
+margin_right = 599.0
 margin_bottom = 50.0
 
-[node name="Label" type="Label" parent="Actions/Container/Stats/Distance"]
+[node name="Label" type="Label" parent="Container/Actions/Container/Stats/Distance"]
 margin_right = 120.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 120, 0 )
 text = "ui_progress_goal"
 align = 2
 
-[node name="Progress" type="ProgressBar" parent="Actions/Container/Stats/Distance"]
+[node name="Progress" type="ProgressBar" parent="Container/Actions/Container/Stats/Distance"]
 margin_left = 124.0
-margin_right = 558.0
+margin_right = 599.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
 
-[node name="Crew" type="Button" parent="Actions/Container"]
-margin_left = 782.0
-margin_right = 869.0
-margin_bottom = 61.0
+[node name="Crew" type="Button" parent="Container/Actions/Container"]
+margin_left = 823.0
+margin_right = 910.0
+margin_bottom = 50.0
 toggle_mode = true
 pressed = true
 text = "ui_btn_crew"
 align = 2
 
-[node name="Task" type="Button" parent="Actions/Container"]
-margin_left = 873.0
-margin_right = 963.0
-margin_bottom = 61.0
+[node name="Task" type="Button" parent="Container/Actions/Container"]
+margin_left = 914.0
+margin_right = 1004.0
+margin_bottom = 50.0
 toggle_mode = true
 pressed = true
 text = "ui_btn_tasks"
 align = 2
-
-[node name="TaskList" parent="." instance=ExtResource( 1 )]
-anchor_left = 0.765
-anchor_bottom = 0.833
-margin_left = -0.360046
-margin_top = 20.0
-margin_right = -21.0
-margin_bottom = 0.199951
-
-[node name="CrewList" parent="." instance=ExtResource( 3 )]
-anchor_right = 0.265
-anchor_bottom = 0.833
-margin_left = 20.0
-margin_top = 20.0
-margin_right = -0.360016
-margin_bottom = 0.199951
-
-[node name="TaskDetail" parent="." instance=ExtResource( 4 )]
-visible = false
-anchor_left = 0.284
-anchor_right = 0.746
-anchor_bottom = 0.43
-margin_left = 0.18399
-margin_top = 20.0
-margin_right = 0.0959473
-
-[node name="AssignCrew" parent="." instance=ExtResource( 5 )]
-visible = false
-anchor_left = 0.284
-anchor_right = 0.746
-anchor_bottom = 0.43
-margin_left = 0.18399
-margin_top = 20.0
-margin_right = 0.0959473
-[connection signal="pressed" from="Actions/Container/NextHour" to="." method="_on_NextHour_pressed"]
-[connection signal="toggled" from="Actions/Container/NextEvent" to="." method="_on_NextEvent_toggled"]
-[connection signal="toggled" from="Actions/Container/Crew" to="." method="_on_Crew_toggled"]
-[connection signal="toggled" from="Actions/Container/Task" to="." method="_on_Task_toggled"]
-[connection signal="task_infos_requested" from="TaskList" to="." method="_on_TaskList_task_infos_requested"]
-[connection signal="assignment_requested" from="TaskDetail" to="." method="_on_TaskDetail_assignment_requested"]
-[connection signal="on_window_closed" from="TaskDetail" to="." method="_on_UI_window_closed"]
-[connection signal="on_window_opened" from="TaskDetail" to="." method="_on_UI_window_opened"]
-[connection signal="assign_crew_members" from="AssignCrew" to="." method="_on_AssignCrew_assign_crew_members"]
+[connection signal="assignment_requested" from="Container/Columns/Middle/Task/TaskDetail" to="." method="_on_TaskDetail_assignment_requested"]
+[connection signal="on_window_closed" from="Container/Columns/Middle/Task/TaskDetail" to="." method="_on_UI_window_closed"]
+[connection signal="on_window_opened" from="Container/Columns/Middle/Task/TaskDetail" to="." method="_on_UI_window_opened"]
+[connection signal="assign_crew_members" from="Container/Columns/Middle/Task/AssignCrew" to="." method="_on_AssignCrew_assign_crew_members"]
+[connection signal="task_infos_requested" from="Container/Columns/TaskList" to="." method="_on_TaskList_task_infos_requested"]
+[connection signal="pressed" from="Container/Actions/Container/NextHour" to="." method="_on_NextHour_pressed"]
+[connection signal="toggled" from="Container/Actions/Container/NextEvent" to="." method="_on_NextEvent_toggled"]
+[connection signal="toggled" from="Container/Actions/Container/Crew" to="." method="_on_Crew_toggled"]
+[connection signal="toggled" from="Container/Actions/Container/Task" to="." method="_on_Task_toggled"]

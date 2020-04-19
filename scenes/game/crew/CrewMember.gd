@@ -21,6 +21,9 @@ func productivity(hour: int) -> float:
 	var pick_productivity = _pick_productivity(hour)
 	return pick_productivity
 
+func is_human() -> bool:
+	return true
+
 func _pick_productivity(hour: int) -> float:
 	if is_dead:
 		return 0.0
@@ -66,3 +69,6 @@ func work_on(task) -> void:
 
 func is_alive() -> bool:
 	return not is_dead
+
+func get_health() -> int:
+	return 0

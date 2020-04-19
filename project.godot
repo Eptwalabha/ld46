@@ -19,6 +19,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/game/crew/CrewMember.gd"
 }, {
+"base": "HBoxContainer",
+"class": "CrewStat",
+"language": "GDScript",
+"path": "res://scenes/game/ui/crew/UICrewStat.gd"
+}, {
 "base": "Node",
 "class": "Game",
 "language": "GDScript",
@@ -59,6 +64,21 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/game/ui/tasks/UIAssignCrew.gd"
 }, {
+"base": "UICrewMember",
+"class": "UICrewAndroid",
+"language": "GDScript",
+"path": "res://scenes/game/ui/crew/UICrewAndroid.gd"
+}, {
+"base": "UIWindow",
+"class": "UICrewDetails",
+"language": "GDScript",
+"path": "res://scenes/game/ui/crew/UICrewDetails.gd"
+}, {
+"base": "UICrewMember",
+"class": "UICrewHuman",
+"language": "GDScript",
+"path": "res://scenes/game/ui/crew/UICrewHuman.gd"
+}, {
 "base": "UIWindow",
 "class": "UICrewList",
 "language": "GDScript",
@@ -92,6 +112,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "AndroidCrew": "",
 "CrewMember": "",
+"CrewStat": "",
 "Game": "",
 "GameUI": "",
 "PhysicalState": "",
@@ -100,6 +121,9 @@ _global_script_class_icons={
 "Task": "",
 "TaskFactory": "",
 "UIAssignCrew": "",
+"UICrewAndroid": "",
+"UICrewDetails": "",
+"UICrewHuman": "",
 "UICrewList": "",
 "UICrewMember": "",
 "UITask": "",
@@ -133,5 +157,4 @@ translations=PoolStringArray( "res://assets/tr/translation.en.translation", "res
 quality/driver/driver_name="GLES2"
 vram_compression/import_etc=true
 vram_compression/import_etc2=false
-environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"

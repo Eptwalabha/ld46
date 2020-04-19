@@ -13,3 +13,17 @@ ui_btn_next_event,Until next event,prochain événement
 ui_time_spent,Time,Durée
 ui_progress_goal,Arrival,Arrivé
 ui_game_info,Infos,Informations
+ui_window_crew_details,Crew member,Membre d’équipage
+ui_crew_tasks,Crew assignment(s) :,Tâche(s) affectée(s) :
+ui_crew_stat_health,Health,Santée
+ui_crew_stat_thirst,Thirst,Soif
+ui_crew_stat_hunger,Hunger,Faim
+ui_crew_stat_exhaustion,Exhaustion,Fatigue
+ui_crew_stat_efficiency,Effictiency,Efficacité
+ui_crew_stat_maintenance,Maintenance,Maintenance
+ui_action_check,Check,Tester
+ui_action_heal,Heal,Soigner
+ui_action_mask,Mask,Masque
+ui_action_break,Break,Pause
+ui_action_drink,Drink,Eau
+ui_action_food,Food,Food

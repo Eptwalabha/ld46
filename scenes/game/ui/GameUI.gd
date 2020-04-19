@@ -4,16 +4,16 @@ extends Control
 signal next_hour_clicked
 signal next_event_toggled(button_pressed)
 
-onready var label_date := $Actions/Container/Stats/Time/Date as Label
-onready var distance_progress := $Actions/Container/Stats/Distance/Progress as ProgressBar
-onready var crew_list := $CrewList as UICrewList
-onready var tasks_list := $TaskList as UITaskList
-onready var task_detail := $TaskDetail as UITaskDetail
-onready var crew_assignment := $AssignCrew as UIAssignCrew
-onready var next_event := $Actions/Container/NextEvent as Button
-onready var next_hour := $Actions/Container/NextHour as Button
-onready var crew_button := $Actions/Container/Crew as Button
-onready var task_button := $Actions/Container/Task as Button
+onready var label_date := $Container/Actions/Container/Stats/Time/Date as Label
+onready var distance_progress := $Container/Actions/Container/Stats/Distance/Progress as ProgressBar
+onready var crew_list := $Container/Columns/CrewList as UICrewList
+onready var tasks_list := $Container/Columns/TaskList as UITaskList
+onready var task_detail := $Container/Columns/Middle/Task/TaskDetail as UITaskDetail
+onready var crew_assignment := $Container/Columns/Middle/Task/AssignCrew as UIAssignCrew
+onready var next_event := $Container/Actions/Container/NextEvent as Button
+onready var next_hour := $Container/Actions/Container/NextHour as Button
+onready var crew_button := $Container/Actions/Container/Crew as Button
+onready var task_button := $Container/Actions/Container/Task as Button
 
 var ship = null
 var game = null
@@ -35,7 +35,7 @@ func refresh(hour: int) -> void:
 	label_date.text = "%s hour%s (%s hour%s to go)" % [hour, p1, time_before_end, p2]
 	distance_progress.max_value = game.ua_goal
 	distance_progress.value = ship.distance_covered
-#	crew_list.refresh(data.crew_members)
+	crew_list.refresh()
 	tasks_list.refresh()
 	task_detail.refresh()
 
@@ -51,10 +51,10 @@ func _on_NextEvent_toggled(button_pressed: bool) -> void:
 	crew_assignment.close(true)
 
 func _on_Task_toggled(button_pressed: bool) -> void:
-	$TaskList.close(not button_pressed)
+	tasks_list.close(not button_pressed)
 
 func _on_Crew_toggled(button_pressed: bool) -> void:
-	$CrewList.close(not button_pressed)
+	crew_list.close(not button_pressed)
 
 func _on_UI_window_closed(window) -> void:
 	match window.title:
