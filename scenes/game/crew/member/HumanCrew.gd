@@ -24,7 +24,7 @@ func _ready() -> void:
 		},
 	}
 	change_state("health", "healthy")
-	change_state("activity", "idle")
+	change_state("activity", "no-activity")
 
 func update_state(_hour: int) -> void:
 	thirst += 1
@@ -54,4 +54,4 @@ func infectiousness() -> float:
 	return factor if not wearing_mask else factor / 2.0
 
 func is_alive() -> bool:
-	return current_health_state.is_dead()
+	return not current_health_state.is_dead()

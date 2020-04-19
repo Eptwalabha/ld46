@@ -1,3 +1,4 @@
+class_name ContagionStateContaminated
 extends ContagionState
 
 export(int) var max_amount := 10
@@ -18,10 +19,8 @@ func get_factor() -> float:
 		2: return .3
 		3: return .7
 		4: return 1.0
-		_: return 1.0
+		_: pass
 	return 1.0
 
-func exposed_to_virus(contamination_factor: float) -> void:
-	if contamination_factor > 0.3:
-		contamination_amount = int(clamp(contamination_amount + 1, 0, max_amount))
-	return false
+func exposed_to_virus(_contamination_factor: float) -> void:
+	pass

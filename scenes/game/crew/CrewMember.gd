@@ -48,12 +48,16 @@ func exposed_to_virus(_factor: float) -> void:
 func change_state(type: String, new_state: String) -> void:
 	if new_state == "":
 		return
+	print("change_state %s - '%s'" % [type, new_state])
 	if states[type].has(new_state):
 		var new_state_node = get_node(states[type][new_state])
 		if type == "activity" and new_state_node is ActivityState:
 			current_activity_state = new_state_node
+			new_state_node.enter()
 		elif type == "health" and new_state_node is ContagionState:
 			current_health_state = new_state_node
-		new_state_node.enter()
+			new_state_node.enter()
+		else:
+			prints(type, new_state, new_state_node)
 	else:
 		printerr("WARNING: unknown %s state '%s'" % [type, new_state])

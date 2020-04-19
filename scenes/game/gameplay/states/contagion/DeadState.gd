@@ -1,3 +1,4 @@
+class_name ContagionStateDead
 extends ContagionState
 
 export(int) var max_amount := 10
@@ -18,7 +19,7 @@ func get_factor() -> float:
 		2: return .3
 		3: return .7
 		4: return 1.0
-		_: return 1.0
+		_: pass
 	return 1.0
 
 func productivity() -> float:

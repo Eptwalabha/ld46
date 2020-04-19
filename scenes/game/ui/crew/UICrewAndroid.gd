@@ -9,5 +9,5 @@ onready var efficiency := $Container/Stats/VBoxContainer/Efficiency as CrewStat
 func refresh() -> void:
 	if crew is CrewMember:
 		health.update_progress(crew.get_health())
-		maintenance.update_progress(crew.hour_without_maintenance)
+		maintenance.update_progress(crew.hours_before_next_maintenance)
 		efficiency.update_progress(crew.efficiency)

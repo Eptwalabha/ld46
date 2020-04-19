@@ -7,8 +7,10 @@ var CrewHumanResource = load("res://scenes/game/ui/crew/UICrewHuman.tscn")
 var CrewAndroidResource = load("res://scenes/game/ui/crew/UICrewAndroid.tscn")
 
 func set_crew_members(crew_members: Array) -> void:
+	print(crew_members)
 	for crew in crew_members:
 		if not crew is CrewMember:
+			print(crew.name)
 			continue
 		var line = get_line(crew.is_human())
 		list_container.add_child(line)

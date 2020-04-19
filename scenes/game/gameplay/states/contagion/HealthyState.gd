@@ -1,3 +1,4 @@
+class_name ContagionStateHealthy
 extends ContagionState
 
 var contaminated = false

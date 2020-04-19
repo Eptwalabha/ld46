@@ -18,3 +18,6 @@ func productivity() -> float:
 
 func is_contaminated() -> bool:
 	return false
+
+func is_dead() -> bool:
+	return false

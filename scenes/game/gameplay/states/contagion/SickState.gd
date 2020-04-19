@@ -1,3 +1,4 @@
+class_name ContagionStateSick
 extends ContagionState
 
 var hour_in_state = 0
@@ -24,8 +25,8 @@ func get_factor() -> float:
 		_: pass
 	return 1.0
 
-func exposed_to_virus(contamination_factor: float) -> bool:
-	return false
+func exposed_to_virus(_contamination_factor: float) -> void:
+	pass
 
 func productivity() -> float:
 	if hour_in_state == 0.0:
