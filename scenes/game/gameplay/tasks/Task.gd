@@ -7,10 +7,10 @@ signal task_expired(task_id)
 export(int) var start_at := 0
 export(float, .2) var time_to_complete := 1.0
 export(bool) var expires := false
-export(bool) var is_daily := false
+export(bool) var repeat_once_complete := false
 export(int) var expires_after := 99999
-export(Dictionary) var on_complete := {}
-export(Dictionary) var on_failure := {}
+export(Dictionary) var success := {}
+export(Dictionary) var failure := {}
 export(int) var cooldown := 0
 
 export(int) var max_crew := 3
@@ -58,15 +58,27 @@ func get_effect() -> Dictionary:
 	if not is_active():
 		match state:
 			TASK_STATE.COMPLETE:
-				return on_complete
+				return success
 			TASK_STATE.EXPIRED:
-				return on_failure
+				return failure
 	return {}
 
 func end_task(hour: int) -> void:
-	if is_daily:
+	if repeat_once_complete:
 		state = TASK_STATE.ONGOING
 		start_at = hour + cooldown
 		hour_spent = 0.0
 	else:
 		state = TASK_STATE.DONE
+
+func build_from_data(data: Dictionary) -> void:
+	var fields = [
+		"title", "description",
+		"time_to_complete", "expires", "repeat_once_complete",
+		"expires_after", "success", "failure",
+		"cooldown", "max_crew"
+	]
+
+	for field in fields:
+		if data.has(field):
+			self[field] = data[field]

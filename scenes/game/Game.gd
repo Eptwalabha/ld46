@@ -6,6 +6,7 @@ var TASK_STATE = preload("res://script/game_enum.gd").TASK_STATE
 
 onready var ui := $GameUI as GameUI
 onready var ship := $Ship as Ship
+onready var task_factory := $TaskFactory
 
 var hour : int = 0
 var ua : float = 0.0
@@ -18,40 +19,17 @@ var schedule = {}
 
 func _ready() -> void:
 	$GameUI.set_ship(ship)
-	var t : Task = TaskResource.instance()
-	t.title = "super new task lol"
-	t.time_to_complete = 5
-	t.is_daily = true
-	t.on_complete = {
-		"ship-max-speed": +.2,
-		"ship-speed": +.2
-	}
-	tasks[t.task_id] = t
-	var t2 : Task = TaskResource.instance()
-	t2.title = "other super task"
-	t2.description = "[bold]super[/bold]\nit works"
-	t2.time_to_complete = 10
-	t2.expires = true
-	t2.expires_after = 5
-	t2.on_failure = {
-		"ship-speed": -.1,
-		"ship-max-speed": -.1,
-		"food": -2,
-		"water": -3
-	}
-	t2.max_crew = 5
-	tasks[t2.task_id] = t2
+	$TaskFactory.game = self
+
+	tasks = task_factory.get_common_chores()
+	$GameUI.set_tasks(tasks)
 
 	for crew in ship.get_crew_members():
 		var crew_name = crew.crew_name
 		crew_members[crew_name] = crew
 		schedule[crew_name] = []
-	
-	schedule["jack"] = [0]
-	schedule["hal"] = [0]
-	schedule["dave"] = [1, 0]
+
 	update_task_and_crew_count()
-	$GameUI.set_tasks([t, t2])
 	$GameUI.refresh(0)
 
 func get_assigned_crew(task_id: int) -> Array:
@@ -81,6 +59,7 @@ func assign_crew_to_task(task_id, crew_to_assign) -> void:
 			schedule[crew_name].remove(crew_tasks.find(task_id))
 
 	tasks[task_id].crew_count = crew_to_assign.size()
+	update_task_and_crew_count()
 
 func next_event() -> void:
 	var new_events = []

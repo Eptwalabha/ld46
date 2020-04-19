@@ -49,6 +49,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/game/gameplay/tasks/Task.gd"
 }, {
+"base": "Node",
+"class": "TaskFactory",
+"language": "GDScript",
+"path": "res://scenes/game/gameplay/tasks/TaskFactory.gd"
+}, {
 "base": "UIWindow",
 "class": "UIAssignCrew",
 "language": "GDScript",
@@ -93,6 +98,7 @@ _global_script_class_icons={
 "Ship": "",
 "ShipRoom": "",
 "Task": "",
+"TaskFactory": "",
 "UIAssignCrew": "",
 "UICrewList": "",
 "UICrewMember": "",
@@ -113,7 +119,6 @@ config/icon="res://icon.png"
 [autoload]
 
 GameData="*res://script/game_data.gd"
-TaskFactory="*res://script/task_factory.gd"
 
 [rendering]
 

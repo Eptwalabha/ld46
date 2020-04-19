@@ -6,7 +6,7 @@
         "expires": false,
         "expires_after": false,
         "is_daily": false,
-        "cooldown": 10,
+        "cooldown": 10,
         "success": {},
         "failure": {}
     }

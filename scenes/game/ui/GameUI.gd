@@ -25,7 +25,7 @@ func set_ship(the_ship: Ship) -> void:
 	ship = the_ship
 	crew_list.set_crew_members(ship.get_crew_members())
 
-func set_tasks(tasks: Array) -> void:
+func set_tasks(tasks: Dictionary) -> void:
 	tasks_list.set_tasks_list(tasks)
 
 func refresh(hour: int) -> void:
@@ -44,9 +44,11 @@ func next_event_over() -> void:
 
 func _on_NextHour_pressed() -> void:
 	emit_signal("next_hour_clicked")
+	crew_assignment.close(true)
 
 func _on_NextEvent_toggled(button_pressed: bool) -> void:
 	emit_signal("next_event_toggled", button_pressed)
+	crew_assignment.close(true)
 
 func _on_Task_toggled(button_pressed: bool) -> void:
 	$TaskList.close(not button_pressed)
