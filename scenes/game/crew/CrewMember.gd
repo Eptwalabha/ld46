@@ -14,6 +14,7 @@ var sleeping := false
 var is_dead := false
 var efficiency := 1.0
 var location : String = ""
+var task_count = 0
 
 func productivity(hour: int) -> float:
 	var pick_productivity = _pick_productivity(hour)

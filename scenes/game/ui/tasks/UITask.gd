@@ -14,6 +14,7 @@ var is_selected := false setget selected
 
 func set_task(the_task: Task) -> void:
 	task = the_task
+	task_title.text = task.title
 	progress.max_value = the_task.time_to_complete
 	progress.value = the_task.hour_spent
 

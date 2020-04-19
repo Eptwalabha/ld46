@@ -3,6 +3,8 @@ extends Node2D
 
 var speed_ua : float = 2.0 / 24.0
 var distance_covered : float = 0.0
+var food : int = 10
+var watter : int = 10
 
 func _ready() -> void:
 	pass

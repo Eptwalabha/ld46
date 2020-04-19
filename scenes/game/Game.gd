@@ -35,6 +35,7 @@ func _ready() -> void:
 		schedule[crew_name] = []
 	assign_crew_to_task(t.task_id, ["jack", "hal"])
 	assign_crew_to_task(t2.task_id, ["jack", "hal", "dave"])
+	update_task_and_crew_count()
 	$GameUI.set_tasks([t, t2])
 	$GameUI.refresh(0)
 
@@ -119,6 +120,22 @@ func update_tasks() -> void:
 			for crew_name in schedule:
 				if schedule[crew_name].size() == 0:
 					continue
+
+	update_task_and_crew_count()
+
+func update_task_and_crew_count() -> void:
+	var counter = {}
+	for crew_name in schedule:
+		crew_members[crew_name].task_count = schedule[crew_name].size()
+		for task_id in schedule[crew_name]:
+			if counter.has(task_id):
+				counter[task_id] += 1
+			else:
+				counter[task_id] = 1
+	
+	for task_id in counter:
+		tasks[task_id].crew_count = counter[task_id]
+
 
 func apply_task_effect(task_id: int) -> void:
 	var task = tasks[task_id]
