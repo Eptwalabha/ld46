@@ -4,15 +4,22 @@ extends MarginContainer
 
 signal task_infos_requested(task_id)
 
-onready var progress := $VBoxContainer/Progress as ProgressBar
-onready var task_title := $VBoxContainer/HBoxContainer/TaskName as Label
-onready var crew_nbr := $VBoxContainer/HBoxContainer/CrewCount as Label
+onready var progress := $Line/Infos/Progress as ProgressBar
+onready var task_title := $Line/Infos/Infos/Name as Label
+onready var crew_nbr := $Line/Infos/Infos/CrewCount as Label
+onready var color_rect := $Line/ColorRect as ColorRect
+
 var task: Task
+var is_selected := false setget selected
 
 func set_task(the_task: Task) -> void:
 	task = the_task
 	progress.max_value = the_task.hour_cost
 	progress.value = the_task.hour_spent
+
+func selected(selected: bool) -> void:
+	is_selected = selected
+	color_rect.color.a = 1.0 if is_selected else 0.0
 
 func refresh() -> void:
 	progress.value = task.hour_spent

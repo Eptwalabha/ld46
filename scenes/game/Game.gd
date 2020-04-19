@@ -21,14 +21,20 @@ func _ready() -> void:
 	t.title = "super new task lol"
 	t.hour_cost = 5
 	tasks[t.task_id] = t
+	var t2 : Task = TaskResource.instance()
+	t2.title = "other super task"
+	t2.description = "[bold]super[/bold]\nit works"
+	t2.hour_cost = 5
+	t2.max_crew = 5
+	tasks[t2.task_id] = t2
 
 	for crew in ship.get_crew_members():
 		var crew_name = crew.crew_name
 		crew_members[crew_name] = crew
 		schedule[crew_name] = []
 	assign_crew_to_task(t.task_id, ["jack", "hal"])
-
-	$GameUI.set_tasks([t])
+	assign_crew_to_task(t2.task_id, ["jack", "hal", "dave"])
+	$GameUI.set_tasks([t, t2])
 	$GameUI.refresh(0)
 
 func get_assigned_crew(task_id: int) -> Array:

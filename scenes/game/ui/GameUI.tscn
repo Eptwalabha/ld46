@@ -158,4 +158,5 @@ margin_right = 0.0959473
 [connection signal="toggled" from="Actions/Container/Task" to="." method="_on_Task_toggled"]
 [connection signal="task_infos_requested" from="TaskList" to="." method="_on_TaskList_task_infos_requested"]
 [connection signal="assignment_requested" from="TaskDetail" to="." method="_on_TaskDetail_assignment_requested"]
+[connection signal="on_window_closed" from="TaskDetail" to="." method="_on_UI_window_closed"]
 [connection signal="assign_crew_members" from="AssignCrew" to="." method="_on_AssignCrew_assign_crew_members"]

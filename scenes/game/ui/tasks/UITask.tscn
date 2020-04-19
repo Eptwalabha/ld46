@@ -5,42 +5,51 @@
 [node name="Task" type="MarginContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-custom_constants/margin_right = 10
 custom_constants/margin_top = 2
-custom_constants/margin_left = 10
 custom_constants/margin_bottom = 2
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 10.0
+[node name="Line" type="HBoxContainer" parent="."]
 margin_top = 2.0
-margin_right = 1014.0
+margin_right = 1024.0
 margin_bottom = 598.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_right = 1004.0
+[node name="ColorRect" type="ColorRect" parent="Line"]
+margin_right = 8.0
+margin_bottom = 596.0
+rect_min_size = Vector2( 8, 0 )
+color = Color( 0, 0.501961, 0, 0 )
+
+[node name="Infos" type="VBoxContainer" parent="Line"]
+margin_left = 12.0
+margin_right = 1024.0
+margin_bottom = 596.0
+size_flags_horizontal = 3
+
+[node name="Infos" type="HBoxContainer" parent="Line/Infos"]
+margin_right = 1012.0
 margin_bottom = 14.0
 
-[node name="TaskName" type="Label" parent="VBoxContainer/HBoxContainer"]
-margin_right = 500.0
+[node name="Name" type="Label" parent="Line/Infos/Infos"]
+margin_right = 504.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 text = "super"
 
-[node name="CrewCount" type="Label" parent="VBoxContainer/HBoxContainer"]
-margin_left = 504.0
-margin_right = 1004.0
+[node name="CrewCount" type="Label" parent="Line/Infos/Infos"]
+margin_left = 508.0
+margin_right = 1012.0
 margin_bottom = 14.0
 size_flags_horizontal = 3
 text = "0/0"
 align = 2
 
-[node name="Progress" type="ProgressBar" parent="VBoxContainer"]
+[node name="Progress" type="ProgressBar" parent="Line/Infos"]
 margin_top = 18.0
-margin_right = 1004.0
+margin_right = 1012.0
 margin_bottom = 32.0
 rounded = true
 [connection signal="gui_input" from="." to="." method="_on_Task_gui_input"]

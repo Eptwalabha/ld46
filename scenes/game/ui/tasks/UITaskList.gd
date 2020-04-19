@@ -11,6 +11,14 @@ func set_tasks_list(tasks: Array) -> void:
 	for task in tasks:
 		add_task_to_list(task)
 
+func select_task(task_id: int) -> void:
+	for line in list_container.get_children():
+		line.selected(line.task.task_id == task_id)
+
+func deselect_all() -> void:
+	for line in list_container.get_children():
+		line.selected(false)
+
 func add_task_to_list(task) -> void:
 	var t = UITaskResource.instance()
 	list_container.add_child(t)

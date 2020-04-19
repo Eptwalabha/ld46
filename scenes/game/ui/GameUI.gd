@@ -54,6 +54,7 @@ func _on_UI_window_closed(window) -> void:
 	match window.title:
 		"ui_task_list": task_button.pressed = false
 		"ui_crew_list" : crew_button.pressed = false
+		"ui_task_title_window": tasks_list.deselect_all()
 		_ : pass
 
 func _on_TaskList_task_infos_requested(task_id) -> void:
@@ -61,6 +62,7 @@ func _on_TaskList_task_infos_requested(task_id) -> void:
 	for crew in game.get_assigned_crew(task_id):
 		assigned_crew.push_back(crew.crew_name)
 	var task = game.get_task(task_id)
+	tasks_list.select_task(task_id)
 	task_detail.open(task, assigned_crew)
 
 func _on_TaskDetail_assignment_requested(task_id) -> void:
