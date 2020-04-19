@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/game/ui/window/UIWindow.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/window_title.tres" type="DynamicFont" id=2]
 
 [node name="Window" type="Control"]
 anchor_right = 1.0
@@ -35,20 +36,21 @@ margin_bottom = 590.0
 
 [node name="Header" type="MarginContainer" parent="MarginContainer/Content"]
 margin_right = 1004.0
-margin_bottom = 34.0
+margin_bottom = 37.0
 custom_constants/margin_top = 5
 custom_constants/margin_bottom = 5
 
 [node name="Content" type="HBoxContainer" parent="MarginContainer/Content/Header"]
 margin_top = 5.0
 margin_right = 1004.0
-margin_bottom = 29.0
+margin_bottom = 32.0
 
 [node name="Title" type="Label" parent="MarginContainer/Content/Header/Content"]
 margin_right = 980.0
-margin_bottom = 24.0
+margin_bottom = 27.0
 rect_min_size = Vector2( 0, 24 )
 size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
 text = "title"
 align = 1
 valign = 1
@@ -56,11 +58,11 @@ valign = 1
 [node name="Close" type="ToolButton" parent="MarginContainer/Content/Header/Content"]
 margin_left = 984.0
 margin_right = 1004.0
-margin_bottom = 24.0
+margin_bottom = 27.0
 text = "X"
 
 [node name="Body" type="ScrollContainer" parent="MarginContainer/Content"]
-margin_top = 38.0
+margin_top = 41.0
 margin_right = 1004.0
 margin_bottom = 590.0
 size_flags_horizontal = 3

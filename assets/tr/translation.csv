@@ -13,6 +13,7 @@ ui_btn_next_event,Until next event,prochain événement
 ui_time_spent,Time,Durée
 ui_progress_goal,Arrival,Arrivé
 ui_game_info,Infos,Informations
+ui_window_task_details,Task details,Détails
 ui_window_crew_details,Crew member,Membre d’équipage
 ui_crew_tasks,Crew assignment(s) :,Tâche(s) affectée(s) :
 ui_crew_stat_health,Health,Santée
@@ -27,3 +28,6 @@ ui_action_mask,Mask,Masque
 ui_action_break,Break,Pause
 ui_action_drink,Drink,Eau
 ui_action_food,Food,Food
+task_title_clean_water,Clean water,Désinfecter de l’eau
+task_title_prepare_food,Prepare 5 meals,Préparer 5 repas
+task_title_clean_air_filter,Clean air filter,Nettoyer le filtre à air

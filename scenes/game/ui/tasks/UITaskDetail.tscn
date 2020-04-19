@@ -5,10 +5,23 @@
 
 [node name="TaskDetail" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
-title = "ui_task_title_window"
+title = "ui_window_task_details"
+
+[node name="Header" parent="MarginContainer/Content" index="0"]
+margin_bottom = 34.0
+
+[node name="Content" parent="MarginContainer/Content/Header" index="0"]
+margin_bottom = 29.0
 
 [node name="Title" parent="MarginContainer/Content/Header/Content" index="0"]
-text = "ui_task_title_window"
+margin_bottom = 24.0
+text = "ui_window_task_details"
+
+[node name="Close" parent="MarginContainer/Content/Header/Content" index="1"]
+margin_bottom = 24.0
+
+[node name="Body" parent="MarginContainer/Content" index="1"]
+margin_top = 38.0
 
 [node name="Task" type="VBoxContainer" parent="MarginContainer/Content/Body" index="0"]
 margin_right = 1004.0

@@ -144,6 +144,10 @@ config/icon="res://icon.png"
 
 GameData="*res://script/game_data.gd"
 
+[gui]
+
+theme/custom_font="res://assets/fonts/regular.tres"
+
 [locale]
 
 locale_filter=[ 1, [ "en", "fr" ] ]
