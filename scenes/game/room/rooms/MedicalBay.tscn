@@ -5,6 +5,7 @@
 
 [node name="MedicalBay" instance=ExtResource( 1 )]
 room_name = "room_medical_bay"
+room_id = "medical"
 max_people = 2
 contaminable = false
 

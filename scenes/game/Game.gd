@@ -15,19 +15,24 @@ var until_next_event := false
 
 var tasks = {}
 var crew_members = {}
-var rooms = {}
 var schedule = {}
+var rooms = {}
+var living_room : ShipRoom
 
 func _ready() -> void:
 	$GameUI.set_ship(ship)
 	$TaskFactory.game = self
 	tasks = task_factory.get_common_chores()
 	$GameUI.set_tasks(tasks)
+	
+	rooms = ship.get_rooms()
+	living_room = rooms['living']
 	crew_members = ship.get_crew_members()
+	
 	for crew_name in crew_members:
 		schedule[crew_name] = []
+		move_crew_member(crew_members[crew_name], living_room)
 
-	rooms = ship.get_rooms()
 
 	update_task_and_crew_count()
 	$GameUI.refresh(0)
@@ -118,7 +123,7 @@ func update_tasks() -> void:
 	update_task_and_crew_count()
 
 func can_crew_work_on_task(crew: CrewMember, task: Task) -> bool:
-	return task.state == TASK_STATE.ONGOING and crew.room_name == task.location
+	return task.state == TASK_STATE.ONGOING and crew.room_id == task.room_id
 
 func update_task_and_crew_count() -> void:
 	var counter = {}
@@ -140,10 +145,21 @@ func update_task_and_crew_count() -> void:
 			tasks[task_id].assigned_crew = []
 
 func request_room_for_task(task_id: int) -> ShipRoom:
-	var room_name = tasks[task_id].room_name
-	if not rooms[room_name].is_full():
-		return rooms[room_name]
-	return null
+	var room_id = tasks[task_id].room_id
+	if not rooms[room_id].is_full():
+		return rooms[room_id]
+	return living_room
+
+func move_crew_member(crew: CrewMember, next_room: ShipRoom) -> void:
+	var current_room_id = crew.room_id
+	if current_room_id == next_room.room_id:
+		return
+	if rooms.has(current_room_id):
+		var current_room : ShipRoom = rooms[current_room_id]
+		current_room.crew_leaves(crew.crew_name)
+	crew.position = next_room.crew_moves_in(crew.crew_name)
+	crew.room_id = next_room.room_id
+
 
 func apply_task_effect(task: Task) -> void:
 	var effects = task.get_effect()

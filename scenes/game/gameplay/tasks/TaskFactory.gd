@@ -100,7 +100,7 @@ func get_air_filter_task() -> Task:
 		},
 		'max_crew': 2,
 		'cooldown': 10.0,
-		'room': "kitchen",
+		'room': "technical",
 	}
 	task.build_from_data(data)
 	return task

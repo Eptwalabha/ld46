@@ -5,6 +5,7 @@
 
 [node name="TechnicalBay" instance=ExtResource( 1 )]
 room_name = "room_technical_bay"
+room_id = "technical"
 max_people = 1
 
 [node name="room-tile" type="Sprite" parent="Positions" index="0"]

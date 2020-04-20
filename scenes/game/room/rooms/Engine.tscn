@@ -5,6 +5,7 @@
 
 [node name="Engine" instance=ExtResource( 1 )]
 room_name = "room_engine"
+room_id = "engine"
 
 [node name="room-tile" type="Sprite" parent="Positions" index="0"]
 position = Vector2( 64, 0 )

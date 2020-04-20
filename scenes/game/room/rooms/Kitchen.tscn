@@ -5,6 +5,7 @@
 
 [node name="Kitchen" instance=ExtResource( 1 )]
 room_name = "room_kitchen"
+room_id = "kitchen"
 max_people = 2
 
 [node name="room-tile" type="Sprite" parent="Positions" index="0"]

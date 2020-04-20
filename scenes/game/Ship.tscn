@@ -41,34 +41,42 @@ position = Vector2( -64.494, 0 )
 [node name="PrivateQuarter1" parent="Rooms/PrivateQuarters" instance=ExtResource( 10 )]
 position = Vector2( 47.506, -168 )
 room_name = "room_private_quarter_1"
+room_id = "private1"
 
 [node name="PrivateQuarter2" parent="Rooms/PrivateQuarters" instance=ExtResource( 10 )]
 position = Vector2( 47.753, -96 )
 room_name = "room_private_quarter_2"
+room_id = "private2"
 
 [node name="PrivateQuarter3" parent="Rooms/PrivateQuarters" instance=ExtResource( 10 )]
 position = Vector2( -48.247, -168 )
 room_name = "room_private_quarter_3"
+room_id = "private3"
 
 [node name="PrivateQuarter4" parent="Rooms/PrivateQuarters" instance=ExtResource( 10 )]
 position = Vector2( -48.247, -96 )
 room_name = "room_private_quarter_4"
+room_id = "private4"
 
 [node name="PrivateQuarter5" parent="Rooms/PrivateQuarters" instance=ExtResource( 10 )]
 position = Vector2( 47.753, 168 )
 room_name = "room_private_quarter_5"
+room_id = "private5"
 
 [node name="PrivateQuarter6" parent="Rooms/PrivateQuarters" instance=ExtResource( 10 )]
 position = Vector2( 47.753, 96 )
 room_name = "room_private_quarter_6"
+room_id = "private6"
 
 [node name="PrivateQuarter7" parent="Rooms/PrivateQuarters" instance=ExtResource( 10 )]
 position = Vector2( -48, 168 )
 room_name = "room_private_quarter_7"
+room_id = "private7"
 
 [node name="PrivateQuarter8" parent="Rooms/PrivateQuarters" instance=ExtResource( 10 )]
 position = Vector2( -48.247, 96 )
 room_name = "room_private_quarter_8"
+room_id = "private8"
 
 [node name="TechnicalBay" parent="Rooms" instance=ExtResource( 2 )]
 position = Vector2( -216, 0 )
@@ -76,13 +84,14 @@ position = Vector2( -216, 0 )
 [node name="Engine1" parent="Rooms" instance=ExtResource( 11 )]
 position = Vector2( -280, -96 )
 room_name = "room_engine_1"
+room_id = "engine1"
 
 [node name="Engine2" parent="Rooms" instance=ExtResource( 11 )]
 position = Vector2( -280, 96 )
 room_name = "room_engine_2"
+room_id = "engine2"
 
 [node name="Crew" type="Node2D" parent="."]
-visible = false
 
 [node name="Hal" parent="Crew" instance=ExtResource( 3 )]
 crew_name = "hal"

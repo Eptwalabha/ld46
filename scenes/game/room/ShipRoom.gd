@@ -5,6 +5,7 @@ extends Node2D
 onready var label := $Label/Label as Label
 
 export(String) var room_name := ""
+export(String) var room_id := ""
 export(bool) var closed := false
 export(int) var max_people := 3
 export(bool) var contaminated := false
@@ -18,7 +19,7 @@ func _ready() -> void:
 	ship = get_parent().get_parent()
 	var positions = $Positions.get_children()
 	for index in range(positions.size()):
-		spaces[index] = false
+		spaces[index] = ""
 
 func update_state() -> void:
 	if is_contaminated():
@@ -42,14 +43,14 @@ func is_full() -> bool:
 			return false
 	return true
 
-func move_in(crew_name) -> Vector2:
+func crew_moves_in(crew_name) -> Vector2:
 	for index in spaces:
 		if spaces[index] == "":
 			spaces[index] = crew_name
-			return $Positions.get_child(index).position
-	return Vector2()
+			return $Positions.get_child(index).position + position
+	return Vector2() + position
 
-func leave_out(crew_name) -> void:
+func crew_leaves(crew_name) -> void:
 	for index in spaces:
 		if spaces[index] == crew_name:
 			spaces[index] == ""

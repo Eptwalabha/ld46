@@ -5,6 +5,7 @@
 
 [node name="Command" instance=ExtResource( 1 )]
 room_name = "room_command"
+room_id = "command"
 
 [node name="room-tile" type="Sprite" parent="Positions" index="0"]
 texture = ExtResource( 2 )
