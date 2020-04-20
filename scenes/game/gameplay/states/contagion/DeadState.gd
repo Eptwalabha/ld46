@@ -2,15 +2,16 @@ class_name ContagionStateDead
 extends ContagionState
 
 export(int) var max_amount := 10
-var contamination_amount : int = 5
+var contamination_amount : int = 10
 
 func enter() -> void:
-	contamination_amount = 5
+	contamination_amount = 10
+	crew.is_dead = true
+	crew.modulate = Color.gray
 
 func update() -> String:
-	contamination_amount -= 1
-	if contamination_amount <= 0:
-		return "healthy"
+	if contamination_amount > 0:
+		contamination_amount -= 1
 	return ""
 
 func state_name() -> String:
@@ -29,4 +30,7 @@ func productivity() -> float:
 	return 0.0
 
 func is_dead() -> bool:
+	return true
+
+func is_infected() -> bool:
 	return true

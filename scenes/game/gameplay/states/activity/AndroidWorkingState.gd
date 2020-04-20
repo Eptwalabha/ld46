@@ -15,7 +15,7 @@ func productivity() -> float:
 		1: return .9
 		2: return .7
 		_: pass
-	return .5
+	return .6
 
 func work_on(task) -> void:
 	crew.hours_before_next_maintenance -= 1

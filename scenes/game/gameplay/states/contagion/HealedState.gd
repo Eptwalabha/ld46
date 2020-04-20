@@ -16,3 +16,5 @@ func productivity() -> float:
 func state_name() -> String:
 	return "healed"
 
+func is_infected() -> bool:
+	return false

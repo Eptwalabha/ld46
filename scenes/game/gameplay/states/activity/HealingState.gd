@@ -7,8 +7,10 @@ func enter() -> void:
 	hours_left_to_heal = 12
 
 func update() -> String:
-	crew.consecutive_hours_of_work = 0
+	crew.thirst -= 1
+	crew.hunger -= 1
 	crew.exhaustion -= 1
+	crew.consecutive_hours_of_work = 0
 	hours_left_to_heal -= 1
 	if hours_left_to_heal == 0:
 		crew.healed()

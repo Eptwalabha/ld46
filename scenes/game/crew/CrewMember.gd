@@ -2,13 +2,14 @@ class_name CrewMember
 extends Node2D
 
 export(String) var crew_name = "no name"
-export(bool) var is_infected := false
+export(bool) var positive := false
 
 var efficiency := 1.0
 var room_id : String = ""
 var current_task = 0
 var scheduled_tasks = []
 var contagion_detected = false
+var is_dead := false
 
 #var current_mental_state
 var current_health_state
@@ -28,23 +29,39 @@ func is_human() -> bool:
 func infectiousness() -> float:
 	return current_health_state.get_factor()
 
+func is_infected() -> bool:
+	return current_health_state.is_infected()
+
 func update_state(_hour: int) -> void:
-	pass
+	update_protection()
+	var next_health_state = current_health_state.update()
+	change_state("health", next_health_state)
+	var next_activity_state = current_activity_state.update()
+	change_state("activity", next_activity_state)
+	efficiency = productivity()
 
 func work_on(_task) -> void:
 	pass
 
 func is_alive() -> bool:
-	return true
+	return not is_dead
 
 func get_health() -> int:
 	return 0
 
-func exposed_to_virus(_factor: float) -> void:
+func update_protection() -> void:
+	pass
+
+func in_contact_with(crew) -> void:
+	pass
+
+func in_contaminated_room(room) -> void:
 	pass
 
 func get_location_request() -> String:
-	return current_activity_state.next_location()
+	if is_alive():
+		return current_activity_state.next_location()
+	return ""
 
 func change_state(type: String, new_state: String) -> void:
 	if new_state == "":

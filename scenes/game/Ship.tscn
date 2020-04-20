@@ -82,21 +82,27 @@ room_id = "engine2"
 
 [node name="Hal" parent="Crew" instance=ExtResource( 3 )]
 crew_name = "hal"
+positive = true
 
 [node name="William" parent="Crew" instance=ExtResource( 4 )]
 crew_name = "william"
 
 [node name="Isaac" parent="Crew" instance=ExtResource( 4 )]
+visible = false
 crew_name = "isaac"
 
 [node name="Helen" parent="Crew" instance=ExtResource( 4 )]
+visible = false
 crew_name = "helen"
 
 [node name="Dave" parent="Crew" instance=ExtResource( 4 )]
+visible = false
 crew_name = "dave"
 
 [node name="Sam" parent="Crew" instance=ExtResource( 4 )]
+visible = false
 crew_name = "sam"
 
 [node name="Yuri" parent="Crew" instance=ExtResource( 4 )]
+visible = false
 crew_name = "yuri"

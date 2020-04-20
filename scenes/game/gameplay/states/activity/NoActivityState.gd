@@ -1,6 +1,7 @@
 extends ActivityState
 
 func update() -> String:
+	crew.wake_up_since += 1
 	crew.consecutive_hours_of_work = 0
 	if crew.scheduled_tasks.size() > 0:
 		return "working"
@@ -10,4 +11,5 @@ func state_name() -> String:
 	return "no-activity"
 
 func next_location() -> String:
-	return "my-quarter"
+#	return "my-quarter"
+	return "living"

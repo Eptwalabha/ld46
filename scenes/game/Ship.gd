@@ -7,7 +7,7 @@ var speed_ua : float = 2.0
 var distance_covered : float = 0.0
 var food : int = 10
 var water : int = 10
-var air_filter : int = 0
+var air_filter : float = 1.0
 
 func _ready() -> void:
 	rooms = get_rooms()
@@ -15,7 +15,7 @@ func _ready() -> void:
 func get_crew_members() -> Dictionary:
 	var crew_members = {}
 	for crew in get_tree().get_nodes_in_group("ship-crew-member"):
-		if crew is CrewMember:
+		if crew is CrewMember and crew.visible:
 			crew_members[crew.crew_name] = crew
 	return crew_members
 
@@ -28,7 +28,7 @@ func get_rooms() -> Dictionary:
 
 func update_state() -> void:
 	distance_covered += speed_ua / 24.0
-	air_filter += 1
+	air_filter -= .03
 	for room_id in rooms:
 		rooms[room_id].update_state()
 
@@ -36,9 +36,7 @@ func change_food(amount: int) -> void:
 	food = int(clamp(food + amount, 0, 999))
 
 func clean_air_filter(amount: int) -> void:
-	air_filter -= amount
-	if air_filter < 0:
-		air_filter = 0
+	air_filter = clamp(air_filter + amount, 0, 1.0)
 
 func change_water(amount: int) -> void:
 	water = int(clamp(water + amount, 0, 999))
@@ -58,14 +56,7 @@ func hours_until_goal(goal) -> float:
 	return ceil(rest_distance) / 10
 
 func air_filter_efficiency() -> float:
-	if air_filter < 10:
-		return 1.0
-	elif air_filter < 20:
-		return .8
-	elif air_filter < 30:
-		return .5
-	else:
-		return .1
+	return 0.8 + 0.6 * air_filter
 
 func is_room_available(room_id: String) -> bool:
 	return rooms.has(room_id) and rooms[room_id].is_available()
@@ -94,3 +85,6 @@ func move_crew_anywhere(crew: CrewMember) -> void:
 	if free_rooms.size() > 0:
 		var next_room : String = free_rooms[randi() % free_rooms.size()]
 		move_crew_member(crew, next_room)
+
+func is_crew_in_room(crew_name: String, room_id: String) -> bool:
+	return rooms[room_id].is_crew_an_occupant(crew_name)

@@ -28,3 +28,6 @@ func get_factor() -> float:
 
 func exposed_to_virus(_contamination_factor: float) -> void:
 	pass
+
+func is_infected() -> bool:
+	return true

@@ -24,7 +24,7 @@ func exposed_to_virus(_contamination_factor: float) -> void:
 func productivity() -> float:
 	return 1.0
 
-func is_contaminated() -> bool:
+func is_infected() -> bool:
 	return false
 
 func is_dead() -> bool:

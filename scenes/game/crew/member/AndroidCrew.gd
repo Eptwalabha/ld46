@@ -17,21 +17,18 @@ func _ready() -> void:
 			"cleaned": $ActivityStates/Cleaned,
 		},
 	}
-	change_state("health", "healthy")
+	var health_state = "healthy" if not positive else "contaminated"
+	change_state("health", health_state)
 	change_state("activity", "idle")
 
 func work_on(task) -> void:
 	current_activity_state.work_on(task)
 
-func update_state(_hour: int) -> void:
-	var next_health_state = current_health_state.update()
-	change_state("health", next_health_state)
-	var next_activity_state = current_activity_state.update()
-	change_state("activity", next_activity_state)
-	efficiency = productivity()
-
 func is_human() -> bool:
 	return false
+
+func is_alive() -> bool:
+	return true
 
 func is_corrupted() -> bool:
 	return corruption_level > 0
@@ -42,8 +39,14 @@ func get_corruption_level() -> int:
 func productivity() -> float:
 	return current_activity_state.productivity()
 
-func exposed_to_virus(factor: float) -> void:
-	current_health_state.exposed_to_virus(factor)
+func in_contact_with(crew) -> void:
+	_attempt_at_contamination(crew.infectiousness())
 
+func in_contaminated_room(room) -> void:
+	_attempt_at_contamination(room.get_contamination_factor())
+
+func _attempt_at_contamination(factor: float) -> void:
+	current_health_state.exposed_to_virus(factor)
+	
 func cleaned() -> void:
 	change_state("health", "healthy")

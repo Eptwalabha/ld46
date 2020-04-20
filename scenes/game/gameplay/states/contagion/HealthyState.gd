@@ -1,11 +1,11 @@
 class_name ContagionStateHealthy
 extends ContagionState
 
-var contaminated = false
+var is_infencted = false
 
 func update() -> String:
 	crew.contagion_detected = false
-	if contaminated:
+	if is_infencted:
 		return "sick"
 	return ""
 
@@ -16,10 +16,10 @@ func get_factor() -> float:
 	return 0.0
 
 func exposed_to_virus(contamination_factor: float) -> void:
-	contaminated = contaminated or randf() < contamination_factor
+	is_infencted = is_infencted or randf() < contamination_factor
 
 func productivity() -> float:
 	return 1.0
 
-func is_contaminated() -> bool:
-	return contaminated
+func is_infected() -> bool:
+	return is_infencted

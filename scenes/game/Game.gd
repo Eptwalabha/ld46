@@ -20,6 +20,7 @@ var rooms = {}
 var living_room : ShipRoom
 
 func _ready() -> void:
+	randomize()
 	$GameUI.set_ship(ship)
 	$TaskFactory.game = self
 	tasks = task_factory.get_common_chores()
@@ -81,17 +82,17 @@ func next_hour() -> Array:
 	hour += 1
 	update_crew()
 	update_tasks()
+	update_contagion()
 	ship.update_state()
 	spawn_random_events()
 	ui.refresh(hour)
 	return []
 
 func update_tasks() -> void:
-	# tasks timer
 	for task_id in tasks:
 		tasks[task_id].update_task(hour)
 
-	# for each task scheduled
+	# for each scheduled tasks
 	for crew_name in schedule:
 		if schedule[crew_name].size() == 0:
 			continue
@@ -118,7 +119,6 @@ func update_tasks() -> void:
 			for crew_name in schedule:
 				if schedule[crew_name].size() == 0:
 					continue
-	
 	update_task_and_crew_count()
 
 func can_crew_work_on_task(crew: CrewMember, task: Task) -> bool:
@@ -141,6 +141,30 @@ func update_task_and_crew_count() -> void:
 		else:
 			tasks[task_id].crew_count = 0
 			tasks[task_id].assigned_crew = []
+
+func update_contagion() -> void:
+	for room_id in rooms:
+		var room : ShipRoom = rooms[room_id]
+		var crew_ids = room.get_current_occupants()
+		var is_room_contaminated = room.is_contaminated()
+		var healthy_crews = []
+		var sick_crews = []
+		for crew_id in crew_ids:
+			var crew : CrewMember = crew_members[crew_id]
+			if crew.is_infected():
+				sick_crews.push_back(crew)
+			else:
+				healthy_crews.push_back(crew)
+		# healthy crew contamination
+		for crew in healthy_crews:
+			if is_room_contaminated:
+				crew.in_contaminated_room(room)
+			for crew2 in sick_crews:
+				crew.in_contact_with(crew2)
+		# contamine the room
+		if not is_room_contaminated:
+			for sick_crew in sick_crews:
+				room.contaminated_by_crew(sick_crew)
 
 func apply_task_effect(task: Task) -> void:
 	var effects = task.get_effect()
@@ -176,16 +200,19 @@ func update_crew() -> void:
 		update_crew_position(crew)
 
 func update_crew_position(crew: CrewMember) -> void:
-		match crew.get_location_request():
-			"": pass
-			"work": move_crew_for_work(crew)
-			"random": ship.move_crew_anywhere(crew)
-			"my-quarter": ship.move_crew_member(crew, crew.crew_name)
-			var room_id : ship.move_crew_member(crew, room_id)
+	var crew_next_location = crew.get_location_request()
+	match crew_next_location:
+		"": pass
+		"work": move_crew_for_work(crew)
+		"random": ship.move_crew_anywhere(crew)
+		"my-quarter": ship.move_crew_member(crew, crew.crew_name)
+		var room_id : ship.move_crew_member(crew, room_id)
 
 func move_crew_for_work(crew: CrewMember) -> void:
 	for task_id in crew.scheduled_tasks:
 		var room_id = tasks[task_id].room_id
+		if ship.is_crew_in_room(crew.crew_name, room_id):
+			return
 		if ship.is_room_available(room_id):
 			ship.move_crew_member(crew, room_id)
 			return

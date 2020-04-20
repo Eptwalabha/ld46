@@ -29,12 +29,12 @@ func is_contaminated() -> bool:
 	return contaminable and contaminated
 
 func get_contamination_factor() -> float:
-	return 0.0
+	return 0.3 if is_contaminated() else 0.0
 
-func exposed_to_virus(factor: float) -> void:
+func contaminated_by_crew(crew) -> void:
 	if not contaminable or contaminated:
 		return
-	factor *= (1 - ship.air_filter_efficiency())
+	var factor = ship.air_filter_efficiency() * crew.infectiousness()
 	contaminated = randf() < factor
 
 func is_available() -> bool:
@@ -58,3 +58,16 @@ func crew_leaves(crew_name) -> void:
 		if spaces[index] == crew_name:
 			spaces[index] = ""
 			break
+
+func get_current_occupants() -> Array:
+	var occupants = []
+	for index in spaces:
+		if spaces[index] != "":
+			occupants.push_back(spaces[index])
+	return occupants
+
+func is_crew_an_occupant(crew_name) -> bool:
+	for index in spaces:
+		if spaces[index] == crew_name:
+			return true
+	return false
