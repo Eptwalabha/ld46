@@ -159,6 +159,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/game/ui/tasks/UIAssignCrew.gd"
 }, {
+"base": "Control",
+"class": "UICounterButton",
+"language": "GDScript",
+"path": "res://scenes/game/ui/crew/UICounterButton.gd"
+}, {
 "base": "UICrewMember",
 "class": "UICrewAndroid",
 "language": "GDScript",
@@ -183,6 +188,11 @@ _global_script_classes=[ {
 "class": "UICrewMember",
 "language": "GDScript",
 "path": "res://scenes/game/ui/crew/UICrewMember.gd"
+}, {
+"base": "Control",
+"class": "UICrewSelection",
+"language": "GDScript",
+"path": "res://scenes/game/ui/crew/UICrewSelection.gd"
 }, {
 "base": "MarginContainer",
 "class": "UITask",
@@ -235,11 +245,13 @@ _global_script_class_icons={
 "Task": "",
 "TaskFactory": "",
 "UIAssignCrew": "",
+"UICounterButton": "",
 "UICrewAndroid": "",
 "UICrewDetails": "",
 "UICrewHuman": "",
 "UICrewList": "",
 "UICrewMember": "",
+"UICrewSelection": "",
 "UITask": "",
 "UITaskDetail": "",
 "UITaskList": "",

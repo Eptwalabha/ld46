@@ -41,6 +41,9 @@ func update_state(_hour: int) -> void:
 	update_visual_state()
 	efficiency = productivity()
 
+func make_a_viral_test() -> void:
+	current_health_state.make_a_viral_test()
+
 func update_visual_state() -> void:
 	current_health_state.update_crew_aspect()
 

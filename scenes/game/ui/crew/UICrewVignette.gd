@@ -29,3 +29,4 @@ func _on_CrewVignette_gui_input(event: InputEvent) -> void:
 		selected = not selected
 		update_color()
 		emit_signal("selection_changed", selected)
+

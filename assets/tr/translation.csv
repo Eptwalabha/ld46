@@ -36,3 +36,11 @@ room_living_quarter,Living quarter,Salle de repos
 room_medical_bay,Medical bay,Infirmerie
 room_engine,Engine room,Salle moteur
 room_technical_bay,Technical bay,Local technique
+ui_window_crew_selection,Crew selection,Sélection
+ui_selection_details,Details :,Détails :
+ui_assigne_crew_to_task,Select crew to assign to this task,Sélectionner les personnes à affecter à cette tâche
+ui_cancel,Cancel,Annuler
+ui_give_mask,Mask,Masque
+ui_test,Test,Dépister
+ui_assigne_crew_to_give_mask,Select crew to equip with mask,Sélectionner les personnes à qui donner un masque
+ui_assigne_crew_to_test,Select crew to test,Sélectionner les personnes à dépister

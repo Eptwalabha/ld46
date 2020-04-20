@@ -15,6 +15,9 @@ onready var next_event := $Container/Actions/Container/NextEvent as Button
 onready var next_hour := $Container/Actions/Container/NextHour as Button
 onready var crew_button := $Container/Actions/Container/Crew as Button
 onready var task_button := $Container/Actions/Container/Task as Button
+onready var crew_selection := $CrewSelection as UICrewSelection
+onready var mask_counter := $Container/Actions/Container/Mask/Counter as Label
+onready var test_counter := $Container/Actions/Container/Test/Counter as Label
 
 var ship = null
 var game = null
@@ -24,7 +27,9 @@ func _ready() -> void:
 
 func set_ship(the_ship: Ship) -> void:
 	ship = the_ship
-	crew_list.set_crew_members(ship.get_crew_members())
+	var crew_members = ship.get_crew_members()
+	crew_list.set_crew_members(crew_members)
+	crew_selection.prepare(crew_members)
 
 func set_tasks(tasks: Dictionary) -> void:
 	tasks_list.set_tasks_list(tasks)
@@ -39,7 +44,14 @@ func refresh(hour: int) -> void:
 	crew_list.refresh()
 	tasks_list.refresh()
 	task_detail.refresh()
+	refresh_menu()
 #	crew_details.refresh()
+
+func refresh_menu() -> void:
+	mask_counter.text = str(game.nbr_masks)
+	test_counter.text = str(game.nbr_tests)
+	$Container/Actions/Container/Mask.disabled = game.nbr_masks == 0
+	$Container/Actions/Container/Test.disabled = game.nbr_tests == 0
 
 func next_event_over() -> void:
 	next_event.pressed = false
@@ -83,11 +95,31 @@ func _on_TaskDetail_assignment_requested(task_id) -> void:
 	for crew in game.get_assigned_crew(task_id):
 		assigned_crew.push_back(crew.crew_name)
 	var task = game.get_task(task_id)
-	crew_assignment.open(task, crew_members, assigned_crew)
-	task_detail.close(true)
+	crew_selection.open("assign_to_task", assigned_crew, task_id, task.max_crew, "ui_assigne_crew_to_task")
 
 func _on_AssignCrew_assign_crew_members(task_id, crew_members) -> void:
 	game.assign_crew_to_task(task_id, crew_members)
 	var task = game.get_task(task_id)
 	task_detail.open(task)
 	tasks_list.refresh()
+
+func _on_CrewSelection_crew_selection_confirmed(action, selected_crew, data) -> void:
+	match action:
+		"assign_to_task":
+			game.assign_crew_to_task(data, selected_crew)
+			task_detail.refresh()
+			tasks_list.refresh()
+		"give_mask":
+			game.give_mask_to(selected_crew)
+			crew_list.refresh()
+		"test_crew":
+			game.test_crew(selected_crew)
+			crew_list.refresh()
+		_: pass
+
+
+func _on_Mask_pressed() -> void:
+	crew_selection.open("give_mask", [], null, game.nbr_masks, "ui_assigne_crew_to_give_mask")
+
+func _on_Test_pressed() -> void:
+	crew_selection.open("test_crew", [], null, game.nbr_tests, "ui_assigne_crew_to_test")

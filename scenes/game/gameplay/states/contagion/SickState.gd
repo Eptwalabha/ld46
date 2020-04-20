@@ -5,10 +5,12 @@ export(float) var day_before_death := 4.0
 
 var hours_before_death := 0.0
 var hours_in_state := 0.0
+var viral_test_made := false
 
 func enter() -> void:
 	hours_before_death = ceil(day_before_death * 24)
 	hours_in_state = 0.0
+	viral_test_made = false
 
 func update() -> String:
 	hours_in_state += 1
@@ -47,3 +49,6 @@ func update_crew_aspect() -> void:
 		crew.modulate = Color(0.8, 1, 0.8)
 	else:
 		crew.modulate = Color(0.5, 1, 0.5)
+
+func make_a_viral_test() -> void:
+	viral_test_made = true

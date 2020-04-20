@@ -256,6 +256,23 @@ func move_crew_for_work(crew: CrewMember) -> void:
 			return
 	ship.move_crew_anywhere(crew)
 
+func give_mask_to(crew_list: Array) -> void:
+	for crew_name in crew_list:
+		if nbr_masks <= 0:
+			break
+		if crew_members[crew_name] is HumanCrew:
+			crew_members[crew_name].give_mask()
+			nbr_masks -= 1
+	ui.refresh_menu()
+
+func test_crew(crew_list: Array) -> void:
+	for crew_name in crew_list:
+		if nbr_tests <= 0:
+			break
+		crew_members[crew_name].make_a_viral_test()
+		nbr_tests -= 1
+	ui.refresh_menu()
+
 func check_ship_state() -> void:
 	pass
 

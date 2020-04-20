@@ -32,3 +32,6 @@ func is_dead() -> bool:
 
 func update_crew_aspect() -> void:
 	pass
+
+func make_a_viral_test() -> void:
+	pass

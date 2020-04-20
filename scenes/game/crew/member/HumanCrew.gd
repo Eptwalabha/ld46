@@ -2,6 +2,8 @@ class_name HumanCrew
 extends CrewMember
 
 export(int) var mask_ttl := 0
+export(int) var mask_lifespan := 10
+
 var wake_up_since := 0
 
 var thirst := 0
@@ -32,6 +34,9 @@ func update_protection() -> void:
 	mask_ttl -= 1
 	if mask_ttl < 0:
 		mask_ttl = 0
+
+func give_mask() -> void:
+	mask_ttl += mask_lifespan
 
 func work_on(task) -> void:
 	if is_alive():
