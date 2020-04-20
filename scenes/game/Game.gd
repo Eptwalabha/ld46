@@ -77,7 +77,6 @@ func next_hour() -> Array:
 	hour += 1
 	update_crew()
 	update_tasks()
-#	update_equipments()
 	ship.update_state()
 	spawn_random_events()
 	ui.refresh(hour)
@@ -96,7 +95,7 @@ func update_tasks() -> void:
 		for i in range(schedule[crew_name].size()):
 			var task_id = schedule[crew_name][i]
 			var task = tasks[task_id]
-			if task.state == TASK_STATE.ONGOING and crew.location == task.location:
+			if can_crew_work_on_task(crew, task):
 				crew.work_on(task)
 				break
 
@@ -118,6 +117,9 @@ func update_tasks() -> void:
 	
 	update_task_and_crew_count()
 
+func can_crew_work_on_task(crew: CrewMember, task: Task) -> bool:
+	return task.state == TASK_STATE.ONGOING and crew.room_name == task.location
+
 func update_task_and_crew_count() -> void:
 	var counter = {}
 	for crew_name in schedule:
@@ -137,6 +139,11 @@ func update_task_and_crew_count() -> void:
 			tasks[task_id].crew_count = 0
 			tasks[task_id].assigned_crew = []
 
+func request_room_for_task(task_id: int) -> ShipRoom:
+	var room_name = tasks[task_id].room_name
+	if not rooms[room_name].is_full():
+		return rooms[room_name]
+	return null
 
 func apply_task_effect(task: Task) -> void:
 	var effects = task.get_effect()

@@ -5,7 +5,7 @@ export(String) var crew_name = "no name"
 export(bool) var is_infected := false
 
 var efficiency := 1.0
-var location : String = ""
+var room_name : String = ""
 var current_task = 0
 var scheduled_tasks = []
 var contagion_detected = false

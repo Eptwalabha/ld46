@@ -84,17 +84,23 @@ room_name = "room_engine_2"
 [node name="Crew" type="Node2D" parent="."]
 visible = false
 
-[node name="AndroidCrew" parent="Crew" instance=ExtResource( 3 )]
+[node name="Hal" parent="Crew" instance=ExtResource( 3 )]
 crew_name = "hal"
 
-[node name="HumanCrew" parent="Crew" instance=ExtResource( 4 )]
-crew_name = "jack"
+[node name="William" parent="Crew" instance=ExtResource( 4 )]
+crew_name = "william"
 
-[node name="HumanCrew2" parent="Crew" instance=ExtResource( 4 )]
+[node name="Isaac" parent="Crew" instance=ExtResource( 4 )]
+crew_name = "isaac"
+
+[node name="Dave" parent="Crew" instance=ExtResource( 4 )]
 crew_name = "dave"
 
-[node name="HumanCrew3" parent="Crew" instance=ExtResource( 4 )]
+[node name="Helen" parent="Crew" instance=ExtResource( 4 )]
 crew_name = "helen"
 
-[node name="HumanCrew4" parent="Crew" instance=ExtResource( 4 )]
-crew_name = "dallas"
+[node name="Sam" parent="Crew" instance=ExtResource( 4 )]
+crew_name = "sam"
+
+[node name="Yuri" parent="Crew" instance=ExtResource( 4 )]
+crew_name = "yuri"
