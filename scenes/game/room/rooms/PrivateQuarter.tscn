@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/game/room/ShipRoom.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/imgs/room-tile.svg" type="Texture" id=2]
+
+[node name="PrivateQuarter" instance=ExtResource( 1 )]
+room_name = "room_private_quarter"
+max_people = 1
+
+[node name="room-tile" type="Sprite" parent="Positions" index="0"]
+texture = ExtResource( 2 )
