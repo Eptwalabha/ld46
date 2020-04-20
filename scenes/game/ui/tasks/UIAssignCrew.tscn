@@ -18,25 +18,25 @@ size_flags_vertical = 3
 
 [node name="Scroll" type="ScrollContainer" parent="MarginContainer/Content/Body/Crew" index="0"]
 margin_right = 1004.0
-margin_bottom = 528.0
+margin_bottom = 529.0
 size_flags_vertical = 3
 
 [node name="List" type="VBoxContainer" parent="MarginContainer/Content/Body/Crew/Scroll" index="0"]
 margin_right = 1004.0
-margin_bottom = 528.0
+margin_bottom = 529.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Content/Body/Crew" index="1"]
-margin_top = 532.0
+margin_top = 533.0
 margin_right = 1004.0
 margin_bottom = 552.0
 alignment = 1
 
 [node name="Confirm" type="Button" parent="MarginContainer/Content/Body/Crew/HBoxContainer" index="0"]
-margin_left = 462.0
-margin_right = 541.0
-margin_bottom = 20.0
+margin_left = 466.0
+margin_right = 537.0
+margin_bottom = 19.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "ui_confirm"

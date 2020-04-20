@@ -19,6 +19,8 @@ var schedule = {}
 var rooms = {}
 var living_room : ShipRoom
 var game_over : bool = false
+var nbr_masks = 2
+var nbr_tests = 2
 
 func _ready() -> void:
 	randomize()
@@ -209,6 +211,8 @@ func apply_task_effect(task: Task) -> void:
 			"ship-water": ship.change_water(data)
 			"ship-food": ship.change_food(data)
 			"ship-air-filter": ship.clean_air_filter(data)
+			"viral-test": nbr_tests += data
+			"viral-mask": nbr_masks += data
 			"room-contamination-level":
 				var nbr = data
 				if nbr > 0:

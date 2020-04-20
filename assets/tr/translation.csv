@@ -1,11 +1,10 @@
-id,en,fr
-a,b,c
+room_living_quarter,en,fr
 ui_task_list,Tasks list,Liste des tâches
 ui_crew_list,Crew members,Équipage
 ui_task_description,Task’s description,Détails
 ui_task_crew_members,Assigned crew member(s),Affecté(s) à cette tâche 
 ui_window_assign_crew_members,Assign,Affecter
-ui_confirm,Ok,Ok
+ui_confirm,Assign,Affecter
 ui_btn_crew,Crew,Équipage
 ui_btn_tasks,Tasks,Tâches
 ui_btn_next,Next hour,+1 heure
@@ -31,3 +30,9 @@ ui_action_food,Food,Food
 task_title_clean_water,Clean water,Désinfecter de l’eau
 task_title_prepare_food,Prepare 5 meals,Préparer 5 repas
 task_title_clean_air_filter,Clean air filter,Nettoyer le filtre à air
+room_control,Control room,Salle de commandes
+room_kitchen,Kitchen,Cuisine
+room_living_quarter,Living quarter,Salle de repos
+room_medical_bay,Medical bay,Infirmerie
+room_engine,Engine room,Salle moteur
+room_technical_bay,Technical bay,Local technique

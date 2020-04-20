@@ -9,11 +9,7 @@ script = ExtResource( 2 )
 title = "ui_window_task_details"
 
 [node name="Title" parent="MarginContainer/Content/Header/Content" index="0"]
-margin_right = 981.0
 text = "ui_window_task_details"
-
-[node name="Close" parent="MarginContainer/Content/Header/Content" index="1"]
-margin_left = 985.0
 
 [node name="Task" type="VBoxContainer" parent="MarginContainer/Content/Body" index="0"]
 margin_right = 1004.0

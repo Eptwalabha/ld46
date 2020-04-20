@@ -32,7 +32,9 @@ func get_common_chores() -> Dictionary:
 	var chores = [
 		get_water_task(),
 		get_food_task(),
-		get_air_filter_task(),
+#		get_air_filter_task(),
+		get_viral_test_task(),
+		get_build_mask_task(),
 	]
 	var r = {}
 	for chore in chores:
@@ -101,6 +103,42 @@ func get_air_filter_task() -> Task:
 		'max_crew': 2,
 		'cooldown': 10.0,
 		'rooms': ["technical", "living", "medical"],
+	}
+	task.build_from_data(data)
+	return task
+
+func get_viral_test_task() -> Task:
+	var task = TaskResource.instance()
+	var data = {
+		'title': tr("task_title_build_viral_test"),
+		'description': tr("task_description_build_viral_test"),
+		'time_to_complete': 6.0,
+		'expires': false,
+		'repeat_once_complete': true,
+		'success': {
+			"viral-test": 2,
+		},
+		'max_crew': 2,
+		'cooldown': 10.0,
+		'room_id': "medical",
+	}
+	task.build_from_data(data)
+	return task
+
+func get_build_mask_task() -> Task:
+	var task = TaskResource.instance()
+	var data = {
+		'title': tr("task_title_build_mask"),
+		'description': tr("task_description_build_mask"),
+		'time_to_complete': 6.0,
+		'expires': false,
+		'repeat_once_complete': true,
+		'success': {
+			"viral-mask": 4,
+		},
+		'max_crew': 2,
+		'cooldown': 10.0,
+		'room_id': "medical",
 	}
 	task.build_from_data(data)
 	return task

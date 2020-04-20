@@ -30,7 +30,6 @@ anchor_bottom = 0.0
 margin_right = 250.0
 margin_bottom = 529.0
 rect_min_size = Vector2( 250, 0 )
-closable = true
 
 [node name="Middle" type="VBoxContainer" parent="Container/Columns"]
 margin_left = 254.0
@@ -54,7 +53,6 @@ rect_min_size = Vector2( 0, 250 )
 visible = false
 anchor_bottom = 0.0
 rect_min_size = Vector2( 0, 250 )
-closable = true
 
 [node name="CrewDetails" parent="Container/Columns/Middle" instance=ExtResource( 6 )]
 visible = false

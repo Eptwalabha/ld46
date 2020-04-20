@@ -12,10 +12,9 @@ room_name = "room_private_quarter"
 texture = ExtResource( 2 )
 
 [node name="Label" parent="." index="1"]
-position = Vector2( -24, -24 )
+position = Vector2( 0, -32 )
 
 [node name="Label" parent="Label" index="0"]
-margin_top = -8.0
-margin_right = 161.0
-margin_bottom = 10.0
+margin_left = -80.5
+margin_right = 80.5
 text = "room_private_quarter"

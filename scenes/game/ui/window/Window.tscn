@@ -14,7 +14,7 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.333333, 0.333333, 0.333333, 0.313726 )
+color = Color( 0.176471, 0.176471, 0.176471, 0.980392 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -46,7 +46,7 @@ margin_right = 1004.0
 margin_bottom = 29.0
 
 [node name="Title" type="Label" parent="MarginContainer/Content/Header/Content"]
-margin_right = 979.0
+margin_right = 981.0
 margin_bottom = 24.0
 rect_min_size = Vector2( 0, 24 )
 size_flags_horizontal = 3
@@ -56,7 +56,7 @@ align = 1
 valign = 1
 
 [node name="Close" type="ToolButton" parent="MarginContainer/Content/Header/Content"]
-margin_left = 983.0
+margin_left = 985.0
 margin_right = 1004.0
 margin_bottom = 24.0
 text = "X"
