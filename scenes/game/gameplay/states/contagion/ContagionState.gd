@@ -29,3 +29,6 @@ func is_infected() -> bool:
 
 func is_dead() -> bool:
 	return false
+
+func update_crew_aspect() -> void:
+	pass

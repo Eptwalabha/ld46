@@ -41,3 +41,9 @@ func productivity() -> float:
 
 func is_infected() -> bool:
 	return true
+
+func update_crew_aspect() -> void:
+	if hours_in_state < 20:
+		crew.modulate = Color(0.8, 1, 0.8)
+	else:
+		crew.modulate = Color(0.5, 1, 0.5)

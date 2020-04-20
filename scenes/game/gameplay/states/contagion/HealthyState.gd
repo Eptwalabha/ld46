@@ -23,3 +23,6 @@ func productivity() -> float:
 
 func is_infected() -> bool:
 	return is_infencted
+
+func update_crew_aspect() -> void:
+	crew.modulate = Color.white

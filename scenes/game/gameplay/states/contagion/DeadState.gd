@@ -33,4 +33,8 @@ func is_dead() -> bool:
 	return true
 
 func is_infected() -> bool:
-	return true
+	return contamination_amount > 0
+
+func update_crew_aspect() -> void:
+	crew.modulate = Color.red
+

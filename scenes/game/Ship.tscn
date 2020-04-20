@@ -24,56 +24,69 @@ texture = ExtResource( 5 )
 [node name="Rooms" type="Node2D" parent="."]
 
 [node name="Command" parent="Rooms" instance=ExtResource( 6 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 328, 0 )
 
 [node name="Kitchen" parent="Rooms" instance=ExtResource( 8 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 224, -136 )
 
 [node name="LivingQuarter" parent="Rooms" instance=ExtResource( 7 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 160, 0 )
 
 [node name="MedicalBay" parent="Rooms" instance=ExtResource( 9 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 224, 136 )
 
 [node name="WilliamQuarter" parent="Rooms" instance=ExtResource( 10 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( -62.518, -214 )
 room_name = "room_private_quarter_2"
 room_id = "william"
 
 [node name="IsaacQuarter" parent="Rooms" instance=ExtResource( 10 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( -63.259, -142 )
 room_name = "room_private_quarter_3"
 room_id = "isaac"
 
 [node name="HelenQuarter" parent="Rooms" instance=ExtResource( 10 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( -63.259, -70 )
 room_name = "room_private_quarter_4"
 room_id = "helen"
 
 [node name="DaveQuarter" parent="Rooms" instance=ExtResource( 10 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( -64, 72 )
 room_name = "room_private_quarter_5"
 room_id = "dave"
 
 [node name="SamQuarter" parent="Rooms" instance=ExtResource( 10 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( -63.259, 144 )
 room_name = "room_private_quarter_6"
 room_id = "sam"
 
 [node name="YuriQuarter" parent="Rooms" instance=ExtResource( 10 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( -63.753, 216 )
 room_name = "room_private_quarter_7"
 room_id = "yuri"
 
 [node name="TechnicalBay" parent="Rooms" instance=ExtResource( 2 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( -216, 0 )
 
 [node name="Engine1" parent="Rooms" instance=ExtResource( 11 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( -280, -96 )
 room_name = "room_engine_1"
 room_id = "engine1"
 
 [node name="Engine2" parent="Rooms" instance=ExtResource( 11 )]
+modulate = Color( 1, 1, 1, 1 )
 position = Vector2( -280, 96 )
 room_name = "room_engine_2"
 room_id = "engine2"

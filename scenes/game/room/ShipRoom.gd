@@ -23,7 +23,9 @@ func _ready() -> void:
 
 func update_state() -> void:
 	if is_contaminated():
-		modulate = Color.green
+		modulate = Color(0.5, 1, 0.5)
+	else:
+		modulate = Color.white
 
 func is_contaminated() -> bool:
 	return contaminable and contaminated

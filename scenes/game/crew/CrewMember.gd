@@ -38,7 +38,11 @@ func update_state(_hour: int) -> void:
 	change_state("health", next_health_state)
 	var next_activity_state = current_activity_state.update()
 	change_state("activity", next_activity_state)
+	update_visual_state()
 	efficiency = productivity()
+
+func update_visual_state() -> void:
+	current_health_state.update_crew_aspect()
 
 func work_on(_task) -> void:
 	pass
