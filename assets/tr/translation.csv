@@ -4,11 +4,11 @@ ui_crew_list,Crew members,Équipage
 ui_task_description,Task’s description,Détails
 ui_task_crew_members,Assigned crew member(s),Affecté(s) à cette tâche 
 ui_window_assign_crew_members,Assign,Affecter
-ui_confirm,Assign,Affecter
+ui_confirm,Ok,Valider
 ui_btn_crew,Crew,Équipage
 ui_btn_tasks,Tasks,Tâches
-ui_btn_next,Next hour,+1 heure
-ui_btn_next_event,Until next event,prochain événement
+ui_btn_next,+1 hour,+1 heure
+ui_btn_next_10,+10 hours,+10 heures
 ui_time_spent,Time,Durée
 ui_progress_goal,Arrival,Arrivé
 ui_game_info,Infos,Informations
@@ -46,3 +46,4 @@ ui_assigne_crew_to_give_mask,Select crew to equip with mask,Sélectionner les pe
 ui_assigne_crew_to_test,Select crew to test,Sélectionner les personnes à dépister
 ui_btn_heal,Heal,Soigner
 ui_btn_clean,Clean,Nettoyer
+ui_assigne_crew_to_heal,Select who has to be healed,Sélectionner qui doit se faire soigner

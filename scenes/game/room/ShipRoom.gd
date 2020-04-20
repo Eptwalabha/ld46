@@ -89,3 +89,6 @@ func _change_state(new_state: String) -> void:
 		return
 	current_room_state = states[new_state]
 	current_room_state.enter()
+
+func contaminate() -> void:
+	_change_state("contaminated")

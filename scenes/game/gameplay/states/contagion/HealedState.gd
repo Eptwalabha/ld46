@@ -1,7 +1,15 @@
 class_name ContagionStateHealed
 extends ContagionState
 
+var hour_in_state = 0
+
+func enter() -> void:
+	hour_in_state = 0
+
 func update() -> String:
+	hour_in_state += 1
+	if hour_in_state >= 16:
+		return "healthy"
 	return ""
 
 func get_factor() -> float:

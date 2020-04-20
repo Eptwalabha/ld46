@@ -92,3 +92,9 @@ func viral_test() -> bool:
 
 func get_texture() -> Texture:
 	return $icon.texture
+
+func contaminated() -> void:
+	change_state("health", "sick")
+
+func healed() -> void:
+	pass

@@ -66,6 +66,7 @@ func is_alive() -> bool:
 
 func healed() -> void:
 	if is_alive():
+		change_state("activity", "healing")
 		change_state("health", "healed")
 
 func is_protected() -> bool:

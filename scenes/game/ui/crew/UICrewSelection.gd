@@ -46,7 +46,6 @@ func open(the_action: String, selected: Array, the_data, max_selection: int = 10
 
 
 func _on_Window_on_window_closed(_window) -> void:
-	print("ici")
 	hide()
 
 func _on_Confirm_pressed() -> void:

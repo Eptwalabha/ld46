@@ -18,9 +18,9 @@ func update() -> String:
 	return ""
 
 func _next_state() -> String:
-	if crew.current_tasks.size() > 0:
+	if crew.scheduled_tasks.size() > 0:
 		return "working"
-	return "idle"
+	return "no-activity"
 
 func state_name() -> String:
 	return "cleaning"

@@ -12,6 +12,7 @@ var crew_name = ""
 func set_crew(crew) -> void:
 	crew_name = crew.crew_name
 	crew_label.text = crew_name
+	$VBoxContainer/Picture/MarginContainer/TextureRect.texture = crew.get_texture()
 
 func set_selected(is_selected: bool) -> void:
 	selected = is_selected

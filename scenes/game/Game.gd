@@ -8,6 +8,8 @@ onready var ui := $GameUI as GameUI
 onready var ship := $Ship as Ship
 onready var task_factory := $TaskFactory
 
+export(int) var hours_before_next_heal = 24
+var ttl_heal := 0
 var hour : int = 0
 var ua : float = 0.0
 export(float) var ua_goal := 30 # neptune
@@ -32,10 +34,24 @@ func _ready() -> void:
 	rooms = ship.get_rooms()
 	living_room = rooms['living']
 	crew_members = ship.get_crew_members()
-	
+	var nbr_contaminated = 0
 	for crew_name in crew_members:
 		schedule[crew_name] = []
 		ship.move_crew_anywhere(crew_members[crew_name])
+		if randf() > .5 and nbr_contaminated < 4:
+			nbr_contaminated += 1
+			crew_members[crew_name].contaminated()
+			
+
+	var room_keys = rooms.keys()
+	nbr_contaminated = 0
+	while nbr_contaminated < 4:
+		var i = randi() % room_keys.size()
+		var room_id = room_keys[i]
+		if rooms[room_id].contaminable:
+			nbr_contaminated += 1
+			rooms[room_id].contaminate()
+			room_keys.remove(i)
 
 	update_task_and_crew_count()
 	$GameUI.refresh(0)
@@ -91,10 +107,17 @@ func next_hour() -> void:
 	update_tasks()
 	update_contagion()
 	ship.update_state()
+	if ttl_heal > 0:
+		ttl_heal -= 1
 	ui.refresh(hour)
 	spawn_random_events()
 #	process_events()
 
+func heal_crew(crew_name) -> void:
+	ttl_heal = hours_before_next_heal
+	crew_members[crew_name].healed()
+	ui.refresh_menu()
+	
 func check_game_over() -> bool:
 	if is_ship_clean() and all_crew_healthy():
 		until_next_event = false
@@ -113,7 +136,7 @@ func is_ship_clean() -> bool:
 	for room_id in rooms:
 		if rooms[room_id].is_contaminated():
 			contaminated_rooms += 1
-	return contaminated_rooms > 0
+	return contaminated_rooms == 0
 
 func all_crew_healthy() -> bool:
 	for crew_name in crew_members:

@@ -7,4 +7,4 @@ func refresh() -> void:
 	pass
 
 func prepare(the_crew) -> void:
-	pass
+	crew = the_crew
