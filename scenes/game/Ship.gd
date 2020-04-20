@@ -1,8 +1,7 @@
 class_name Ship
 extends Node2D
 
-onready var rooms := $Rooms as Node2D
-
+var rooms := {}
 var max_speed_ua : float = 2.0
 var speed_ua : float = 2.0
 var distance_covered : float = 0.0
@@ -11,21 +10,27 @@ var water : int = 10
 var air_filter : int = 0
 
 func _ready() -> void:
-	pass
+	rooms = get_rooms()
 
-func get_crew_members() -> Array:
-	var crew_members = []
-	for crew in $Crew.get_children():
+func get_crew_members() -> Dictionary:
+	var crew_members = {}
+	for crew in get_tree().get_nodes_in_group("ship-crew-member"):
 		if crew is CrewMember:
-			if crew.is_alive():
-				crew_members.push_back(crew)
+			crew_members[crew.crew_name] = crew
 	return crew_members
+
+func get_rooms() -> Dictionary:
+	var rooms = {}
+	for room in get_tree().get_nodes_in_group("ship-room"):
+		if room is ShipRoom:
+			rooms[room.room_id] = room
+	return rooms
 
 func update_state() -> void:
 	distance_covered += speed_ua / 24.0
 	air_filter += 1
-	for room in rooms.get_children():
-		room.update_state()
+	for room_id in rooms:
+		rooms[room_id].update_state()
 
 func change_food(amount: int) -> void:
 	food = int(clamp(food + amount, 0, 999))

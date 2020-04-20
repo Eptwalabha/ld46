@@ -15,6 +15,7 @@ var until_next_event := false
 
 var tasks = {}
 var crew_members = {}
+var rooms = {}
 var schedule = {}
 
 func _ready() -> void:
@@ -23,10 +24,10 @@ func _ready() -> void:
 	tasks = task_factory.get_common_chores()
 	$GameUI.set_tasks(tasks)
 
-	for crew in ship.get_crew_members():
-		var crew_name = crew.crew_name
-		crew_members[crew_name] = crew
+	crew_members = ship.get_crew_members()
+	for crew_name in crew_members:
 		schedule[crew_name] = []
+	var rooms = ship.get_rooms()
 
 	update_task_and_crew_count()
 	$GameUI.refresh(0)

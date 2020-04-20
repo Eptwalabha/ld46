@@ -6,10 +6,9 @@ onready var list_container := $MarginContainer/Content/Body/VBoxContainer as VBo
 var CrewHumanResource = load("res://scenes/game/ui/crew/UICrewHuman.tscn")
 var CrewAndroidResource = load("res://scenes/game/ui/crew/UICrewAndroid.tscn")
 
-func set_crew_members(crew_members: Array) -> void:
-	for crew in crew_members:
-		if not crew is CrewMember:
-			continue
+func set_crew_members(crew_members: Dictionary) -> void:
+	for crew_name in crew_members:
+		var crew = crew_members[crew_name]
 		var line = get_line(crew.is_human())
 		list_container.add_child(line)
 		line.set_crew_member(crew)

@@ -1,7 +1,7 @@
 class_name HumanCrew
 extends CrewMember
 
-export(bool) var mask_ttl := 0
+export(int) var mask_ttl := 0
 var wake_up_since := 0
 
 var thirst := 0
