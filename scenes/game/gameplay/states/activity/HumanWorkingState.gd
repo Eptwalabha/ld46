@@ -28,3 +28,6 @@ func work_on(task) -> void:
 	crew.current_task = task.task_id
 	crew.exhaustion += 1
 	task.worked_on(crew.crew_name, crew.efficiency)
+
+func next_location() -> String:
+	return "work"

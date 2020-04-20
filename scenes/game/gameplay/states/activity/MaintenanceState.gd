@@ -23,3 +23,6 @@ func state_name() -> String:
 
 func productivity() -> float:
 	return 0.0
+
+func next_location() -> String:
+	return "technical"

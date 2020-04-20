@@ -21,3 +21,6 @@ func work_on(task) -> void:
 	crew.hours_before_next_maintenance -= 1
 	crew.current_task = task.task_id
 	task.worked_on(crew.crew_name, crew.efficiency)
+
+func next_location() -> String:
+	return "work"

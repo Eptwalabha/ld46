@@ -21,5 +21,5 @@ func productivity() -> float:
 func work_on(_task) -> void:
 	pass
 
-func position() -> String:
+func next_location() -> String:
 	return "living"

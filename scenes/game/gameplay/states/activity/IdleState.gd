@@ -8,3 +8,6 @@ func update() -> String:
 
 func state_name() -> String:
 	return "idle"
+
+func next_location() -> String:
+	return "living"

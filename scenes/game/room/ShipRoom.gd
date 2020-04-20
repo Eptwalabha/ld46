@@ -56,5 +56,5 @@ func crew_moves_in(crew_name) -> Vector2:
 func crew_leaves(crew_name) -> void:
 	for index in spaces:
 		if spaces[index] == crew_name:
-			spaces[index] == ""
+			spaces[index] = ""
 			break

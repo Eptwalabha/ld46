@@ -8,3 +8,6 @@ func update() -> String:
 
 func state_name() -> String:
 	return "no-activity"
+
+func next_location() -> String:
+	return "my-quarter"

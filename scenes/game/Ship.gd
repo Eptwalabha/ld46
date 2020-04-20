@@ -66,3 +66,31 @@ func air_filter_efficiency() -> float:
 		return .5
 	else:
 		return .1
+
+func is_room_available(room_id: String) -> bool:
+	return rooms.has(room_id) and rooms[room_id].is_available()
+
+func move_crew_member(crew: CrewMember, next_room_id: String, default_room_id: String = "living") -> void:
+	var current_room_id = crew.room_id
+	if current_room_id == next_room_id:
+		return
+	if not is_room_available(next_room_id):
+		next_room_id = default_room_id
+	var next_room = rooms[next_room_id]
+	if rooms.has(current_room_id):
+		var current_room : ShipRoom = rooms[current_room_id]
+		current_room.crew_leaves(crew.crew_name)
+	crew.position = next_room.crew_moves_in(crew.crew_name)
+	crew.room_id = next_room.room_id
+
+func move_crew_anywhere(crew: CrewMember) -> void:
+	var free_rooms = []
+	for room_id in rooms:
+		var room : ShipRoom = rooms[room_id]
+		if is_room_available(room_id):
+			if room is ShipRoomPrivateQuarter and room.room_id != crew.crew_name:
+				continue
+			free_rooms.push_back(room.room_id)
+	if free_rooms.size() > 0:
+		var next_room : String = free_rooms[randi() % free_rooms.size()]
+		move_crew_member(crew, next_room)

@@ -43,8 +43,8 @@ func get_health() -> int:
 func exposed_to_virus(_factor: float) -> void:
 	pass
 
-func update_position() -> String:
-	return "living"
+func get_location_request() -> String:
+	return current_activity_state.next_location()
 
 func change_state(type: String, new_state: String) -> void:
 	if new_state == "":

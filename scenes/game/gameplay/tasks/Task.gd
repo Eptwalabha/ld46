@@ -76,9 +76,12 @@ func build_from_data(data: Dictionary) -> void:
 		"title", "description",
 		"time_to_complete", "expires", "repeat_once_complete",
 		"expires_after", "success", "failure",
-		"cooldown", "max_crew"
+		"cooldown", "max_crew", "room_id",
 	]
 
 	for field in fields:
 		if data.has(field):
 			self[field] = data[field]
+	
+	if data.has("rooms") and data['rooms'].size() > 0:
+		room_id = data['rooms'][randi() % data['rooms'].size()]

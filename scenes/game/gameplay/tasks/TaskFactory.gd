@@ -64,7 +64,7 @@ func get_water_task() -> Task:
 		},
 		'max_crew': 2,
 		'cooldown': 0.0,
-		'room': "kitchen",
+		'room_id': "kitchen",
 	}
 	task.build_from_data(data)
 	return task
@@ -82,7 +82,7 @@ func get_food_task() -> Task:
 		},
 		'max_crew': 2,
 		'cooldown': 0.0,
-		'room': "kitchen",
+		'room_id': "kitchen",
 	}
 	task.build_from_data(data)
 	return task
@@ -100,7 +100,7 @@ func get_air_filter_task() -> Task:
 		},
 		'max_crew': 2,
 		'cooldown': 10.0,
-		'room': "technical",
+		'rooms': ["technical", "living", "medical"],
 	}
 	task.build_from_data(data)
 	return task
