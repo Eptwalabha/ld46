@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/game/room/ShipRoom.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/section_title.tres" type="DynamicFont" id=2]
+[ext_resource path="res://scenes/game/gameplay/states/room/RoomStateCleaned.gd" type="Script" id=3]
+[ext_resource path="res://scenes/game/gameplay/states/room/RoomStateCleaning.gd" type="Script" id=4]
+[ext_resource path="res://scenes/game/gameplay/states/room/RoomStateContaminated.gd" type="Script" id=5]
 
 [node name="ShipRoom" type="Node2D" groups=[
 "ship-room",
@@ -26,3 +29,14 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="States" type="Node" parent="."]
+
+[node name="Cleaned" type="Node" parent="States"]
+script = ExtResource( 3 )
+
+[node name="Cleaning" type="Node" parent="States"]
+script = ExtResource( 4 )
+
+[node name="Contaminated" type="Node" parent="States"]
+script = ExtResource( 5 )

@@ -14,7 +14,16 @@ export(bool) var contaminable := true
 var ship
 var spaces := {}
 
+var current_room_state: RoomState
+var states = {}
+
 func _ready() -> void:
+	states = {
+		"cleaned": $States/Cleaned,
+		"cleaning": $States/Cleaning,
+		"contaminated": $States/Contaminated,
+	}
+	_change_state("cleaned")
 	label.text = tr(room_name)
 	ship = get_parent().get_parent()
 	var positions = $Positions.get_children()
@@ -22,25 +31,24 @@ func _ready() -> void:
 		spaces[index] = ""
 
 func update_state() -> void:
-	if is_contaminated():
-		modulate = Color(0.5, 1, 0.5)
-	else:
-		modulate = Color.white
+	var next_state = current_room_state.update_state()
+	_change_state(next_state)
+	current_room_state.update_visual()
 
 func is_contaminated() -> bool:
-	return contaminable and contaminated
+	return current_room_state.is_contaminated()
 
 func get_contamination_factor() -> float:
-	return 0.3 if is_contaminated() else 0.0
+	return current_room_state.get_contamination_factor()
+
+func visited_by(crew) -> void:
+	current_room_state.visited_by(crew)
 
 func contaminated_by_crew(crew) -> void:
-	if not contaminable or contaminated:
-		return
-	var factor = ship.air_filter_efficiency() * crew.infectiousness()
-	contaminated = randf() < factor
+	current_room_state.contaminated_by_crew(crew)
 
 func is_available() -> bool:
-	return not closed and not is_full()
+	return current_room_state.is_available() and not is_full()
 
 func is_full() -> bool:
 	for index in spaces:
@@ -73,3 +81,11 @@ func is_crew_an_occupant(crew_name) -> bool:
 		if spaces[index] == crew_name:
 			return true
 	return false
+
+func _change_state(new_state: String) -> void:
+	if new_state == "":
+		return
+	if current_room_state is RoomState and current_room_state.state_name() == new_state:
+		return
+	current_room_state = states[new_state]
+	current_room_state.enter()

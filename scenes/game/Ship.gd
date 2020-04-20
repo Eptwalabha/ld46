@@ -88,3 +88,6 @@ func move_crew_anywhere(crew: CrewMember) -> void:
 
 func is_crew_in_room(crew_name: String, room_id: String) -> bool:
 	return rooms[room_id].is_crew_an_occupant(crew_name)
+
+func get_sick_crew_in_room(_room_id: int) -> Array:
+	return []

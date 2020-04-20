@@ -182,20 +182,22 @@ func update_contagion() -> void:
 		var sick_crews = []
 		for crew_id in crew_ids:
 			var crew : CrewMember = crew_members[crew_id]
+			# room to crew contagion
+			room.visited_by(crew)
 			if crew.is_infected():
 				sick_crews.push_back(crew)
 			else:
 				healthy_crews.push_back(crew)
-		# healthy crew contamination
+		# crew to crew contagion
 		for crew in healthy_crews:
-			if is_room_contaminated:
-				crew.in_contaminated_room(room)
+#			if is_room_contaminated:
+#				crew.in_contaminated_room(room)
 			for crew2 in sick_crews:
 				crew.in_contact_with(crew2)
-		# contamine the room
-		if not is_room_contaminated:
-			for sick_crew in sick_crews:
-				room.contaminated_by_crew(sick_crew)
+#		# contamine the room
+#		if not is_room_contaminated:
+#			for sick_crew in sick_crews:
+#				room.contaminated_by_crew(sick_crew)
 
 func apply_task_effect(task: Task) -> void:
 	var effects = task.get_effect()

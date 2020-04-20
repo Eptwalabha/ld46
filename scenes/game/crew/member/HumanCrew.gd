@@ -36,8 +36,6 @@ func update_protection() -> void:
 func work_on(task) -> void:
 	if is_alive():
 		current_activity_state.work_on(task)
-	else:
-		print("dead mate")
 
 func productivity() -> float:
 	var health_ratio = current_health_state.productivity()

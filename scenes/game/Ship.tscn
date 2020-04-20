@@ -24,7 +24,6 @@ texture = ExtResource( 5 )
 [node name="Rooms" type="Node2D" parent="."]
 
 [node name="Command" parent="Rooms" instance=ExtResource( 6 )]
-modulate = Color( 1, 1, 1, 1 )
 position = Vector2( 328, 0 )
 
 [node name="Kitchen" parent="Rooms" instance=ExtResource( 8 )]
