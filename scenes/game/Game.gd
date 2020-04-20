@@ -23,11 +23,11 @@ func _ready() -> void:
 	$TaskFactory.game = self
 	tasks = task_factory.get_common_chores()
 	$GameUI.set_tasks(tasks)
-
 	crew_members = ship.get_crew_members()
 	for crew_name in crew_members:
 		schedule[crew_name] = []
-	var rooms = ship.get_rooms()
+
+	rooms = ship.get_rooms()
 
 	update_task_and_crew_count()
 	$GameUI.refresh(0)
