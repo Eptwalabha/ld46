@@ -23,14 +23,14 @@ func get_rooms() -> Dictionary:
 	var rooms = {}
 	for room in get_tree().get_nodes_in_group("ship-room"):
 		if room is ShipRoom:
-			rooms[room.room_id] = room
+			rooms[room.room_name] = room
 	return rooms
 
 func update_state() -> void:
 	distance_covered += speed_ua / 24.0
 	air_filter += 1
-	for room_id in rooms:
-		rooms[room_id].update_state()
+	for room_name in rooms:
+		rooms[room_name].update_state()
 
 func change_food(amount: int) -> void:
 	food = int(clamp(food + amount, 0, 999))

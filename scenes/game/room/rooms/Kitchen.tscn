@@ -14,3 +14,9 @@ texture = ExtResource( 2 )
 [node name="room-tile2" type="Sprite" parent="Positions" index="1"]
 position = Vector2( 32, 0 )
 texture = ExtResource( 2 )
+
+[node name="Label" parent="." index="1"]
+position = Vector2( -56, -24 )
+
+[node name="Label" parent="Label" index="0"]
+text = "room_kitchen"

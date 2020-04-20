@@ -9,3 +9,9 @@ max_people = 1
 
 [node name="room-tile" type="Sprite" parent="Positions" index="0"]
 texture = ExtResource( 2 )
+
+[node name="Label" parent="." index="1"]
+position = Vector2( -24, -24 )
+
+[node name="Label" parent="Label" index="0"]
+text = "room_technical_bay"

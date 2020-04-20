@@ -1,5 +1,8 @@
+tool
 class_name ShipRoom
 extends Node2D
+
+onready var label := $Label/Label as Label
 
 export(String) var room_name := ""
 export(bool) var closed := false
@@ -7,13 +10,10 @@ export(int) var max_people := 3
 export(bool) var contaminated := false
 export(bool) var contaminable := true
 
-var room_id : int
 var ship
 
-func _init() -> void:
-	room_id = GameData.get_id()
-
 func _ready() -> void:
+	label.text = tr(room_name)
 	ship = get_parent().get_parent()
 
 func update_state() -> void:
