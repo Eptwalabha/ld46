@@ -1,7 +1,6 @@
 class_name CrewMember
 extends Node2D
 
-export(Texture) var texture
 export(String) var crew_name = "no name"
 export(bool) var positive := false
 
@@ -92,4 +91,4 @@ func viral_test() -> bool:
 	return is_contamined
 
 func get_texture() -> Texture:
-	return texture
+	return $icon.texture

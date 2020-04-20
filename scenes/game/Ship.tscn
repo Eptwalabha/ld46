@@ -1,9 +1,9 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/game/Ship.gd" type="Script" id=1]
 [ext_resource path="res://scenes/game/room/rooms/TechnicalBay.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/game/crew/member/AndroidCrew.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/game/crew/member/HumanCrew.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/game/crew/member/crew/Isaac.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/game/crew/member/crew/Sam.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/imgs/ship/space-ship.png" type="Texture" id=5]
 [ext_resource path="res://scenes/game/room/rooms/Command.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/game/room/rooms/LivingQuarter.tscn" type="PackedScene" id=7]
@@ -11,9 +11,10 @@
 [ext_resource path="res://scenes/game/room/rooms/MedicalBay.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/game/room/rooms/PrivateQuarter.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/game/room/rooms/Engine.tscn" type="PackedScene" id=11]
-[ext_resource path="res://assets/imgs/picture-1.png" type="Texture" id=12]
-[ext_resource path="res://assets/imgs/picture-3.png" type="Texture" id=13]
-[ext_resource path="res://assets/imgs/picture-2.png" type="Texture" id=14]
+[ext_resource path="res://scenes/game/crew/member/crew/Helen.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/game/crew/member/crew/Yuri.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/game/crew/member/crew/Dave.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scenes/game/crew/member/crew/William.tscn" type="PackedScene" id=15]
 
 [node name="Ship" type="Node2D"]
 script = ExtResource( 1 )
@@ -44,43 +45,43 @@ position = Vector2( 160, 192 )
 
 [node name="WilliamQuarter" parent="Rooms" instance=ExtResource( 10 )]
 modulate = Color( 1, 1, 1, 1 )
-position = Vector2( -94.518, -214 )
+position = Vector2( -72, -240 )
 room_name = "room_private_quarter_2"
 room_id = "william"
 
 [node name="IsaacQuarter" parent="Rooms" instance=ExtResource( 10 )]
 modulate = Color( 1, 1, 1, 1 )
-position = Vector2( -95.259, -142 )
+position = Vector2( -72, -176 )
 room_name = "room_private_quarter_3"
 room_id = "isaac"
 
 [node name="HelenQuarter" parent="Rooms" instance=ExtResource( 10 )]
 modulate = Color( 1, 1, 1, 1 )
-position = Vector2( -95.259, -70 )
+position = Vector2( -72, -110 )
 room_name = "room_private_quarter_4"
 room_id = "helen"
 
 [node name="DaveQuarter" parent="Rooms" instance=ExtResource( 10 )]
 modulate = Color( 1, 1, 1, 1 )
-position = Vector2( -96, 72 )
+position = Vector2( -72, 104 )
 room_name = "room_private_quarter_5"
 room_id = "dave"
 
 [node name="SamQuarter" parent="Rooms" instance=ExtResource( 10 )]
 modulate = Color( 1, 1, 1, 1 )
-position = Vector2( -95.259, 144 )
+position = Vector2( -72, 168 )
 room_name = "room_private_quarter_6"
 room_id = "sam"
 
 [node name="YuriQuarter" parent="Rooms" instance=ExtResource( 10 )]
 modulate = Color( 1, 1, 1, 1 )
-position = Vector2( -95.753, 216 )
+position = Vector2( -72, 232 )
 room_name = "room_private_quarter_7"
 room_id = "yuri"
 
 [node name="TechnicalBay" parent="Rooms" instance=ExtResource( 2 )]
 modulate = Color( 1, 1, 1, 1 )
-position = Vector2( -184, 0 )
+position = Vector2( -144, 0 )
 
 [node name="Engine1" parent="Rooms" instance=ExtResource( 11 )]
 modulate = Color( 1, 1, 1, 1 )
@@ -94,32 +95,14 @@ room_id = "engine2"
 
 [node name="Crew" type="Node2D" parent="."]
 
-[node name="Hal" parent="Crew" instance=ExtResource( 3 )]
-visible = false
-texture = ExtResource( 12 )
-crew_name = "hal"
-positive = true
+[node name="Helen" parent="Crew" instance=ExtResource( 12 )]
 
-[node name="William" parent="Crew" instance=ExtResource( 4 )]
-texture = ExtResource( 14 )
-crew_name = "william"
-
-[node name="Isaac" parent="Crew" instance=ExtResource( 4 )]
-texture = ExtResource( 13 )
-crew_name = "isaac"
-
-[node name="Helen" parent="Crew" instance=ExtResource( 4 )]
-visible = false
-crew_name = "helen"
-
-[node name="Dave" parent="Crew" instance=ExtResource( 4 )]
-texture = ExtResource( 12 )
-crew_name = "dave"
+[node name="Yuri" parent="Crew" instance=ExtResource( 13 )]
 
 [node name="Sam" parent="Crew" instance=ExtResource( 4 )]
-visible = false
-crew_name = "sam"
 
-[node name="Yuri" parent="Crew" instance=ExtResource( 4 )]
-visible = false
-crew_name = "yuri"
+[node name="Isaac" parent="Crew" instance=ExtResource( 3 )]
+
+[node name="William" parent="Crew" instance=ExtResource( 15 )]
+
+[node name="Dave" parent="Crew" instance=ExtResource( 14 )]
