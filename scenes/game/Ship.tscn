@@ -35,48 +35,35 @@ position = Vector2( 160, 0 )
 [node name="MedicalBay" parent="Rooms" instance=ExtResource( 9 )]
 position = Vector2( 224, 136 )
 
-[node name="PrivateQuarters" type="Node2D" parent="Rooms"]
-position = Vector2( -64.494, 0 )
-
-[node name="PrivateQuarter1" parent="Rooms/PrivateQuarters" instance=ExtResource( 10 )]
-position = Vector2( 47.506, -168 )
-room_name = "room_private_quarter_1"
-room_id = "private1"
-
-[node name="PrivateQuarter2" parent="Rooms/PrivateQuarters" instance=ExtResource( 10 )]
-position = Vector2( 47.753, -96 )
+[node name="WilliamQuarter" parent="Rooms" instance=ExtResource( 10 )]
+position = Vector2( -62.518, -214 )
 room_name = "room_private_quarter_2"
-room_id = "private2"
+room_id = "william"
 
-[node name="PrivateQuarter3" parent="Rooms/PrivateQuarters" instance=ExtResource( 10 )]
-position = Vector2( -48.247, -168 )
+[node name="IsaacQuarter" parent="Rooms" instance=ExtResource( 10 )]
+position = Vector2( -63.259, -142 )
 room_name = "room_private_quarter_3"
-room_id = "private3"
+room_id = "isaac"
 
-[node name="PrivateQuarter4" parent="Rooms/PrivateQuarters" instance=ExtResource( 10 )]
-position = Vector2( -48.247, -96 )
+[node name="HelenQuarter" parent="Rooms" instance=ExtResource( 10 )]
+position = Vector2( -63.259, -70 )
 room_name = "room_private_quarter_4"
-room_id = "private4"
+room_id = "helen"
 
-[node name="PrivateQuarter5" parent="Rooms/PrivateQuarters" instance=ExtResource( 10 )]
-position = Vector2( 47.753, 168 )
+[node name="DaveQuarter" parent="Rooms" instance=ExtResource( 10 )]
+position = Vector2( -64, 72 )
 room_name = "room_private_quarter_5"
-room_id = "private5"
+room_id = "dave"
 
-[node name="PrivateQuarter6" parent="Rooms/PrivateQuarters" instance=ExtResource( 10 )]
-position = Vector2( 47.753, 96 )
+[node name="SamQuarter" parent="Rooms" instance=ExtResource( 10 )]
+position = Vector2( -63.259, 144 )
 room_name = "room_private_quarter_6"
-room_id = "private6"
+room_id = "sam"
 
-[node name="PrivateQuarter7" parent="Rooms/PrivateQuarters" instance=ExtResource( 10 )]
-position = Vector2( -48, 168 )
+[node name="YuriQuarter" parent="Rooms" instance=ExtResource( 10 )]
+position = Vector2( -63.753, 216 )
 room_name = "room_private_quarter_7"
-room_id = "private7"
-
-[node name="PrivateQuarter8" parent="Rooms/PrivateQuarters" instance=ExtResource( 10 )]
-position = Vector2( -48.247, 96 )
-room_name = "room_private_quarter_8"
-room_id = "private8"
+room_id = "yuri"
 
 [node name="TechnicalBay" parent="Rooms" instance=ExtResource( 2 )]
 position = Vector2( -216, 0 )
@@ -102,11 +89,11 @@ crew_name = "william"
 [node name="Isaac" parent="Crew" instance=ExtResource( 4 )]
 crew_name = "isaac"
 
-[node name="Dave" parent="Crew" instance=ExtResource( 4 )]
-crew_name = "dave"
-
 [node name="Helen" parent="Crew" instance=ExtResource( 4 )]
 crew_name = "helen"
+
+[node name="Dave" parent="Crew" instance=ExtResource( 4 )]
+crew_name = "dave"
 
 [node name="Sam" parent="Crew" instance=ExtResource( 4 )]
 crew_name = "sam"

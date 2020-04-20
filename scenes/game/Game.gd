@@ -31,8 +31,7 @@ func _ready() -> void:
 	
 	for crew_name in crew_members:
 		schedule[crew_name] = []
-		move_crew_member(crew_members[crew_name], living_room)
-
+		move_crew_anywhere(crew_members[crew_name])
 
 	update_task_and_crew_count()
 	$GameUI.refresh(0)
@@ -144,23 +143,6 @@ func update_task_and_crew_count() -> void:
 			tasks[task_id].crew_count = 0
 			tasks[task_id].assigned_crew = []
 
-func request_room_for_task(task_id: int) -> ShipRoom:
-	var room_id = tasks[task_id].room_id
-	if not rooms[room_id].is_full():
-		return rooms[room_id]
-	return living_room
-
-func move_crew_member(crew: CrewMember, next_room: ShipRoom) -> void:
-	var current_room_id = crew.room_id
-	if current_room_id == next_room.room_id:
-		return
-	if rooms.has(current_room_id):
-		var current_room : ShipRoom = rooms[current_room_id]
-		current_room.crew_leaves(crew.crew_name)
-	crew.position = next_room.crew_moves_in(crew.crew_name)
-	crew.room_id = next_room.room_id
-
-
 func apply_task_effect(task: Task) -> void:
 	var effects = task.get_effect()
 	for effect_key in effects:
@@ -190,7 +172,51 @@ func apply_task_effect(task: Task) -> void:
 
 func update_crew() -> void:
 	for crew_id in crew_members:
-		crew_members[crew_id].update_state(hour)
+		var crew = crew_members[crew_id]
+		crew.update_state(hour)
+		match crew.update_position():
+			"": pass
+			"work": move_crew_for_work(crew)
+			"random": move_crew_anywhere(crew)
+			"my-quarter": move_crew_member(crew, crew.crew_name)
+			var room_id : move_crew_member(crew, room_id)
+
+func request_room_for_task(task_id: int) -> ShipRoom:
+	var room_id = tasks[task_id].room_id
+	if is_room_available(room_id):
+		return rooms[room_id]
+	return living_room
+
+func is_room_available(room_id: String) -> bool:
+	return rooms.has(room_id) and rooms[room_id].is_available()
+
+func move_crew_member(crew: CrewMember, next_room_id: String, default_room_id: String = "living") -> void:
+	var current_room_id = crew.room_id
+	if current_room_id == next_room_id:
+		return
+	if not is_room_available(next_room_id):
+		next_room_id = default_room_id
+	var next_room = rooms[next_room_id]
+	if rooms.has(current_room_id):
+		var current_room : ShipRoom = rooms[current_room_id]
+		current_room.crew_leaves(crew.crew_name)
+	crew.position = next_room.crew_moves_in(crew.crew_name)
+	crew.room_id = next_room.room_id
+
+func move_crew_for_work(_crew: CrewMember) -> void:
+	pass
+
+func move_crew_anywhere(crew: CrewMember) -> void:
+	var free_rooms = []
+	for room_id in rooms:
+		var room : ShipRoom = rooms[room_id]
+		if is_room_available(room_id):
+			if room is ShipRoomPrivateQuarter and room.room_id != crew.crew_name:
+				continue
+			free_rooms.push_back(room.room_id)
+	if free_rooms.size() > 0:
+		var next_room : String = free_rooms[randi() % free_rooms.size()]
+		move_crew_member(crew, next_room)
 
 func check_ship_state() -> void:
 	pass

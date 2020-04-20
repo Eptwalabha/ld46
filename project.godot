@@ -119,6 +119,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/game/room/ShipRoom.gd"
 }, {
+"base": "ShipRoom",
+"class": "ShipRoomPrivateQuarter",
+"language": "GDScript",
+"path": "res://scenes/game/room/rooms/PrivateQuarter.gd"
+}, {
 "base": "Node",
 "class": "Task",
 "language": "GDScript",
@@ -202,6 +207,7 @@ _global_script_class_icons={
 "HumanCrew": "",
 "Ship": "",
 "ShipRoom": "",
+"ShipRoomPrivateQuarter": "",
 "Task": "",
 "TaskFactory": "",
 "UIAssignCrew": "",

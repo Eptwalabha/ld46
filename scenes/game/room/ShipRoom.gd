@@ -37,6 +37,9 @@ func exposed_to_virus(factor: float) -> void:
 	factor *= (1 - ship.air_filter_efficiency())
 	contaminated = randf() < factor
 
+func is_available() -> bool:
+	return not closed and not is_full()
+
 func is_full() -> bool:
 	for index in spaces:
 		if spaces[index] == "":

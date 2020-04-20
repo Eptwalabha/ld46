@@ -44,6 +44,9 @@ func work_on(task) -> void:
 	if is_alive():
 		current_activity_state.work_on(task)
 
+func update_position() -> String:
+	return current_activity_state.position()
+
 func productivity() -> float:
 	var health_ratio = current_health_state.productivity()
 	var activity_productivity = current_activity_state.productivity()
