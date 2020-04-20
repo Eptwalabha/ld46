@@ -44,3 +44,5 @@ ui_give_mask,Mask,Masque
 ui_test,Test,Dépister
 ui_assigne_crew_to_give_mask,Select crew to equip with mask,Sélectionner les personnes à qui donner un masque
 ui_assigne_crew_to_test,Select crew to test,Sélectionner les personnes à dépister
+ui_btn_heal,Heal,Soigner
+ui_btn_clean,Clean,Nettoyer

@@ -1,0 +1,109 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/game/ui/window/Window.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/game/ui/crew/UICrewVignette.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/game/ui/crew/UICrewDetailsOLD.gd" type="Script" id=3]
+
+[node name="CrewDetails" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+title = "title"
+closable = true
+
+[node name="Title" parent="MarginContainer/Content/Header/Content" index="0"]
+text = "ui_window_crew_details"
+
+[node name="Control" type="Control" parent="MarginContainer/Content/Body" index="0"]
+margin_right = 1004.0
+margin_bottom = 552.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Crew" type="VBoxContainer" parent="MarginContainer/Content/Body/Control" index="0"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stats" type="HBoxContainer" parent="MarginContainer/Content/Body/Control/Crew" index="0"]
+margin_right = 1004.0
+margin_bottom = 120.0
+
+[node name="Vignette" parent="MarginContainer/Content/Body/Control/Crew/Stats" index="0" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 84.0
+margin_bottom = 120.0
+
+[node name="Task" type="VBoxContainer" parent="MarginContainer/Content/Body/Control/Crew" index="1"]
+margin_top = 124.0
+margin_right = 1004.0
+margin_bottom = 527.0
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="MarginContainer/Content/Body/Control/Crew/Task" index="0"]
+margin_right = 1004.0
+margin_bottom = 13.0
+text = "ui_crew_tasks"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Content/Body/Control/Crew/Task" index="1"]
+margin_top = 17.0
+margin_right = 1004.0
+margin_bottom = 403.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Content/Body/Control/Crew/Task/ScrollContainer" index="0"]
+
+[node name="Menu" type="HBoxContainer" parent="MarginContainer/Content/Body/Control/Crew" index="2"]
+margin_top = 531.0
+margin_right = 1004.0
+margin_bottom = 552.0
+size_flags_vertical = 9
+
+[node name="Medical" type="HBoxContainer" parent="MarginContainer/Content/Body/Control/Crew/Menu" index="0"]
+margin_right = 700.0
+margin_bottom = 21.0
+size_flags_horizontal = 3
+
+[node name="Check" type="ToolButton" parent="MarginContainer/Content/Body/Control/Crew/Menu/Medical" index="0"]
+margin_right = 102.0
+margin_bottom = 21.0
+text = "ui_action_check"
+
+[node name="Heal" type="ToolButton" parent="MarginContainer/Content/Body/Control/Crew/Menu/Medical" index="1"]
+margin_left = 106.0
+margin_right = 199.0
+margin_bottom = 21.0
+text = "ui_action_heal"
+
+[node name="Mask" type="ToolButton" parent="MarginContainer/Content/Body/Control/Crew/Menu/Medical" index="2"]
+margin_left = 203.0
+margin_right = 302.0
+margin_bottom = 21.0
+text = "ui_action_mask"
+
+[node name="Human" type="HBoxContainer" parent="MarginContainer/Content/Body/Control/Crew/Menu" index="1"]
+margin_left = 704.0
+margin_right = 1004.0
+margin_bottom = 21.0
+
+[node name="Break" type="ToolButton" parent="MarginContainer/Content/Body/Control/Crew/Menu/Human" index="0"]
+margin_right = 100.0
+margin_bottom = 21.0
+text = "ui_action_break"
+
+[node name="Drink" type="ToolButton" parent="MarginContainer/Content/Body/Control/Crew/Menu/Human" index="1"]
+margin_left = 104.0
+margin_right = 201.0
+margin_bottom = 21.0
+text = "ui_action_drink"
+
+[node name="Food" type="ToolButton" parent="MarginContainer/Content/Body/Control/Crew/Menu/Human" index="2"]
+margin_left = 205.0
+margin_right = 300.0
+margin_bottom = 21.0
+text = "ui_action_food"

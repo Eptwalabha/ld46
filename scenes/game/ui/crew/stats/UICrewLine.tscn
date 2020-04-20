@@ -1,0 +1,82 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/game/ui/crew/stats/UICrewLine.gd" type="Script" id=1]
+[ext_resource path="res://scenes/game/ui/crew/stats/UIHumanLineStats.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/fonts/section_title.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/imgs/picture-1.png" type="Texture" id=4]
+
+[node name="CrewLine" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Margin" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/margin_top = 5
+custom_constants/margin_bottom = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="HBoxContainer" parent="Margin"]
+margin_top = 5.0
+margin_right = 1024.0
+margin_bottom = 595.0
+size_flags_horizontal = 3
+
+[node name="Selection" type="ColorRect" parent="Margin/Container"]
+margin_right = 8.0
+margin_bottom = 590.0
+rect_min_size = Vector2( 8, 0 )
+color = Color( 0, 0.501961, 0, 0 )
+
+[node name="Container" type="VBoxContainer" parent="Margin/Container"]
+margin_left = 12.0
+margin_right = 1024.0
+margin_bottom = 590.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CrewName" type="Label" parent="Margin/Container/Container"]
+margin_right = 1012.0
+margin_bottom = 18.0
+custom_fonts/font = ExtResource( 3 )
+text = "name"
+
+[node name="Infos" type="HBoxContainer" parent="Margin/Container/Container"]
+margin_top = 22.0
+margin_right = 1012.0
+margin_bottom = 590.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Picture" type="TextureRect" parent="Margin/Container/Container/Infos"]
+margin_right = 48.0
+margin_bottom = 568.0
+texture = ExtResource( 4 )
+stretch_mode = 3
+
+[node name="HumanLineStats" parent="Margin/Container/Container/Infos" instance=ExtResource( 2 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 52.0
+margin_right = 1012.0
+margin_bottom = 568.0
+size_flags_horizontal = 3
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="gui_input" from="ColorRect" to="." method="_on_ColorRect_gui_input"]

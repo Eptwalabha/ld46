@@ -5,7 +5,7 @@
 [ext_resource path="res://scenes/game/ui/crew/UICrewList.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/game/ui/tasks/UITaskDetail.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/game/ui/tasks/UIAssignCrew.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/game/ui/crew/UICrewDetails.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/game/ui/crew/UICrewDetailsOLD.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/game/ui/crew/UICrewSelection.tscn" type="PackedScene" id=7]
 
 [node name="GameUI" type="MarginContainer"]
@@ -63,6 +63,8 @@ margin_top = 262.0
 margin_right = 516.0
 margin_bottom = 520.0
 size_flags_vertical = 11
+title = "title"
+closable = true
 
 [node name="TaskList" parent="Container/Columns" instance=ExtResource( 1 )]
 anchor_right = 0.0
@@ -226,8 +228,6 @@ margin_bottom = 600.0
 [connection signal="on_window_closed" from="Container/Columns/Middle/Task/TaskDetail" to="." method="_on_UI_window_closed"]
 [connection signal="on_window_opened" from="Container/Columns/Middle/Task/TaskDetail" to="." method="_on_UI_window_opened"]
 [connection signal="assign_crew_members" from="Container/Columns/Middle/Task/AssignCrew" to="." method="_on_AssignCrew_assign_crew_members"]
-[connection signal="on_window_closed" from="Container/Columns/Middle/CrewDetails" to="." method="_on_UI_window_closed"]
-[connection signal="on_window_opened" from="Container/Columns/Middle/CrewDetails" to="." method="_on_UI_window_opened"]
 [connection signal="on_window_closed" from="Container/Columns/TaskList" to="." method="_on_UI_window_closed"]
 [connection signal="on_window_opened" from="Container/Columns/TaskList" to="." method="_on_UI_window_opened"]
 [connection signal="task_infos_requested" from="Container/Columns/TaskList" to="." method="_on_TaskList_task_infos_requested"]

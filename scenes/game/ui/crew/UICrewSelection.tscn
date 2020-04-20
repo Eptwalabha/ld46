@@ -80,23 +80,28 @@ margin_bottom = 331.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Lines" type="VBoxContainer" parent="Control/Window/Margin/Container/Crew"]
+[node name="Center" type="CenterContainer" parent="Control/Window/Margin/Container/Crew"]
 margin_right = 590.0
 margin_bottom = 292.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Line1" type="HBoxContainer" parent="Control/Window/Margin/Container/Crew/Lines"]
-margin_right = 590.0
+[node name="Lines" type="VBoxContainer" parent="Control/Window/Margin/Container/Crew/Center"]
+margin_left = 295.0
+margin_top = 142.0
+margin_right = 295.0
+margin_bottom = 150.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="Line2" type="HBoxContainer" parent="Control/Window/Margin/Container/Crew/Lines"]
+[node name="Line1" type="HBoxContainer" parent="Control/Window/Margin/Container/Crew/Center/Lines"]
+
+[node name="Line2" type="HBoxContainer" parent="Control/Window/Margin/Container/Crew/Center/Lines"]
 margin_top = 4.0
-margin_right = 590.0
 margin_bottom = 4.0
 
-[node name="Line3" type="HBoxContainer" parent="Control/Window/Margin/Container/Crew/Lines"]
+[node name="Line3" type="HBoxContainer" parent="Control/Window/Margin/Container/Crew/Center/Lines"]
 margin_top = 8.0
-margin_right = 590.0
 margin_bottom = 8.0
 
 [node name="Actions" type="HBoxContainer" parent="Control/Window/Margin/Container"]

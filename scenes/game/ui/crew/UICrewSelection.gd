@@ -3,7 +3,7 @@ extends Control
 
 signal crew_selection_confirmed(action, selected_crew, data)
 
-onready var crew_list := $Control/Window/Margin/Container/Crew/Lines as VBoxContainer
+onready var crew_list := $Control/Window/Margin/Container/Crew/Center/Lines as VBoxContainer
 
 var action : String = ""
 var data
