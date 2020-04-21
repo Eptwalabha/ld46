@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/game/Game.gd" type="Script" id=1]
 [ext_resource path="res://scenes/game/ui/GameUI.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/game/Ship.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/game/gameplay/tasks/TaskFactory.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/game/ui/wheel/ContextWheel2D.tscn" type="PackedScene" id=5]
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
@@ -12,6 +13,7 @@ ua_goal = 10.0
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -19,9 +21,16 @@ __meta__ = {
 
 [node name="Ship" parent="." instance=ExtResource( 3 )]
 position = Vector2( 607.91, 289.331 )
+scale = Vector2( 0.786764, 0.786764 )
 
 [node name="GameUI" parent="." instance=ExtResource( 2 )]
+mouse_default_cursor_shape = 11
 
 [node name="TaskFactory" parent="." instance=ExtResource( 4 )]
+
+[node name="ContextWheel" parent="." instance=ExtResource( 5 )]
+position = Vector2( 297.419, 300.918 )
 [connection signal="next_event_toggled" from="GameUI" to="." method="_on_GameUI_next_event_toggled"]
 [connection signal="next_hour_clicked" from="GameUI" to="." method="_on_GameUI_next_hour_clicked"]
+[connection signal="wheel_closed" from="ContextWheel" to="." method="_on_ContextWheel_wheel_closed"]
+[connection signal="wheel_opened" from="ContextWheel" to="." method="_on_ContextWheel_wheel_opened"]

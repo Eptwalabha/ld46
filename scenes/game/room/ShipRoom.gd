@@ -92,3 +92,8 @@ func _change_state(new_state: String) -> void:
 
 func contaminate() -> void:
 	_change_state("contaminated")
+
+
+func _on_Area2D_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.is_pressed() and event.button_index == BUTTON_LEFT:
+		print("click on %s (%s)" % [room_name, room_id])

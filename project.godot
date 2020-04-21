@@ -85,6 +85,16 @@ _global_script_classes=[ {
 "path": "res://scenes/game/gameplay/states/contagion/SickState.gd"
 }, {
 "base": "Node2D",
+"class": "ContextWheel2D",
+"language": "GDScript",
+"path": "res://scenes/game/ui/wheel/ContextWheel2D.gd"
+}, {
+"base": "Node2D",
+"class": "ContextWheelButton2D",
+"language": "GDScript",
+"path": "res://scenes/game/ui/wheel/ContextWheelButton2D.gd"
+}, {
+"base": "Node2D",
 "class": "CrewMember",
 "language": "GDScript",
 "path": "res://scenes/game/crew/CrewMember.gd"
@@ -245,6 +255,8 @@ _global_script_class_icons={
 "ContagionStateHealed": "",
 "ContagionStateHealthy": "",
 "ContagionStateSick": "",
+"ContextWheel2D": "",
+"ContextWheelButton2D": "",
 "CrewMember": "",
 "CrewStat": "",
 "Game": "",
@@ -279,7 +291,7 @@ _global_script_class_icons={
 [application]
 
 config/name="ld46"
-run/main_scene="res://scenes/splash/SplashScreen.tscn"
+run/main_scene="res://scenes/game/Game.tscn"
 boot_splash/image="res://assets/splash-screen/godot-logo-white.png"
 boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icon.png"

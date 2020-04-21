@@ -25,3 +25,6 @@ position = Vector2( 0, -32 )
 margin_left = -50.0
 margin_right = 50.0
 text = "room_engine"
+
+[node name="CollisionPolygon2D" parent="Area2D" index="0"]
+polygon = PoolVector2Array( -96, -32, 96, -32, 96, 32, -96, 32 )

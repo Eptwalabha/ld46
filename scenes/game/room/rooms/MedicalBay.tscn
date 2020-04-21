@@ -24,3 +24,6 @@ position = Vector2( 0, -32 )
 margin_left = -71.5
 margin_right = 71.5
 text = "room_medical_bay"
+
+[node name="CollisionPolygon2D" parent="Area2D" index="0"]
+polygon = PoolVector2Array( -64, -32, 64, -32, 64, 32, -64, 32 )

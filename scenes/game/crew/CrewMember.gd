@@ -1,6 +1,8 @@
 class_name CrewMember
 extends Node2D
 
+signal crew_clicked(crew)
+
 export(String) var crew_name = "no name"
 export(bool) var positive := false
 
@@ -98,3 +100,7 @@ func contaminated() -> void:
 
 func healed() -> void:
 	pass
+
+func _on_Area2D_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton and event.is_pressed() and event.button_index == BUTTON_LEFT:
+		emit_signal("crew_clicked", self)

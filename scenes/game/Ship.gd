@@ -11,6 +11,7 @@ var air_filter : float = 1.0
 
 func _ready() -> void:
 	rooms = get_rooms()
+	set_process_unhandled_input(true)
 
 func get_crew_members() -> Dictionary:
 	var crew_members = {}

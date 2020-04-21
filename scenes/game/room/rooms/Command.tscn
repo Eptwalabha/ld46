@@ -27,3 +27,6 @@ rotation = -4.71238
 margin_left = -61.5
 margin_right = 61.5
 text = "room_command"
+
+[node name="CollisionPolygon2D" parent="Area2D" index="0"]
+polygon = PoolVector2Array( -32, -96, 32, -96, 32, 96, -32, 96 )

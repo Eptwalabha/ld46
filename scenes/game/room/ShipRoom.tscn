@@ -45,3 +45,11 @@ script = ExtResource( 4 )
 
 [node name="Contaminated" type="Node" parent="States"]
 script = ExtResource( 5 )
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+monitoring = false
+monitorable = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+[connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]

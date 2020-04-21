@@ -7,6 +7,7 @@ var TASK_STATE = preload("res://script/game_enum.gd").TASK_STATE
 onready var ui := $GameUI as GameUI
 onready var ship := $Ship as Ship
 onready var task_factory := $TaskFactory
+onready var wheel := $ContextWheel as ContextWheel2D
 
 export(int) var hours_before_next_heal = 24
 var heal_count := 0.0
@@ -41,6 +42,7 @@ func _ready() -> void:
 	crew_members = ship.get_crew_members()
 	var nbr_contaminated = 0
 	for crew_name in crew_members:
+		crew_members[crew_name].connect("crew_clicked", self, "_on_crew_clicked")
 		schedule[crew_name] = []
 		ship.move_crew_anywhere(crew_members[crew_name])
 		if randf() > .5 and nbr_contaminated < 4:
@@ -111,6 +113,7 @@ func next_event() -> void:
 	ui.next_event_over()
 
 func next_hour() -> void:
+	wheel.close()
 	hour += 1
 	update_crew()
 	update_tasks()
@@ -333,3 +336,13 @@ func _on_GameUI_next_hour_clicked() -> void:
 		return
 	next_hour()
 	var _a = check_game_over()
+
+func _on_crew_clicked(crew: CrewMember) -> void:
+	wheel.open(crew)
+
+
+func _on_ContextWheel_wheel_closed(crew_name) -> void:
+	print("close context menu for crew %s" % crew_name)
+
+func _on_ContextWheel_wheel_opened(crew_name) -> void:
+	print("open context menu for crew %s" % crew_name)
