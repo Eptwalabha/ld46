@@ -10,12 +10,15 @@ signal pause_crew_clicked(crew_name)
 signal move_crew_clicked(crew_name)
 
 onready var anim = $AnimationPlayer as AnimationPlayer
+onready var heal_counter = $Heal/Label/Label as Label
+onready var mask_counter = $Mask/Label/Label as Label
 
 var current_crew_name
 var opened := true
 
 func _ready() -> void:
-	hide() 
+	hide()
+	refresh()
 
 func open(crew) -> void:
 	if crew.crew_name == current_crew_name and opened:
@@ -48,3 +51,9 @@ func on_wheel_button_clicked(button_id) -> void:
 		"food": emit_signal("give_food_clicked", current_crew_name)
 		"water": emit_signal("give_water_clicked", current_crew_name)
 		_: pass
+
+func refresh() -> void:
+	var game = get_parent()
+	mask_counter.text = str(game.nbr_masks)
+	heal_counter.text = str(game.ttl_heal)
+	heal_counter.visible = game.ttl_heal > 0
