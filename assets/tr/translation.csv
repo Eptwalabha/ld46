@@ -47,3 +47,5 @@ ui_assigne_crew_to_test,Select crew to test,Sélectionner les personnes à dépi
 ui_btn_heal,Heal,Soigner
 ui_btn_clean,Clean,Nettoyer
 ui_assigne_crew_to_heal,Select who has to be healed,Sélectionner qui doit se faire soigner
+ui_room_selection_details,Move this crew member to,Déplacer cette personne 
+ui_window_room_selection,Move,Déplacer

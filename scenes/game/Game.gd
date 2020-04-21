@@ -41,6 +41,7 @@ func _ready() -> void:
 		if randf() > .5 and nbr_contaminated < 4:
 			nbr_contaminated += 1
 			crew_members[crew_name].contaminated()
+			crew_members[crew_name].update_visual_state()
 			
 
 	var room_keys = rooms.keys()
@@ -51,6 +52,7 @@ func _ready() -> void:
 		if rooms[room_id].contaminable:
 			nbr_contaminated += 1
 			rooms[room_id].contaminate()
+			rooms[room_id].current_room_state.update_visual()
 			room_keys.remove(i)
 
 	update_task_and_crew_count()

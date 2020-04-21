@@ -1,6 +1,6 @@
 extends Control
 
-signal crew_member_selected(crew_name)
+signal crew_member_selected(crew)
 
 #var HumanStats = load("res://scenes/game/ui/crew/stats/UIHumanLineStats.tscn")
 #var AndroidStats = load("res://scenes/game/ui/crew/stats/UIAndroidLineStats.tscn")
@@ -22,7 +22,7 @@ func refresh() -> void:
 
 func _on_ColorRect_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.is_pressed():
-		emit_signal("crew_member_selected", crew.crew_name)
+		emit_signal("crew_member_selected", crew)
 
 func selected(selected: bool) -> void:
 	is_selected = selected

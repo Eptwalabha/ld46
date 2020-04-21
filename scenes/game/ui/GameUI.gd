@@ -10,12 +10,13 @@ onready var crew_list := $Container/Columns/CrewList as UICrewList
 onready var tasks_list := $Container/Columns/TaskList as UITaskList
 onready var task_detail := $Container/Columns/Middle/Task/TaskDetail as UITaskDetail
 onready var crew_assignment := $Container/Columns/Middle/Task/AssignCrew as UIAssignCrew
-onready var crew_details := $Container/Columns/Middle/CrewDetails as UICrewDetails
+#onready var crew_details := $Container/Columns/Middle/CrewDetails as UICrewDetails
 onready var next_event := $Container/Actions/Container/NextEvent as Button
 onready var next_hour := $Container/Actions/Container/NextHour as Button
 onready var crew_button := $Container/Actions/Container/Crew as Button
 onready var task_button := $Container/Actions/Container/Task as Button
 onready var crew_selection := $CrewSelection as UICrewSelection
+onready var room_selection := $RoomSelection as UIRoomSelection
 onready var mask_counter := $Container/Actions/Container/Mask/Counter as Label
 onready var ttl_heal_counter := $Container/Actions/Container/Heal/Counter as Label
 
@@ -30,6 +31,7 @@ func set_ship(the_ship: Ship) -> void:
 	var crew_members = ship.get_crew_members()
 	crew_list.set_crew_members(crew_members)
 	crew_selection.prepare(crew_members)
+	room_selection.prepare(ship.get_rooms())
 
 func set_tasks(tasks: Dictionary) -> void:
 	tasks_list.set_tasks_list(tasks)
@@ -124,3 +126,9 @@ func _on_Mask_pressed() -> void:
 
 func _on_Heal_pressed() -> void:
 	crew_selection.open("heal", [], null, 1, "ui_assigne_crew_to_heal")
+
+func _on_RoomSelection_room_selected(crew: CrewMember, room_id: String) -> void:
+	ship.move_crew_member(crew, room_id)
+
+func _on_CrewList_on_crew_selected(crew_id) -> void:
+	room_selection.open(crew_id)

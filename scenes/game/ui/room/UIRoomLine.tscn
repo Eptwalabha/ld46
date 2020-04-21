@@ -1,0 +1,60 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/game/ui/room/UIRoomLine.gd" type="Script" id=1]
+[ext_resource path="res://assets/fonts/section_title.tres" type="DynamicFont" id=2]
+
+[node name="RoomLine" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/margin_right = 5
+custom_constants/margin_top = 5
+custom_constants/margin_left = 5
+custom_constants/margin_bottom = 5
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 1019.0
+margin_bottom = 595.0
+color = Color( 0.0941176, 0.0941176, 0.0941176, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Margin" type="MarginContainer" parent="."]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 1019.0
+margin_bottom = 595.0
+custom_constants/margin_right = 20
+custom_constants/margin_left = 20
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Margin"]
+margin_left = 20.0
+margin_top = 279.0
+margin_right = 994.0
+margin_bottom = 311.0
+rect_min_size = Vector2( 0, 32 )
+custom_fonts/font = ExtResource( 2 )
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 1019.0
+margin_bottom = 595.0
+color = Color( 0.0941176, 0.0941176, 0.0941176, 0 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="gui_input" from="ColorRect2" to="." method="_on_gui_input"]
