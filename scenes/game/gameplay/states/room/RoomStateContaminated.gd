@@ -34,7 +34,7 @@ func visited_by(crew) -> void:
 	if crew.is_infected():
 		sick_crew += 1
 
-func contaminated_by_crew(crew) -> void:
+func contaminated_by_crew(_crew) -> void:
 	pass
 
 func state_name() -> String:

@@ -2,7 +2,7 @@ class_name HumanCrew
 extends CrewMember
 
 export(int) var mask_ttl := 0
-export(int) var mask_lifespan := 10
+export(int) var mask_lifespan := 12
 
 var wake_up_since := 0
 

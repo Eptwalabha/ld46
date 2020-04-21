@@ -52,6 +52,7 @@ func refresh(hour: int) -> void:
 func refresh_menu() -> void:
 	mask_counter.text = str(game.nbr_masks)
 	ttl_heal_counter.text = str(game.ttl_heal)
+	ttl_heal_counter.visible = game.ttl_heal > 0
 	$Container/Actions/Container/Mask.disabled = game.nbr_masks == 0
 	$Container/Actions/Container/Heal.disabled = game.ttl_heal > 0
 
@@ -92,7 +93,6 @@ func _on_TaskList_task_infos_requested(task_id) -> void:
 	crew_assignment.close(true)
 
 func _on_TaskDetail_assignment_requested(task_id) -> void:
-	var crew_members = game.get_crew_members()
 	var assigned_crew = []
 	for crew in game.get_assigned_crew(task_id):
 		assigned_crew.push_back(crew.crew_name)

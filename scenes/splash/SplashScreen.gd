@@ -8,4 +8,4 @@ func _input(event: InputEvent) -> void:
 		pass
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
-	pass
+	get_tree().change_scene("res://scenes/game/Game.tscn")

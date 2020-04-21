@@ -20,11 +20,11 @@ func get_crew_members() -> Dictionary:
 	return crew_members
 
 func get_rooms() -> Dictionary:
-	var rooms = {}
+	var the_rooms = {}
 	for room in get_tree().get_nodes_in_group("ship-room"):
 		if room is ShipRoom:
-			rooms[room.room_id] = room
-	return rooms
+			the_rooms[room.room_id] = room
+	return the_rooms
 
 func update_state() -> void:
 	distance_covered += speed_ua / 24.0

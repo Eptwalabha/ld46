@@ -49,3 +49,8 @@ ui_btn_clean,Clean,Nettoyer
 ui_assigne_crew_to_heal,Select who has to be healed,Sélectionner qui doit se faire soigner
 ui_room_selection_details,Move this crew member to,Déplacer cette personne 
 ui_window_room_selection,Move,Déplacer
+game_over,GAME OVER,GAME OVER
+game_over_details,All crew members are dead\nYou will never reach Earth again,Tout les membres de l’équipage sont décédés\nVous ne pouvez plus atteindre la Terre
+ui_replay,Replay,Rejouer
+victory,Congratulation !,Félicitation !
+victory_details,You came to Hearth...\nWith an extraterrestrial pathogen,Vous êtes arrivé sur Terre...\nAvec un agent pathogène extra-terrestre

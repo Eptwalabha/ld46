@@ -9,11 +9,15 @@ onready var ship := $Ship as Ship
 onready var task_factory := $TaskFactory
 
 export(int) var hours_before_next_heal = 24
+var heal_count := 0.0
 var ttl_heal := 0
 var hour : int = 0
 var ua : float = 0.0
 export(float) var ua_goal := 30 # neptune
 var until_next_event := false
+
+export(int) var mask_batch_period = 12
+var next_mask_batch := 12
 
 var tasks = {}
 var crew_members = {}
@@ -26,6 +30,7 @@ var nbr_tests = 2
 
 func _ready() -> void:
 	randomize()
+	next_mask_batch = mask_batch_period
 	$GameUI.set_ship(ship)
 	$TaskFactory.game = self
 	tasks = task_factory.get_common_chores()
@@ -93,11 +98,13 @@ func next_event() -> void:
 		return
 	until_next_event = true
 	var fail_safe = hour + 100
-	while not game_over and until_next_event:
+	var amount = 0
+	while not game_over and until_next_event and amount < 10:
 		next_hour()
 		if check_game_over():
 			break
 		yield(get_tree().create_timer(.1), "timeout")
+		amount += 1
 		if hour >= fail_safe:
 			break
 	until_next_event = false
@@ -111,27 +118,38 @@ func next_hour() -> void:
 	ship.update_state()
 	if ttl_heal > 0:
 		ttl_heal -= 1
+	next_mask_batch -= 1
+	if next_mask_batch == 0:
+		nbr_masks += 2
+		next_mask_batch = mask_batch_period
 	ui.refresh(hour)
 	spawn_random_events()
 #	process_events()
 
 func heal_crew(crew_name) -> void:
-	ttl_heal = hours_before_next_heal
+	ttl_heal = hours_before_next_heal + int(heal_count * 24)
+	heal_count += .5
 	crew_members[crew_name].healed()
 	ui.refresh_menu()
 	
 func check_game_over() -> bool:
-	if is_ship_clean() and all_crew_healthy():
-		until_next_event = false
-		game_over = true
-		var _err = get_tree().change_scene("res://scenes/cutscenes/GameOver.tscn")
-		return true
-	elif ship.distance_covered >= ua_goal:
+	if is_ship_clean() and all_crew_healthy() or ship.distance_covered >= ua_goal:
 		until_next_event = false
 		game_over = true
 		var _err = get_tree().change_scene("res://scenes/cutscenes/Victory.tscn")
 		return true
+	elif all_crew_are_dead():
+		until_next_event = false
+		var _err = get_tree().change_scene("res://scenes/cutscenes/GameOver.tscn")
+		game_over = true
+		return true
 	return false
+
+func all_crew_are_dead() -> bool:
+	for crew_name in crew_members:
+		if crew_members[crew_name].is_alive():
+			return false
+	return true
 
 func is_ship_clean() -> bool:
 	var contaminated_rooms = 0
@@ -204,7 +222,6 @@ func update_contagion() -> void:
 	for room_id in rooms:
 		var room : ShipRoom = rooms[room_id]
 		var crew_ids = room.get_current_occupants()
-		var is_room_contaminated = room.is_contaminated()
 		var healthy_crews = []
 		var sick_crews = []
 		for crew_id in crew_ids:
@@ -217,14 +234,8 @@ func update_contagion() -> void:
 				healthy_crews.push_back(crew)
 		# crew to crew contagion
 		for crew in healthy_crews:
-#			if is_room_contaminated:
-#				crew.in_contaminated_room(room)
 			for crew2 in sick_crews:
 				crew.in_contact_with(crew2)
-#		# contamine the room
-#		if not is_room_contaminated:
-#			for sick_crew in sick_crews:
-#				room.contaminated_by_crew(sick_crew)
 
 func apply_task_effect(task: Task) -> void:
 	var effects = task.get_effect()
@@ -268,6 +279,7 @@ func update_crew_position(crew: CrewMember) -> void:
 		"work": move_crew_for_work(crew)
 		"random": ship.move_crew_anywhere(crew)
 		"my-quarter": ship.move_crew_member(crew, crew.crew_name)
+		# warning-ignore:unassigned_variable
 		var room_id:
 			ship.move_crew_member(crew, room_id)
 
@@ -320,4 +332,4 @@ func _on_GameUI_next_hour_clicked() -> void:
 	if game_over:
 		return
 	next_hour()
-	check_game_over()
+	var _a = check_game_over()

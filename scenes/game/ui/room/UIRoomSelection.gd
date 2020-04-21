@@ -31,7 +31,7 @@ func _on_Confirm_pressed() -> void:
 func _on_Cancel_pressed() -> void:
 	hide()
 
-func _on_Window_on_window_closed(window) -> void:
+func _on_Window_on_window_closed(_window) -> void:
 	hide()
 
 func _on_ColorRect_gui_input(event: InputEvent) -> void:

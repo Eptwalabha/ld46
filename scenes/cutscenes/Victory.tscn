@@ -1,11 +1,84 @@
-[gd_scene format=2]
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/fonts/window_title.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/fonts/section_title.tres" type="DynamicFont" id=2]
+[ext_resource path="res://scenes/cutscenes/GameOver.gd" type="Script" id=3]
 
 [node name="Victory" type="Node"]
+script = ExtResource( 3 )
 
-[node name="Label" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 13.0
-text = "ui_victory"
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Center" type="CenterContainer" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Container" type="VBoxContainer" parent="Control/Center"]
+margin_left = 457.0
+margin_top = 247.0
+margin_right = 566.0
+margin_bottom = 352.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Control/Center/Container"]
+margin_right = 109.0
+margin_bottom = 20.0
+custom_fonts/font = ExtResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "victory"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Margin" type="MarginContainer" parent="Control/Center/Container"]
+margin_top = 24.0
+margin_right = 109.0
+margin_bottom = 82.0
+custom_constants/margin_top = 20
+custom_constants/margin_bottom = 20
+
+[node name="Label2" type="Label" parent="Control/Center/Container/Margin"]
+margin_top = 20.0
+margin_right = 109.0
+margin_bottom = 38.0
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "victory_details"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Center" type="CenterContainer" parent="Control/Center/Container"]
+margin_top = 86.0
+margin_right = 109.0
+margin_bottom = 105.0
+
+[node name="Button" type="Button" parent="Control/Center/Container/Center"]
+margin_left = 23.0
+margin_right = 85.0
+margin_bottom = 19.0
+text = "ui_replay"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="Control/Center/Container/Center/Button" to="." method="_on_replay_pressed"]

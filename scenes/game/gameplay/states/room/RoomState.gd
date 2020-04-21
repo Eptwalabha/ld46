@@ -21,10 +21,10 @@ func is_contaminated() -> bool:
 func get_contamination_factor() -> float:
 	return 0.0
 
-func visited_by(crew) -> void:
+func visited_by(_crew) -> void:
 	pass
 
-func contaminated_by_crew(crew) -> void:
+func contaminated_by_crew(_crew) -> void:
 	pass
 
 func is_available() -> bool:

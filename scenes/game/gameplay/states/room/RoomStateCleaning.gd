@@ -21,7 +21,7 @@ func is_contaminated() -> bool:
 func get_contamination_factor() -> float:
 	return 0.2 if is_contaminated() else 0.0
 
-func contaminated_by_crew(crew) -> void:
+func contaminated_by_crew(_crew) -> void:
 	pass
 
 func is_available() -> bool:

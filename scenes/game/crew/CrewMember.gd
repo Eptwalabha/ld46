@@ -59,10 +59,10 @@ func get_health() -> int:
 func update_protection() -> void:
 	pass
 
-func in_contact_with(crew) -> void:
+func in_contact_with(_crew) -> void:
 	pass
 
-func in_contaminated_room(room) -> void:
+func in_contaminated_room(_room) -> void:
 	pass
 
 func get_location_request() -> String:
