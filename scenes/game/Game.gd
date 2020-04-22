@@ -131,10 +131,11 @@ func next_hour() -> void:
 #	process_events()
 
 func heal_crew(crew_name) -> void:
-	ttl_heal = hours_before_next_heal + int(heal_count * 24)
-	heal_count += .5
-	crew_members[crew_name].healed()
-	refresh_menu()
+	if ttl_heal == 0:
+		ttl_heal = hours_before_next_heal + int(heal_count * 24)
+		heal_count += .5
+		crew_members[crew_name].healed()
+		refresh_menu()
 	
 func check_game_over() -> bool:
 	if is_ship_clean() and all_crew_healthy() or ship.distance_covered >= ua_goal:
@@ -297,14 +298,11 @@ func move_crew_for_work(crew: CrewMember) -> void:
 			return
 	ship.move_crew_anywhere(crew)
 
-func give_mask_to(crew_list: Array) -> void:
-	for crew_name in crew_list:
-		if nbr_masks <= 0:
-			break
-		if crew_members[crew_name] is HumanCrew:
-			crew_members[crew_name].give_mask()
-			nbr_masks -= 1
-	refresh_menu()
+func give_mask_to(crew_name) -> void:
+	if nbr_masks > 0 and crew_members[crew_name] is HumanCrew:
+		crew_members[crew_name].give_mask()
+		nbr_masks -= 1
+		refresh_menu()
 
 func test_crew(crew_list: Array) -> void:
 	for crew_name in crew_list:
@@ -343,10 +341,16 @@ func _on_crew_clicked(crew: CrewMember) -> void:
 
 func refresh_menu() -> void:
 	wheel.refresh()
-	ui.refresh_menu()
 
 func _on_ContextWheel_wheel_closed(crew_name) -> void:
 	pass
 
 func _on_ContextWheel_wheel_opened(crew_name) -> void:
 	pass
+
+func _on_ContextWheel_give_mask_clicked(crew_name) -> void:
+	give_mask_to(crew_name)
+
+func _on_ContextWheel_heal_crew_clicked(crew_name) -> void:
+	heal_crew(crew_name)
+	wheel.close()

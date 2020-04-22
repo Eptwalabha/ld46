@@ -5,6 +5,7 @@ signal wheel_opened(crew_name)
 signal wheel_closed(crew_name)
 signal give_water_clicked(crew_name)
 signal give_food_clicked(crew_name)
+signal give_mask_clicked(crew_name)
 signal heal_crew_clicked(crew_name)
 signal pause_crew_clicked(crew_name)
 signal move_crew_clicked(crew_name)
@@ -19,6 +20,10 @@ var opened := true
 func _ready() -> void:
 	hide()
 	refresh()
+	for button in get_children():
+		if button is ContextWheelButton2D:
+			if button.connect("on_context_wheel_button_clicked", self, "_on_wheel_button_clicked"):
+				button.hide()
 
 func open(crew) -> void:
 	if crew.crew_name == current_crew_name and opened:
@@ -41,7 +46,8 @@ func close() -> void:
 func is_open() -> bool:
 	return opened
 
-func on_wheel_button_clicked(button_id) -> void:
+func _on_wheel_button_clicked(button_id) -> void:
+	print("click on %s" % button_id)
 	if not opened:
 		return
 	match button_id:
@@ -50,6 +56,7 @@ func on_wheel_button_clicked(button_id) -> void:
 		"heal": emit_signal("heal_crew_clicked", current_crew_name)
 		"food": emit_signal("give_food_clicked", current_crew_name)
 		"water": emit_signal("give_water_clicked", current_crew_name)
+		"mask": emit_signal("give_mask_clicked", current_crew_name)
 		_: pass
 
 func refresh() -> void:

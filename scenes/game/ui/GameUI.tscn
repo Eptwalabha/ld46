@@ -106,21 +106,30 @@ margin_top = 10.0
 margin_right = 1014.0
 margin_bottom = 62.0
 
+[node name="Crew" type="Button" parent="Container/Actions/Container"]
+margin_right = 81.0
+margin_bottom = 52.0
+toggle_mode = true
+pressed = true
+text = "ui_btn_crew"
+align = 2
+
 [node name="NextHour" type="Button" parent="Container/Actions/Container"]
-margin_right = 80.0
+margin_left = 85.0
+margin_right = 165.0
 margin_bottom = 52.0
 text = "ui_btn_next"
 
 [node name="NextEvent" type="Button" parent="Container/Actions/Container"]
-margin_left = 84.0
-margin_right = 185.0
+margin_left = 169.0
+margin_right = 270.0
 margin_bottom = 52.0
 toggle_mode = true
 text = "ui_btn_next_10"
 
 [node name="Stats" type="VBoxContainer" parent="Container/Actions/Container"]
-margin_left = 189.0
-margin_right = 771.0
+margin_left = 274.0
+margin_right = 1004.0
 margin_bottom = 52.0
 rect_min_size = Vector2( 150, 0 )
 size_flags_horizontal = 3
@@ -129,14 +138,14 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="Container/Actions/Container/Stats"]
-margin_right = 582.0
+margin_right = 730.0
 margin_bottom = 18.0
 custom_fonts/font = ExtResource( 8 )
 text = "ui_game_info"
 
 [node name="Time" type="HBoxContainer" parent="Container/Actions/Container/Stats"]
 margin_top = 22.0
-margin_right = 582.0
+margin_right = 730.0
 margin_bottom = 35.0
 
 [node name="Label" type="Label" parent="Container/Actions/Container/Stats/Time"]
@@ -155,7 +164,7 @@ text = "0"
 
 [node name="Distance" type="HBoxContainer" parent="Container/Actions/Container/Stats"]
 margin_top = 39.0
-margin_right = 582.0
+margin_right = 730.0
 margin_bottom = 52.0
 
 [node name="Label" type="Label" parent="Container/Actions/Container/Stats/Distance"]
@@ -167,19 +176,10 @@ align = 1
 
 [node name="Progress" type="ProgressBar" parent="Container/Actions/Container/Stats/Distance"]
 margin_left = 99.0
-margin_right = 582.0
+margin_right = 730.0
 margin_bottom = 13.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
-
-[node name="Crew" type="Button" parent="Container/Actions/Container"]
-margin_left = 775.0
-margin_right = 856.0
-margin_bottom = 52.0
-toggle_mode = true
-pressed = true
-text = "ui_btn_crew"
-align = 2
 
 [node name="Task" type="Button" parent="Container/Actions/Container"]
 visible = false
@@ -190,46 +190,6 @@ toggle_mode = true
 pressed = true
 text = "ui_btn_tasks"
 align = 2
-
-[node name="Mask" type="Button" parent="Container/Actions/Container"]
-margin_left = 860.0
-margin_right = 948.0
-margin_bottom = 52.0
-text = "ui_give_mask"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Counter" type="Label" parent="Container/Actions/Container/Mask"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -40.0
-margin_bottom = 40.0
-text = "20"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Heal" type="Button" parent="Container/Actions/Container"]
-margin_left = 952.0
-margin_right = 1004.0
-margin_bottom = 52.0
-text = "ui_heal"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Counter" type="Label" parent="Container/Actions/Container/Heal"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -40.0
-margin_bottom = 40.0
-text = "20"
-align = 2
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="CrewSelection" parent="." instance=ExtResource( 7 )]
 visible = false
@@ -254,11 +214,9 @@ margin_bottom = 600.0
 [connection signal="on_window_closed" from="Container/Columns/TaskList" to="." method="_on_UI_window_closed"]
 [connection signal="on_window_opened" from="Container/Columns/TaskList" to="." method="_on_UI_window_opened"]
 [connection signal="task_infos_requested" from="Container/Columns/TaskList" to="." method="_on_TaskList_task_infos_requested"]
+[connection signal="toggled" from="Container/Actions/Container/Crew" to="." method="_on_Crew_toggled"]
 [connection signal="pressed" from="Container/Actions/Container/NextHour" to="." method="_on_NextHour_pressed"]
 [connection signal="toggled" from="Container/Actions/Container/NextEvent" to="." method="_on_NextEvent_toggled"]
-[connection signal="toggled" from="Container/Actions/Container/Crew" to="." method="_on_Crew_toggled"]
 [connection signal="toggled" from="Container/Actions/Container/Task" to="." method="_on_Task_toggled"]
-[connection signal="pressed" from="Container/Actions/Container/Mask" to="." method="_on_Mask_pressed"]
-[connection signal="pressed" from="Container/Actions/Container/Heal" to="." method="_on_Heal_pressed"]
 [connection signal="crew_selection_confirmed" from="CrewSelection" to="." method="_on_CrewSelection_crew_selection_confirmed"]
 [connection signal="room_selected" from="RoomSelection" to="." method="_on_RoomSelection_room_selected"]

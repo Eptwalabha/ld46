@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/game/ui/wheel/ContextWheelButton2D.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/game/ui/wheel/ContextWheel2D.gd" type="Script" id=2]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "close"
 length = 0.1
 tracks/0/type = "value"
@@ -31,8 +31,7 @@ tracks/1/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0.7, 0.7 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "open"
+[sub_resource type="Animation" id=2]
 length = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:scale")
@@ -71,7 +70,6 @@ button_id = "move"
 
 [node name="Heal" parent="." instance=ExtResource( 1 )]
 position = Vector2( 60.8676, -19.7771 )
-scale = Vector2( 1, 1 )
 button_id = "heal"
 
 [node name="Label" type="Node2D" parent="Heal"]
@@ -85,7 +83,7 @@ anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -40.0
 margin_bottom = 13.0
-text = "123"
+text = "heal"
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -93,8 +91,7 @@ __meta__ = {
 
 [node name="Mask" parent="." instance=ExtResource( 1 )]
 position = Vector2( 60.8676, 19.7771 )
-scale = Vector2( 1, 1 )
-button_id = "heal"
+button_id = "mask"
 
 [node name="Label" type="Node2D" parent="Mask"]
 position = Vector2( 16, -16 )
@@ -107,7 +104,7 @@ anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -40.0
 margin_bottom = 13.0
-text = "123"
+text = "mask"
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false
@@ -115,7 +112,6 @@ __meta__ = {
 
 [node name="Water" parent="." instance=ExtResource( 1 )]
 position = Vector2( 37.6183, 51.7771 )
-scale = Vector2( 1, 1 )
 button_id = "water"
 
 [node name="Food" parent="." instance=ExtResource( 1 )]
@@ -123,5 +119,5 @@ position = Vector2( -5.72205e-06, 64 )
 button_id = "food"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/close = SubResource( 2 )
-anims/open = SubResource( 1 )
+anims/close = SubResource( 1 )
+anims/open = SubResource( 2 )

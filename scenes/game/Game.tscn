@@ -32,5 +32,7 @@ mouse_default_cursor_shape = 11
 position = Vector2( 297.419, 300.918 )
 [connection signal="next_event_toggled" from="GameUI" to="." method="_on_GameUI_next_event_toggled"]
 [connection signal="next_hour_clicked" from="GameUI" to="." method="_on_GameUI_next_hour_clicked"]
+[connection signal="give_mask_clicked" from="ContextWheel" to="." method="_on_ContextWheel_give_mask_clicked"]
+[connection signal="heal_crew_clicked" from="ContextWheel" to="." method="_on_ContextWheel_heal_crew_clicked"]
 [connection signal="wheel_closed" from="ContextWheel" to="." method="_on_ContextWheel_wheel_closed"]
 [connection signal="wheel_opened" from="ContextWheel" to="." method="_on_ContextWheel_wheel_opened"]

@@ -17,8 +17,8 @@ onready var crew_button := $Container/Actions/Container/Crew as Button
 onready var task_button := $Container/Actions/Container/Task as Button
 onready var crew_selection := $CrewSelection as UICrewSelection
 onready var room_selection := $RoomSelection as UIRoomSelection
-onready var mask_counter := $Container/Actions/Container/Mask/Counter as Label
-onready var ttl_heal_counter := $Container/Actions/Container/Heal/Counter as Label
+#onready var mask_counter := $Container/Actions/Container/Mask/Counter as Label
+#onready var ttl_heal_counter := $Container/Actions/Container/Heal/Counter as Label
 
 var ship = null
 var game = null
@@ -46,15 +46,7 @@ func refresh(hour: int) -> void:
 	crew_list.refresh()
 	tasks_list.refresh()
 	task_detail.refresh()
-	refresh_menu()
 #	crew_details.refresh()
-
-func refresh_menu() -> void:
-	mask_counter.text = str(game.nbr_masks)
-	ttl_heal_counter.text = str(game.ttl_heal)
-	ttl_heal_counter.visible = game.ttl_heal > 0
-	$Container/Actions/Container/Mask.disabled = game.nbr_masks == 0
-	$Container/Actions/Container/Heal.disabled = game.ttl_heal > 0
 
 func next_event_over() -> void:
 	next_event.pressed = false
@@ -111,21 +103,11 @@ func _on_CrewSelection_crew_selection_confirmed(action, selected_crew, data) -> 
 			game.assign_crew_to_task(data, selected_crew)
 			task_detail.refresh()
 			tasks_list.refresh()
-		"give_mask":
-			game.give_mask_to(selected_crew)
-			crew_list.refresh()
 		"heal":
 			if selected_crew.size() > 0:
 				game.heal_crew(selected_crew[0])
 				crew_list.refresh()
 		_: pass
-
-
-func _on_Mask_pressed() -> void:
-	crew_selection.open("give_mask", [], null, game.nbr_masks, "ui_assigne_crew_to_give_mask")
-
-func _on_Heal_pressed() -> void:
-	crew_selection.open("heal", [], null, 1, "ui_assigne_crew_to_heal")
 
 func _on_RoomSelection_room_selected(crew: CrewMember, room_id: String) -> void:
 	ship.move_crew_member(crew, room_id)
