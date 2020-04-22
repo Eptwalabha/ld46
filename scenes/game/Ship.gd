@@ -1,6 +1,8 @@
 class_name Ship
 extends Node2D
 
+signal room_selected(room_id)
+
 var rooms := {}
 var max_speed_ua : float = 2.0
 var speed_ua : float = 2.0
@@ -11,6 +13,8 @@ var air_filter : float = 1.0
 
 func _ready() -> void:
 	rooms = get_rooms()
+	for room_id in rooms:
+		rooms[room_id].connect("room_selected", self, "_on_room_selected", [room_id])
 	set_process_unhandled_input(true)
 
 func get_crew_members() -> Dictionary:
@@ -92,3 +96,10 @@ func is_crew_in_room(crew_name: String, room_id: String) -> bool:
 
 func get_sick_crew_in_room(_room_id: int) -> Array:
 	return []
+
+func set_room_selection(selection_enabled: bool) -> void:
+	for room_id in rooms:
+		rooms[room_id].set_selectable(selection_enabled)
+
+func _on_room_selected(room_id) -> void:
+	emit_signal("room_selected", room_id)

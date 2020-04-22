@@ -356,5 +356,10 @@ func _on_ContextWheel_heal_crew_clicked(crew_name) -> void:
 	wheel.close()
 
 func _on_ContextWheel_move_crew_clicked(crew_name) -> void:
-	print("ici")
-	pass # Replace with function body.
+	wheel.close()
+	ship.set_room_selection(true)
+	ship.connect("room_selected", self, "_on_ship_room_selected", [crew_name], CONNECT_ONESHOT)
+
+func _on_ship_room_selected(room_id, crew_name) -> void:
+	ship.set_room_selection(false)
+	ship.move_crew_member(crew_members[crew_name], room_id)

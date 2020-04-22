@@ -2,6 +2,8 @@ tool
 class_name ShipRoom
 extends Node2D
 
+signal room_selected
+
 onready var label := $Label/Label as Label
 
 export(String) var room_name := ""
@@ -96,4 +98,7 @@ func contaminate() -> void:
 
 func _on_Area2D_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == BUTTON_LEFT:
-		pass
+		emit_signal("room_selected")
+
+func set_selectable(selection_enabled) -> void:
+	$Area2D.visible = selection_enabled
