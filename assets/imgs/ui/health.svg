@@ -9,9 +9,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="16"
-   height="16"
-   viewBox="0 0 4.2333333 4.2333334"
+   width="48"
+   height="48"
+   viewBox="0 0 12.7 12.7"
    version="1.1"
    id="svg8"
    inkscape:version="0.92.1 r15371"
@@ -25,16 +25,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="31.678384"
-     inkscape:cx="9.0620604"
-     inkscape:cy="5.8686032"
+     inkscape:zoom="7.919596"
+     inkscape:cx="24.78337"
+     inkscape:cy="24.659652"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
-     inkscape:window-width="1366"
-     inkscape:window-height="703"
-     inkscape:window-x="1920"
-     inkscape:window-y="312"
+     inkscape:window-width="1920"
+     inkscape:window-height="1051"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
      inkscape:window-maximized="1"
      units="px">
     <inkscape:grid
@@ -57,21 +57,11 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-292.76665)">
-    <rect
-       style="opacity:1;fill:#00ff00;fill-opacity:1;stroke:none;stroke-width:2.59815693;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+     transform="translate(0,-284.29998)">
+    <path
+       style="opacity:1;fill:#00ff00;fill-opacity:1;stroke:#333333;stroke-width:0.52917051;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+       d="m 4.7624885,286.41662 v 2.64586 H 2.1166358 v 3.17502 h 2.6458527 v 2.64585 h 3.1750234 v -2.64585 h 2.6458521 v -3.17502 H 7.9375119 v -2.64586 z"
        id="rect4506"
-       width="1.5875001"
-       height="4.2333336"
-       x="1.3229166"
-       y="292.76666" />
-    <rect
-       y="-4.2333336"
-       x="294.08957"
-       height="4.2333336"
-       width="1.587489"
-       id="rect4508"
-       style="opacity:1;fill:#00ff00;fill-opacity:1;stroke:none;stroke-width:2.59814763;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
-       transform="rotate(90)" />
+       inkscape:connector-curvature="0" />
   </g>
 </svg>

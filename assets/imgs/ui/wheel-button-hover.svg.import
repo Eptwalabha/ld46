@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/battery.svg-e260f08d18e0dc624c9e97d465703fa8.stex"
+path="res://.import/wheel-button-hover.svg-44c051c8a4207e7ae2f56a8784dd509c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/imgs/ui/battery.svg"
-dest_files=[ "res://.import/battery.svg-e260f08d18e0dc624c9e97d465703fa8.stex" ]
+source_file="res://assets/imgs/ui/wheel-button-hover.svg"
+dest_files=[ "res://.import/wheel-button-hover.svg-44c051c8a4207e7ae2f56a8784dd509c.stex" ]
 
 [params]
 

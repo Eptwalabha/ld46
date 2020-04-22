@@ -354,3 +354,7 @@ func _on_ContextWheel_give_mask_clicked(crew_name) -> void:
 func _on_ContextWheel_heal_crew_clicked(crew_name) -> void:
 	heal_crew(crew_name)
 	wheel.close()
+
+func _on_ContextWheel_move_crew_clicked(crew_name) -> void:
+	print("ici")
+	pass # Replace with function body.

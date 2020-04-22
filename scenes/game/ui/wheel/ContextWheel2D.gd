@@ -11,8 +11,10 @@ signal pause_crew_clicked(crew_name)
 signal move_crew_clicked(crew_name)
 
 onready var anim = $AnimationPlayer as AnimationPlayer
-onready var heal_counter = $Heal/Label/Label as Label
-onready var mask_counter = $Mask/Label/Label as Label
+onready var heal = $Heal as ContextWheelButton2D
+onready var masks = $Mask as ContextWheelButton2D
+
+export(float) var dist := 50.0
 
 var current_crew_name
 var opened := true
@@ -31,6 +33,7 @@ func open(crew) -> void:
 		return
 	current_crew_name = crew.crew_name
 	transform = crew.get_global_transform()
+	_place_buttons()
 	opened = true
 	if not visible:
 		visible = true
@@ -46,8 +49,16 @@ func close() -> void:
 func is_open() -> bool:
 	return opened
 
+func _place_buttons() -> void:
+	var step := TAU / 8.0
+	var angle := 0.0 - PI / 2.0
+	for button in get_children():
+		if button is ContextWheelButton2D and button.visible:
+			button.transform.origin = Vector2(cos(angle) * dist, sin(angle) * dist)
+			angle += step
+			
+
 func _on_wheel_button_clicked(button_id) -> void:
-	print("click on %s" % button_id)
 	if not opened:
 		return
 	match button_id:
@@ -61,6 +72,15 @@ func _on_wheel_button_clicked(button_id) -> void:
 
 func refresh() -> void:
 	var game = get_parent()
-	mask_counter.text = str(game.nbr_masks)
-	heal_counter.text = str(game.ttl_heal)
-	heal_counter.visible = game.ttl_heal > 0
+	masks.set_text(str(game.nbr_masks))
+	var heal_text = "" if game.ttl_heal == 0 else str(game.ttl_heal)
+	heal.set_text(heal_text)
+
+func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
+	match anim_name:
+		"close": hide()
+		_: pass
+
+
+func _on_context_wheel_button_clicked(button_id) -> void:
+	pass # Replace with function body.
