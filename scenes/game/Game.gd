@@ -304,14 +304,6 @@ func give_mask_to(crew_name) -> void:
 		nbr_masks -= 1
 		refresh_menu()
 
-func test_crew(crew_list: Array) -> void:
-	for crew_name in crew_list:
-		if nbr_tests <= 0:
-			break
-		crew_members[crew_name].make_a_viral_test()
-		nbr_tests -= 1
-	refresh_menu()
-
 func check_ship_state() -> void:
 	pass
 
@@ -337,7 +329,8 @@ func _on_GameUI_next_hour_clicked() -> void:
 	var _a = check_game_over()
 
 func _on_crew_clicked(crew: CrewMember) -> void:
-	wheel.open(crew)
+	var menus = crew.get_contextual_menus()
+	wheel.open(crew, menus)
 
 func refresh_menu() -> void:
 	wheel.refresh()
@@ -363,3 +356,9 @@ func _on_ContextWheel_move_crew_clicked(crew_name) -> void:
 func _on_ship_room_selected(room_id, crew_name) -> void:
 	ship.set_room_selection(false)
 	ship.move_crew_member(crew_members[crew_name], room_id)
+
+func _on_ContextWheel_test_crew_clicked(crew_name) -> void:
+	if nbr_tests > 0:
+		crew_members[crew_name].make_a_viral_test()
+		nbr_tests -= 1
+	refresh_menu()

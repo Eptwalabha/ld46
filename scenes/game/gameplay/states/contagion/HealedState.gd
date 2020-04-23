@@ -29,3 +29,6 @@ func is_infected() -> bool:
 
 func update_crew_aspect() -> void:
 	crew.modulate = Color.blue
+
+func menus() -> Array:
+	return ["move", "water", "food"]

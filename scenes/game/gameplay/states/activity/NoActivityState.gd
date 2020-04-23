@@ -12,11 +12,12 @@ func state_name() -> String:
 
 func next_location() -> String:
 #	return "my-quarter"
-	var r = randf()
-	if r > .7:
-		return ""
-	if r > .5:
-		return "my-quarter"
-	if r > .2:
-		return "living"
-	return "random"
+#	var r = randf()
+#	if r > .7:
+#		return ""
+#	if r > .5:
+#		return "my-quarter"
+#	if r > .2:
+#		return "living"
+#	return "random"
+	return ""

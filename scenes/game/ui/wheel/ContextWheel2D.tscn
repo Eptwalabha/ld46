@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/game/ui/wheel/ContextWheelButton2D.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/game/ui/wheel/ContextWheel2D.gd" type="Script" id=2]
 [ext_resource path="res://scenes/game/ui/wheel/buttons/HealButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/game/ui/wheel/buttons/MaskButton.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/game/ui/wheel/buttons/MoveButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/game/ui/wheel/buttons/TestButton.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "close"
@@ -65,28 +66,31 @@ tracks/1/keys = {
 script = ExtResource( 2 )
 dist = 64.0
 
-[node name="Pause" parent="." instance=ExtResource( 1 )]
-visible = false
+[node name="Buttons" type="Node2D" parent="."]
+
+[node name="Pause" parent="Buttons" instance=ExtResource( 1 )]
+position = Vector2( -64, -64 )
 button_id = "pause"
 
-[node name="Move" parent="." instance=ExtResource( 5 )]
-position = Vector2( 37.6183, -51.7771 )
+[node name="Move" parent="Buttons" instance=ExtResource( 5 )]
+position = Vector2( -7.62939e-06, -63.7771 )
 
-[node name="Heal" parent="." instance=ExtResource( 3 )]
-position = Vector2( 60.8676, -19.7771 )
+[node name="Heal" parent="Buttons" instance=ExtResource( 3 )]
+position = Vector2( 64, -63.7771 )
 
-[node name="Mask" parent="." instance=ExtResource( 4 )]
-position = Vector2( 60.8676, 19.7771 )
+[node name="Mask" parent="Buttons" instance=ExtResource( 4 )]
+position = Vector2( -64, 0 )
 
-[node name="Water" parent="." instance=ExtResource( 1 )]
-visible = false
-position = Vector2( 37.6183, 51.7771 )
+[node name="Water" parent="Buttons" instance=ExtResource( 1 )]
+position = Vector2( -7.62939e-06, 0 )
 button_id = "water"
 
-[node name="Food" parent="." instance=ExtResource( 1 )]
-visible = false
-position = Vector2( -5.72205e-06, 64 )
+[node name="Food" parent="Buttons" instance=ExtResource( 1 )]
+position = Vector2( 64, 0 )
 button_id = "food"
+
+[node name="Test" parent="Buttons" instance=ExtResource( 6 )]
+position = Vector2( -64, 64 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/close = SubResource( 1 )

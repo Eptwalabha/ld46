@@ -104,3 +104,6 @@ func healed() -> void:
 func _on_Area2D_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == BUTTON_LEFT:
 		emit_signal("crew_clicked", self)
+
+func get_contextual_menus() -> Array:
+	return current_health_state.menus()

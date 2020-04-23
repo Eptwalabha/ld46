@@ -54,3 +54,8 @@ func _level() -> int:
 
 func make_a_viral_test() -> void:
 	viral_test_made = true
+
+func menus() -> Array:
+	if viral_test_made or _level() > 1:
+		return ["move", "mask", "heal", "water", "food"]
+	return ["move", "mask", "test", "water", "food"]

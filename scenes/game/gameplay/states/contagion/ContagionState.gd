@@ -35,3 +35,6 @@ func update_crew_aspect() -> void:
 
 func make_a_viral_test() -> void:
 	pass
+
+func menus() -> Array:
+	return []

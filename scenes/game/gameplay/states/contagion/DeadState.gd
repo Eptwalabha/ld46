@@ -47,3 +47,5 @@ func _level() -> int:
 func is_infected() -> bool:
 	return true
 
+func menus() -> Array:
+	return ["move"]
