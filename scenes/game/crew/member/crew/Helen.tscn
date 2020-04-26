@@ -8,3 +8,7 @@ crew_name = "helen"
 
 [node name="icon" parent="." index="0"]
 texture = ExtResource( 2 )
+
+[node name="mask" parent="icon" index="0"]
+position = Vector2( -1.64488, 5.53277 )
+scale = Vector2( 0.454935, 0.454935 )

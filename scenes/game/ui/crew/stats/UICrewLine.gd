@@ -11,7 +11,10 @@ var is_selected
 var crew
 
 func prepare(the_crew) -> void:
+	if crew != null:
+		crew.disconnect("crew_updated", self, "_on_crew_updated")
 	crew = the_crew
+	crew.connect("crew_updated", self, "_on_crew_updated")
 	if not the_crew.is_human():
 		return
 	stats.prepare(crew)
@@ -27,3 +30,6 @@ func _on_ColorRect_gui_input(event: InputEvent) -> void:
 func selected(selected: bool) -> void:
 	is_selected = selected
 	color_rect.color.a = 1.0 if is_selected else 0.0
+
+func _on_crew_updated() -> void:
+	print("update of %s" % crew.crew_name)

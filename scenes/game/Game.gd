@@ -35,7 +35,6 @@ func _ready() -> void:
 	$GameUI.set_ship(ship)
 	$TaskFactory.game = self
 	tasks = task_factory.get_common_chores()
-	$GameUI.set_tasks(tasks)
 	
 	rooms = ship.get_rooms()
 	living_room = rooms['living']

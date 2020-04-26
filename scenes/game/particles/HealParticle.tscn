@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/imgs/particles/heal.svg" type="Texture" id=1]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 0.325 ), 0.0, 2.16459, 0, 0, Vector2( 0.649425, 0.990909 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.745454 ), -2.23315, 0.0, 0, 0 ]
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.609272, 1 )
+colors = PoolColorArray( 0.196078, 0.373392, 0.588235, 1, 0.211765, 0.384314, 0.596078, 0.835294, 0.227451, 0.396078, 0.603922, 0 )
+
+[node name="Heal" type="CPUParticles2D"]
+amount = 3
+lifetime = 1.5
+randomness = 0.5
+texture = ExtResource( 1 )
+emission_shape = 1
+emission_sphere_radius = 16.0
+gravity = Vector2( 0, -10 )
+scale_amount = 0.4
+scale_amount_random = 0.5
+scale_amount_curve = SubResource( 1 )
+color_ramp = SubResource( 2 )

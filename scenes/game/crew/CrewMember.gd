@@ -2,6 +2,7 @@ class_name CrewMember
 extends Node2D
 
 signal crew_clicked(crew)
+signal crew_updated()
 
 export(String) var crew_name = "no name"
 export(bool) var positive := false
@@ -42,6 +43,7 @@ func update_state(_hour: int) -> void:
 	change_state("activity", next_activity_state)
 	update_visual_state()
 	efficiency = productivity()
+	emit_signal("crew_updated")
 
 func make_a_viral_test() -> void:
 	current_health_state.make_a_viral_test()
