@@ -13,6 +13,7 @@ colors = PoolColorArray( 0.196078, 0.373392, 0.588235, 1, 0.211765, 0.384314, 0.
 amount = 3
 lifetime = 1.5
 randomness = 0.5
+local_coords = false
 texture = ExtResource( 1 )
 emission_shape = 1
 emission_sphere_radius = 16.0

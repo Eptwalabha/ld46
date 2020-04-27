@@ -4,6 +4,10 @@ extends Node2D
 signal crew_clicked(crew)
 signal crew_updated()
 
+onready var sick_particle := $crew/Sick as CPUParticles2D
+onready var heal_particle := $crew/Heal as CPUParticles2D
+onready var anim := $AnimationPlayer as AnimationPlayer
+
 export(String) var crew_name = "no name"
 export(bool) var positive := false
 
@@ -13,6 +17,7 @@ var current_task = 0
 var scheduled_tasks = []
 var contagion_detected = false
 var is_dead := false
+var next_location = null
 
 #var current_mental_state
 var current_health_state
@@ -95,7 +100,7 @@ func viral_test() -> bool:
 	return is_contamined
 
 func get_texture() -> Texture:
-	return $icon.texture
+	return $crew.texture
 
 func contaminated() -> void:
 	change_state("health", "sick")

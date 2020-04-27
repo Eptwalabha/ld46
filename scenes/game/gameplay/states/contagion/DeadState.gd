@@ -7,6 +7,7 @@ func enter() -> void:
 	time_dead = 0
 	crew.is_dead = true
 	crew.modulate = Color.gray
+	crew.anim.play("dead")
 
 func update() -> String:
 	time_dead += 1
@@ -29,11 +30,8 @@ func is_dead() -> bool:
 	return true
 
 func update_crew_aspect() -> void:
-	match _level():
-		0: crew.modulate = Color(1, 0.8, 0.8)
-		1: crew.modulate = Color(1, 0.6, 0.6)
-		2: crew.modulate = Color(1, 0.5, 0.5)
-		_: crew.modulate = Color(1, 0.2, 0.2)
+	crew.sick_particle.visible = _level() > 0
+	crew.heal_particle.visible = false
 
 func _level() -> int:
 	if time_dead < 5:

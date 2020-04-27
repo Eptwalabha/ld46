@@ -37,11 +37,8 @@ func is_infected() -> bool:
 	return true
 
 func update_crew_aspect() -> void:
-	match _level():
-		0: crew.modulate = Color(0.8, 1, 0.8)
-		1: crew.modulate = Color(0.6, 1, 0.6)
-		2: crew.modulate = Color(0.5, 1, 0.5)
-		_: crew.modulate = Color(0.2, 1, 0.2)
+	crew.sick_particle.visible = _level() > 0
+	crew.heal_particle.visible = false
 
 func _level() -> int:
 	if remaining_hours < 5:
@@ -57,5 +54,5 @@ func make_a_viral_test() -> void:
 
 func menus() -> Array:
 	if viral_test_made or _level() > 1:
-		return ["move", "mask", "heal", "water", "food"]
-	return ["move", "mask", "test", "water", "food"]
+		return ["move", "heal", "mask", "water", "food"]
+	return ["move", "test", "mask", "water", "food"]

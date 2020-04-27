@@ -354,6 +354,7 @@ func _on_ContextWheel_move_crew_clicked(crew_name) -> void:
 
 func _on_ship_room_selected(room_id, crew_name) -> void:
 	ship.set_room_selection(false)
+	crew_members[crew_name].next_location = room_id
 	ship.move_crew_member(crew_members[crew_name], room_id)
 
 func _on_ContextWheel_test_crew_clicked(crew_name) -> void:

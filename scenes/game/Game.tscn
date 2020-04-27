@@ -8,7 +8,6 @@
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
-ua_goal = 10.0
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
@@ -21,7 +20,6 @@ __meta__ = {
 
 [node name="Ship" parent="." instance=ExtResource( 3 )]
 position = Vector2( 607.91, 289.331 )
-scale = Vector2( 0.786764, 0.786764 )
 
 [node name="GameUI" parent="." instance=ExtResource( 2 )]
 mouse_default_cursor_shape = 11

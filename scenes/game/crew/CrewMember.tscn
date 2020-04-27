@@ -1,51 +1,75 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/game/crew/CrewMember.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/imgs/ship/crew.png" type="Texture" id=2]
 [ext_resource path="res://scenes/game/particles/SickParticle.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/game/particles/HealParticle.tscn" type="PackedScene" id=4]
-[ext_resource path="res://assets/imgs/ui/mask.svg" type="Texture" id=5]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 24, 24 )
+[sub_resource type="Animation" id=1]
+resource_name = "dead"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("crew:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -9.53674e-07, -1.52588e-05 ), Vector2( 29.9284, -18.4607 ), Vector2( 33.8995, -7.94219 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("crew:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -47.9012, -89.9999 ]
+}
 
 [node name="CrewMember" type="Node2D" groups=[
 "ship-crew-member",
 ]]
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
 
-[node name="icon" type="Sprite" parent="."]
-scale = Vector2( 0.7, 0.7 )
+[node name="crew" type="Sprite" parent="."]
+position = Vector2( -9.53674e-07, -1.52588e-05 )
+scale = Vector2( 0.16553, 0.16553 )
 texture = ExtResource( 2 )
-offset = Vector2( 0.247, 0 )
+offset = Vector2( -11.1816, -240 )
 
-[node name="mask" type="Sprite" parent="icon"]
-texture = ExtResource( 5 )
+[node name="Area2D" type="Area2D" parent="crew"]
+position = Vector2( 5.76134e-06, 9.21815e-05 )
+scale = Vector2( 6.0412, 6.0412 )
+monitoring = false
+monitorable = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="crew/Area2D"]
+polygon = PoolVector2Array( -14.7883, -0.202156, -14.0135, -7.95061, -21.7619, -31.9708, -17.8877, -49.4048, -7.62102, -55.0225, -13.2386, -61.8024, -11.4952, -75.7496, -1.80968, -81.5609, 8, -80, 13.8809, -70.3257, 13.8809, -58.3156, 9.42558, -51.7294, 13.6872, -49.0174, 16.0118, -25.1909, 11.169, -6.0135, 16, 0 )
+
+[node name="Sick" parent="crew" instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 5.76134e-06, -434.966 )
+scale = Vector2( 6.0412, 6.0412 )
+
+[node name="Heal" parent="crew" instance=ExtResource( 4 )]
+visible = false
+position = Vector2( 5.76134e-06, -289.978 )
+scale = Vector2( 6.0412, 6.0412 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/dead = SubResource( 1 )
 
 [node name="ContagionStates" type="Node" parent="."]
 
 [node name="ActivityStates" type="Node" parent="."]
 
 [node name="MentalStates" type="Node" parent="."]
-
-[node name="Area2D" type="Area2D" parent="."]
-monitoring = false
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="Sick" parent="." instance=ExtResource( 3 )]
-visible = false
-
-[node name="Heal" parent="." instance=ExtResource( 4 )]
-visible = false
-[connection signal="input_event" from="Area2D" to="." method="_on_Area2D_input_event"]
+[connection signal="input_event" from="crew/Area2D" to="." method="_on_Area2D_input_event"]

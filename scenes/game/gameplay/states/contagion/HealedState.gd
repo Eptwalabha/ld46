@@ -28,7 +28,8 @@ func is_infected() -> bool:
 	return false
 
 func update_crew_aspect() -> void:
-	crew.modulate = Color.blue
+	crew.sick_particle.visible = true
+	crew.heal_particle.visible = true
 
 func menus() -> Array:
 	return ["move", "water", "food"]

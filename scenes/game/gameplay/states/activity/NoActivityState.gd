@@ -11,13 +11,16 @@ func state_name() -> String:
 	return "no-activity"
 
 func next_location() -> String:
-#	return "my-quarter"
-#	var r = randf()
-#	if r > .7:
-#		return ""
-#	if r > .5:
-#		return "my-quarter"
-#	if r > .2:
-#		return "living"
-#	return "random"
-	return ""
+	if crew.next_location != null:
+		var next = crew.next_location
+		crew.next_location = null
+		return next
+	return "my-quarter"
+	var r = randf()
+	if r > .7:
+		return ""
+	if r > .5:
+		return "my-quarter"
+	if r > .2:
+		return "living"
+	return "random"
