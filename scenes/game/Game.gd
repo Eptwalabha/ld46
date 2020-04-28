@@ -65,6 +65,9 @@ func _ready() -> void:
 	$UI/GameUI.refresh(0)
 	game_over = false
 
+func _process(delta: float) -> void:
+	$Background/ParallaxBackground.scroll_base_offset.x -= delta * 1000
+
 func get_assigned_crew(task_id: int) -> Array:
 	var assigned_crew_members = []
 	for crew_name in crew_members:

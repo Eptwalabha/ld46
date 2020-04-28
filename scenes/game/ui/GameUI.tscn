@@ -18,13 +18,13 @@ __meta__ = {
 
 [node name="Container" type="VBoxContainer" parent="."]
 margin_right = 1024.0
-margin_bottom = 600.0
+margin_bottom = 768.0
 mouse_filter = 2
 mouse_default_cursor_shape = 9
 
 [node name="Columns" type="HBoxContainer" parent="Container"]
 margin_right = 1024.0
-margin_bottom = 524.0
+margin_bottom = 692.0
 mouse_filter = 2
 mouse_default_cursor_shape = 8
 size_flags_vertical = 3
@@ -33,14 +33,14 @@ size_flags_vertical = 3
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 200.0
-margin_bottom = 524.0
+margin_bottom = 692.0
 rect_min_size = Vector2( 200, 0 )
 mouse_filter = 2
 
 [node name="Actions" type="MarginContainer" parent="Container"]
-margin_top = 528.0
+margin_top = 696.0
 margin_right = 1024.0
-margin_bottom = 600.0
+margin_bottom = 768.0
 custom_constants/margin_right = 10
 custom_constants/margin_top = 10
 custom_constants/margin_left = 10
@@ -145,14 +145,14 @@ visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 1024.0
-margin_bottom = 600.0
+margin_bottom = 768.0
 
 [node name="RoomSelection" parent="." instance=ExtResource( 9 )]
 visible = false
 anchor_right = 0.0
 anchor_bottom = 0.0
 margin_right = 1024.0
-margin_bottom = 600.0
+margin_bottom = 768.0
 [connection signal="on_crew_selected" from="Container/Columns/CrewList" to="." method="_on_CrewList_on_crew_selected"]
 [connection signal="on_window_closed" from="Container/Columns/CrewList" to="." method="_on_UI_window_closed"]
 [connection signal="on_window_opened" from="Container/Columns/CrewList" to="." method="_on_UI_window_opened"]
