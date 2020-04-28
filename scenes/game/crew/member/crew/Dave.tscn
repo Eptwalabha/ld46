@@ -3,5 +3,4 @@
 [ext_resource path="res://scenes/game/crew/member/HumanCrew.tscn" type="PackedScene" id=1]
 
 [node name="Dave" instance=ExtResource( 1 )]
-portrait = null
 crew_name = "dave"

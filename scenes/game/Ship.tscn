@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scenes/game/Ship.gd" type="Script" id=1]
 [ext_resource path="res://scenes/game/room/rooms/TechnicalBay.tscn" type="PackedScene" id=2]
@@ -15,7 +15,6 @@
 [ext_resource path="res://scenes/game/crew/member/crew/Yuri.tscn" type="PackedScene" id=13]
 [ext_resource path="res://scenes/game/crew/member/crew/Dave.tscn" type="PackedScene" id=14]
 [ext_resource path="res://scenes/game/crew/member/crew/William.tscn" type="PackedScene" id=15]
-[ext_resource path="res://icon.png" type="Texture" id=16]
 
 [node name="Ship" type="Node2D"]
 script = ExtResource( 1 )
@@ -96,35 +95,18 @@ room_id = "engine2"
 
 [node name="Crew" type="Node2D" parent="."]
 
-[node name="Helen" parent="Crew" groups=[
-"ship-crew-member",
-] instance=ExtResource( 12 )]
-portrait = ExtResource( 16 )
+[node name="Helen" parent="Crew" instance=ExtResource( 12 )]
 
-[node name="Yuri" parent="Crew" groups=[
-"ship-crew-member",
-] instance=ExtResource( 13 )]
+[node name="Yuri" parent="Crew" instance=ExtResource( 13 )]
 visible = false
-portrait = ExtResource( 16 )
 
-[node name="Sam" parent="Crew" groups=[
-"ship-crew-member",
-] instance=ExtResource( 4 )]
+[node name="Sam" parent="Crew" instance=ExtResource( 4 )]
 visible = false
-portrait = ExtResource( 16 )
 
-[node name="Isaac" parent="Crew" groups=[
-"ship-crew-member",
-] instance=ExtResource( 3 )]
+[node name="Isaac" parent="Crew" instance=ExtResource( 3 )]
 visible = false
-portrait = ExtResource( 16 )
 
-[node name="William" parent="Crew" groups=[
-"ship-crew-member",
-] instance=ExtResource( 15 )]
+[node name="William" parent="Crew" instance=ExtResource( 15 )]
 visible = false
-portrait = ExtResource( 16 )
 
-[node name="Dave" parent="Crew" groups=[
-"ship-crew-member",
-] instance=ExtResource( 14 )]
+[node name="Dave" parent="Crew" instance=ExtResource( 14 )]
