@@ -18,7 +18,7 @@ func prepare(the_crew) -> void:
 	if not the_crew.is_human():
 		return
 	stats.prepare(crew)
-	$Margin/Container/Infos/Picture.texture = crew.get_texture()
+	$Margin/Container/Infos/Picture.texture = crew.portrait
 
 func refresh() -> void:
 	stats.refresh()

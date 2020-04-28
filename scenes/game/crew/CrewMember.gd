@@ -8,6 +8,7 @@ onready var sick_particle := $crew/Sick as CPUParticles2D
 onready var heal_particle := $crew/Heal as CPUParticles2D
 onready var anim := $AnimationPlayer as AnimationPlayer
 
+export(Texture) var portrait
 export(String) var crew_name = "no name"
 export(bool) var positive := false
 

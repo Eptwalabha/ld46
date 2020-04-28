@@ -4,7 +4,7 @@ extends Node
 var TaskResource = load("res://scenes/game/gameplay/tasks/Task.tscn")
 var TASK_STATE = preload("res://script/game_enum.gd").TASK_STATE
 
-onready var ui := $GameUI as GameUI
+onready var ui := $UI/GameUI as GameUI
 onready var ship := $Ship as Ship
 onready var task_factory := $TaskFactory
 onready var wheel := $ContextWheel as ContextWheel2D
@@ -32,7 +32,7 @@ var nbr_tests = 2
 func _ready() -> void:
 	randomize()
 	next_mask_batch = mask_batch_period
-	$GameUI.set_ship(ship)
+	$UI/GameUI.set_ship(ship)
 	$TaskFactory.game = self
 	tasks = task_factory.get_common_chores()
 	
@@ -62,7 +62,7 @@ func _ready() -> void:
 			room_keys.remove(i)
 
 	update_task_and_crew_count()
-	$GameUI.refresh(0)
+	$UI/GameUI.refresh(0)
 	game_over = false
 
 func get_assigned_crew(task_id: int) -> Array:

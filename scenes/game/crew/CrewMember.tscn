@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/game/crew/CrewMember.gd" type="Script" id=1]
 [ext_resource path="res://assets/imgs/ship/crew.png" type="Texture" id=2]
 [ext_resource path="res://scenes/game/particles/SickParticle.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/game/particles/HealParticle.tscn" type="PackedScene" id=4]
+[ext_resource path="res://icon.png" type="Texture" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "dead"
@@ -38,6 +39,7 @@ tracks/1/keys = {
 "ship-crew-member",
 ]]
 script = ExtResource( 1 )
+portrait = ExtResource( 5 )
 
 [node name="crew" type="Sprite" parent="."]
 position = Vector2( -9.53674e-07, -1.52588e-05 )

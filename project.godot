@@ -300,6 +300,10 @@ config/icon="res://icon.png"
 
 GameData="*res://script/game_data.gd"
 
+[display]
+
+window/size/height=768
+
 [gui]
 
 theme/custom_font="res://assets/fonts/regular.tres"

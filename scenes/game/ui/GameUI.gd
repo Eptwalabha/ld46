@@ -17,7 +17,7 @@ var ship = null
 var game = null
 
 func _ready() -> void:
-	game = get_parent()
+	game = get_parent().get_parent()
 
 func set_ship(the_ship: Ship) -> void:
 	ship = the_ship
