@@ -15,7 +15,6 @@ func next_location() -> String:
 		var next = crew.next_location
 		crew.next_location = null
 		return next
-	return "my-quarter"
 	var r = randf()
 	if r > .7:
 		return ""

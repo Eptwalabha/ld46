@@ -51,9 +51,7 @@ func change_speed(amount: float) -> void:
 
 func change_max_speed(amount: float) -> void:
 	max_speed_ua += amount
-	if max_speed_ua < .5:
-		max_speed_ua = .5
-#	max_speed_ua = clamp(max_speed_ua + amount, 0.5, 2)
+	max_speed_ua = clamp(max_speed_ua + amount, .5, 2)
 	speed_ua = clamp(speed_ua, 0, max_speed_ua)
 
 func hours_until_goal(goal) -> float:

@@ -15,6 +15,7 @@ onready var anim = $AnimationPlayer as AnimationPlayer
 onready var buttons = $Buttons as Node2D
 onready var heal = $Buttons/Heal as ContextWheelButton2D
 onready var masks = $Buttons/Mask as ContextWheelButton2D
+onready var test = $Buttons/Test as ContextWheelButton2D
 
 export(float) var dist := 50.0
 
@@ -81,6 +82,7 @@ func refresh() -> void:
 	masks.set_text(str(game.nbr_masks))
 	var heal_text = "" if game.ttl_heal == 0 else str(game.ttl_heal)
 	heal.set_text(heal_text)
+	test.set_text(str(game.nbr_tests))
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	match anim_name:

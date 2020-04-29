@@ -4,11 +4,10 @@ extends CrewMember
 export(int) var mask_ttl := 0
 export(int) var mask_lifespan := 12
 
-var wake_up_since := 0
-
 var thirst := 0
 var hunger := 0
 var exhaustion := 0
+var wake_up_since := 0
 var consecutive_hours_of_work := 0
 
 func _ready() -> void:

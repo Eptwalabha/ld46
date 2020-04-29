@@ -12,9 +12,6 @@
 [node name="AndroidCrew" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
-[node name="icon" parent="." index="0"]
-modulate = Color( 0.890196, 0.317647, 0.317647, 1 )
-
 [node name="Healthy" type="Node" parent="ContagionStates" index="0"]
 script = ExtResource( 3 )
 

@@ -1,10 +1,8 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://scenes/game/crew/member/HumanCrew.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/imgs/picture-3.png" type="Texture" id=2]
+[ext_resource path="res://assets/imgs/picture-2.png" type="Texture" id=2]
 
 [node name="William" instance=ExtResource( 1 )]
+portrait = ExtResource( 2 )
 crew_name = "william"
-
-[node name="icon" parent="." index="0"]
-texture = ExtResource( 2 )

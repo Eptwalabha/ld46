@@ -4,7 +4,5 @@
 [ext_resource path="res://assets/imgs/picture-4.png" type="Texture" id=2]
 
 [node name="Yuri" instance=ExtResource( 1 )]
+portrait = ExtResource( 2 )
 crew_name = "yuri"
-
-[node name="icon" parent="." index="0"]
-texture = ExtResource( 2 )

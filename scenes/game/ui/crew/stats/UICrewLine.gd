@@ -2,26 +2,22 @@ extends Control
 
 signal crew_member_selected(crew)
 
-#var HumanStats = load("res://scenes/game/ui/crew/stats/UIHumanLineStats.tscn")
-#var AndroidStats = load("res://scenes/game/ui/crew/stats/UIAndroidLineStats.tscn")
-onready var stats : UIHumanLineStats = $Margin/Container/Infos/HumanLineStats as UIHumanLineStats
 onready var color_rect := $Margin/Container/Selection as ColorRect
 
 var is_selected
 var crew
 
-func prepare(the_crew) -> void:
+func init(the_crew) -> void:
 	if crew != null:
 		crew.disconnect("crew_updated", self, "_on_crew_updated")
 	crew = the_crew
 	crew.connect("crew_updated", self, "_on_crew_updated")
 	if not the_crew.is_human():
 		return
-	stats.prepare(crew)
 	$Margin/Container/Infos/Picture.texture = crew.portrait
 
 func refresh() -> void:
-	stats.refresh()
+	pass
 
 func _on_ColorRect_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.is_pressed():

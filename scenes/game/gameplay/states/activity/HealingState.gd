@@ -1,10 +1,10 @@
 class_name ActivityStateHealing
 extends ActivityState
 
-var hours_left_to_heal := 12
+var hours_left_to_heal := 16
 
 func enter() -> void:
-	hours_left_to_heal = 12
+	hours_left_to_heal = 16
 
 func update() -> String:
 	crew.thirst -= 1
@@ -23,7 +23,7 @@ func _next_state() -> String:
 	return "no-activity"
 
 func state_name() -> String:
-	return "cleaning"
+	return "healing"
 
 func productivity() -> float:
 	return 0.0

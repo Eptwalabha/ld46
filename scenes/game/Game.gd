@@ -32,7 +32,7 @@ var nbr_tests = 2
 func _ready() -> void:
 	randomize()
 	next_mask_batch = mask_batch_period
-	$UI/GameUI.set_ship(ship)
+	ui.set_ship(ship)
 	$TaskFactory.game = self
 	tasks = task_factory.get_common_chores()
 	
@@ -62,7 +62,7 @@ func _ready() -> void:
 			room_keys.remove(i)
 
 	update_task_and_crew_count()
-	$UI/GameUI.refresh(0)
+	ui.refresh(0)
 	game_over = false
 
 func _process(delta: float) -> void:
@@ -331,6 +331,7 @@ func _on_GameUI_next_hour_clicked() -> void:
 	var _a = check_game_over()
 
 func _on_crew_clicked(crew: CrewMember) -> void:
+#	wheel.toggle(crew)
 	var menus = crew.get_contextual_menus()
 	wheel.open(crew, menus)
 
@@ -362,6 +363,10 @@ func _on_ship_room_selected(room_id, crew_name) -> void:
 
 func _on_ContextWheel_test_crew_clicked(crew_name) -> void:
 	if nbr_tests > 0:
-		crew_members[crew_name].make_a_viral_test()
 		nbr_tests -= 1
+		var crew = crew_members[crew_name]
+		crew.make_a_viral_test()
+		wheel.close()
+		var menus = crew.get_contextual_menus()
+		wheel.open(crew, menus)
 	refresh_menu()

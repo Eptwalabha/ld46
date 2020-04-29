@@ -37,7 +37,7 @@ func is_infected() -> bool:
 	return true
 
 func update_crew_aspect() -> void:
-	crew.sick_particle.visible = _level() > 0
+	crew.sick_particle.visible = _level() > 1
 	crew.heal_particle.visible = false
 
 func _level() -> int:

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/game/ui/crew/stats/UICrewLine.gd" type="Script" id=1]
-[ext_resource path="res://scenes/game/ui/crew/stats/UIHumanLineStats.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/imgs/ui/health.svg" type="Texture" id=2]
 [ext_resource path="res://assets/imgs/picture-1.png" type="Texture" id=4]
 
 [node name="CrewLine" type="Control"]
@@ -28,35 +28,56 @@ __meta__ = {
 [node name="Container" type="HBoxContainer" parent="Margin"]
 margin_top = 5.0
 margin_right = 1024.0
-margin_bottom = 595.0
+margin_bottom = 763.0
 size_flags_horizontal = 3
 
 [node name="Selection" type="ColorRect" parent="Margin/Container"]
 margin_right = 8.0
-margin_bottom = 590.0
+margin_bottom = 758.0
 rect_min_size = Vector2( 8, 0 )
 color = Color( 0, 0.501961, 0, 0 )
 
 [node name="Infos" type="HBoxContainer" parent="Margin/Container"]
 margin_left = 12.0
 margin_right = 1024.0
-margin_bottom = 590.0
+margin_bottom = 758.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Picture" type="TextureRect" parent="Margin/Container/Infos"]
 margin_right = 48.0
-margin_bottom = 590.0
+margin_bottom = 758.0
 texture = ExtResource( 4 )
 stretch_mode = 3
 
-[node name="HumanLineStats" parent="Margin/Container/Infos" instance=ExtResource( 2 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="VBoxContainer" type="VBoxContainer" parent="Margin/Container/Infos"]
 margin_left = 52.0
 margin_right = 1012.0
-margin_bottom = 590.0
+margin_bottom = 758.0
 size_flags_horizontal = 3
+
+[node name="Virus" type="HBoxContainer" parent="Margin/Container/Infos/VBoxContainer"]
+margin_right = 960.0
+margin_bottom = 16.0
+
+[node name="TextureRect" type="TextureRect" parent="Margin/Container/Infos/VBoxContainer/Virus"]
+margin_right = 16.0
+margin_bottom = 16.0
+texture = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="Margin/Container/Infos/VBoxContainer/Virus"]
+margin_left = 20.0
+margin_top = 1.0
+margin_right = 128.0
+margin_bottom = 14.0
+text = "ui_contagion_state"
+
+[node name="State" type="Label" parent="Margin/Container/Infos/VBoxContainer/Virus"]
+margin_left = 132.0
+margin_top = 1.0
+margin_right = 222.0
+margin_bottom = 14.0
+text = "ui_no_diagnosis"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0

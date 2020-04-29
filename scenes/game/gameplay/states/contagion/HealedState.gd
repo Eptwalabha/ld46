@@ -4,6 +4,7 @@ extends ContagionState
 var hour_in_state = 0
 
 func enter() -> void:
+	crew.contagion_detected = false
 	hour_in_state = 0
 
 func update() -> String:
@@ -28,7 +29,7 @@ func is_infected() -> bool:
 	return false
 
 func update_crew_aspect() -> void:
-	crew.sick_particle.visible = true
+	crew.sick_particle.visible = hour_in_state < 8
 	crew.heal_particle.visible = true
 
 func menus() -> Array:

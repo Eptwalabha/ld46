@@ -7,7 +7,6 @@ func enter() -> void:
 	is_infected = false
 
 func update() -> String:
-	crew.contagion_detected = false
 	if is_infected:
 		return "sick"
 	return ""

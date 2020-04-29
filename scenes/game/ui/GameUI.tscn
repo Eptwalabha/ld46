@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/game/ui/GameUI.gd" type="Script" id=2]
 [ext_resource path="res://scenes/game/ui/crew/UICrewList.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/game/ui/crew/UICrewSelection.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/fonts/section_title.tres" type="DynamicFont" id=8]
-[ext_resource path="res://scenes/game/ui/room/UIRoomSelection.tscn" type="PackedScene" id=9]
 
 [node name="GameUI" type="MarginContainer"]
 anchor_right = 1.0
@@ -129,36 +127,8 @@ margin_right = 730.0
 margin_bottom = 13.0
 size_flags_horizontal = 3
 size_flags_vertical = 1
-
-[node name="Task" type="Button" parent="Container/Actions/Container"]
-visible = false
-margin_left = 772.0
-margin_right = 856.0
-margin_bottom = 47.0
-toggle_mode = true
-pressed = true
-text = "ui_btn_tasks"
-align = 2
-
-[node name="CrewSelection" parent="." instance=ExtResource( 7 )]
-visible = false
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 1024.0
-margin_bottom = 768.0
-
-[node name="RoomSelection" parent="." instance=ExtResource( 9 )]
-visible = false
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_right = 1024.0
-margin_bottom = 768.0
-[connection signal="on_crew_selected" from="Container/Columns/CrewList" to="." method="_on_CrewList_on_crew_selected"]
 [connection signal="on_window_closed" from="Container/Columns/CrewList" to="." method="_on_UI_window_closed"]
 [connection signal="on_window_opened" from="Container/Columns/CrewList" to="." method="_on_UI_window_opened"]
 [connection signal="toggled" from="Container/Actions/Container/Crew" to="." method="_on_Crew_toggled"]
 [connection signal="pressed" from="Container/Actions/Container/NextHour" to="." method="_on_NextHour_pressed"]
 [connection signal="toggled" from="Container/Actions/Container/NextEvent" to="." method="_on_NextEvent_toggled"]
-[connection signal="toggled" from="Container/Actions/Container/Task" to="." method="_on_Task_toggled"]
-[connection signal="crew_selection_confirmed" from="CrewSelection" to="." method="_on_CrewSelection_crew_selection_confirmed"]
-[connection signal="room_selected" from="RoomSelection" to="." method="_on_RoomSelection_room_selected"]

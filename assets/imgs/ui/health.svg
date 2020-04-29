@@ -9,9 +9,9 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="48"
-   height="48"
-   viewBox="0 0 12.7 12.7"
+   width="16"
+   height="16"
+   viewBox="0 0 4.2333333 4.2333333"
    version="1.1"
    id="svg8"
    inkscape:version="0.92.1 r15371"
@@ -25,9 +25,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="7.919596"
-     inkscape:cx="24.78337"
-     inkscape:cy="24.659652"
+     inkscape:zoom="44.8"
+     inkscape:cx="10.828275"
+     inkscape:cy="6.2791668"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -57,10 +57,10 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(0,-284.29998)">
+     transform="translate(0,-292.76665)">
     <path
-       style="opacity:1;fill:#00ff00;fill-opacity:1;stroke:#333333;stroke-width:0.52917051;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
-       d="m 4.7624885,286.41662 v 2.64586 H 2.1166358 v 3.17502 h 2.6458527 v 2.64585 h 3.1750234 v -2.64585 h 2.6458521 v -3.17502 H 7.9375119 v -2.64586 z"
+       style="opacity:1;fill:#00ff00;fill-opacity:1;stroke:#333333;stroke-width:0.23151042;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:0;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+       d="m 1.4221355,293.03123 v 1.15756 H 0.26458333 v 1.38906 H 1.4221355 v 1.15755 h 1.3890626 v -1.15755 H 3.96875 v -1.38906 H 2.8111981 v -1.15756 z"
        id="rect4506"
        inkscape:connector-curvature="0" />
   </g>
