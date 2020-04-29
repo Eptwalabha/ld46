@@ -338,10 +338,10 @@ func _on_crew_clicked(crew: CrewMember) -> void:
 func refresh_menu() -> void:
 	wheel.refresh()
 
-func _on_ContextWheel_wheel_closed(crew_name) -> void:
+func _on_ContextWheel_wheel_closed(_crew_name) -> void:
 	pass
 
-func _on_ContextWheel_wheel_opened(crew_name) -> void:
+func _on_ContextWheel_wheel_opened(_crew_name) -> void:
 	pass
 
 func _on_ContextWheel_give_mask_clicked(crew_name) -> void:

@@ -10,7 +10,6 @@ onready var crew_list := $Container/Columns/CrewList as UICrewList
 onready var next_event := $Container/Actions/Container/NextEvent as Button
 onready var next_hour := $Container/Actions/Container/NextHour as Button
 onready var crew_button := $Container/Actions/Container/Crew as Button
-onready var crew_selection := $CrewSelection as UICrewSelection
 
 var ship = null
 var game = null
@@ -22,7 +21,6 @@ func set_ship(the_ship: Ship) -> void:
 	ship = the_ship
 	var crew_members = ship.get_crew_members()
 	crew_list.set_crew_members(crew_members)
-	crew_selection.prepare(crew_members)
 
 func refresh(hour: int) -> void:
 	var time_before_end = ship.hours_until_goal(game.ua_goal)
@@ -50,5 +48,5 @@ func _on_UI_window_closed(window) -> void:
 		"ui_crew_list" : crew_button.pressed = false
 		_ : pass
 
-func _on_UI_window_opened(window) -> void:
+func _on_UI_window_opened(_window) -> void:
 	pass
