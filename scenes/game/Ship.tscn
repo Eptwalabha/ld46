@@ -93,7 +93,7 @@ modulate = Color( 1, 1, 1, 1 )
 position = Vector2( -264, 112 )
 room_id = "engine2"
 
-[node name="Crew" type="Node2D" parent="."]
+[node name="Crew" type="YSort" parent="."]
 
 [node name="Helen" parent="Crew" instance=ExtResource( 12 )]
 
