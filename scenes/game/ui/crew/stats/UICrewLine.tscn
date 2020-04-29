@@ -65,17 +65,10 @@ margin_right = 16.0
 margin_bottom = 16.0
 texture = ExtResource( 2 )
 
-[node name="Label" type="Label" parent="Margin/Container/Infos/VBoxContainer/Virus"]
+[node name="State" type="Label" parent="Margin/Container/Infos/VBoxContainer/Virus"]
 margin_left = 20.0
 margin_top = 1.0
-margin_right = 128.0
-margin_bottom = 14.0
-text = "ui_contagion_state"
-
-[node name="State" type="Label" parent="Margin/Container/Infos/VBoxContainer/Virus"]
-margin_left = 132.0
-margin_top = 1.0
-margin_right = 222.0
+margin_right = 110.0
 margin_bottom = 14.0
 text = "ui_no_diagnosis"
 

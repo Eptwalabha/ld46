@@ -54,6 +54,11 @@ game_over_details,All crew members are dead\nYou will never reach Earth again,To
 ui_replay,Replay,Rejouer
 victory,Congratulation !,Félicitation !
 victory_details,You came to Hearth...\nWith an extraterrestrial pathogen,Vous êtes arrivé sur Terre...\nAvec un agent pathogène extra-terrestre
-ui_contagion_state,State,État
+ui_contagion_state,Contagion,Contagion
 ui_no_diagnosis,No diagnosis,Pas de diagnostique
-ui_diagnosis_negativ,Negative viral test,Test viral négatif
+ui_diagnosis_negative,Negative viral test,Test viral négatif
+ui_diagnosis_positive,Contaminated,Contamin
+ui_health_state_dead,Dead,Mort
+ui_healing,Healing,Soin
+ui_viral_test_positive,Negative viral test,Test viral négatif
+ui_viral_test_negative,Contaminated,Contamin

@@ -2,15 +2,18 @@ class_name ContagionStateSick
 extends ContagionState
 
 export(int) var hours_before_death = 30
+export(int, 0, 4) var visible_state = 1
 
 var remaining_hours := 0.0
 var viral_test_made := false
 
 func enter() -> void:
+	crew.is_visibly_contaminated = false
 	remaining_hours = hours_before_death
 	viral_test_made = false
 
 func update() -> String:
+	crew.is_visibly_contaminated = _level() > visible_state
 	remaining_hours -= 1
 	if remaining_hours <= 0:
 		return "death"
@@ -37,7 +40,7 @@ func is_infected() -> bool:
 	return true
 
 func update_crew_aspect() -> void:
-	crew.sick_particle.visible = _level() > 1
+	crew.sick_particle.visible = _level() > visible_state
 	crew.heal_particle.visible = false
 
 func _level() -> int:
@@ -53,6 +56,6 @@ func make_a_viral_test() -> void:
 	viral_test_made = true
 
 func menus() -> Array:
-	if viral_test_made or _level() > 1:
+	if viral_test_made or _level() > visible_state:
 		return ["move", "heal", "mask", "water", "food"]
 	return ["move", "test", "mask", "water", "food"]

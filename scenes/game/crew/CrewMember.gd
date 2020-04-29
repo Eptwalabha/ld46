@@ -16,9 +16,12 @@ var efficiency := 1.0
 var room_id : String = ""
 var current_task = 0
 var scheduled_tasks = []
-var contagion_detected = false
 var is_dead := false
 var next_location = null
+
+var tested = false
+var is_test_positive = false
+var is_visibly_contaminated = false
 
 #var current_mental_state
 var current_health_state
@@ -52,7 +55,10 @@ func update_state(_hour: int) -> void:
 	emit_signal("crew_updated")
 
 func make_a_viral_test() -> void:
+	tested = true
 	current_health_state.make_a_viral_test()
+	is_test_positive = current_health_state.is_infected()
+	emit_signal("crew_updated")
 
 func update_visual_state() -> void:
 	current_health_state.update_crew_aspect()
@@ -94,12 +100,6 @@ func change_state(type: String, new_state: String) -> void:
 	else:
 		printerr("WARNING: unknown %s state '%s'" % [type, new_state])
 
-func viral_test() -> bool:
-	var is_contamined = current_health_state.is_contaminated()
-	if is_contamined:
-		contagion_detected = true
-	return is_contamined
-
 func get_texture() -> Texture:
 	return $crew.texture
 
@@ -107,7 +107,11 @@ func contaminated() -> void:
 	change_state("health", "sick")
 
 func healed() -> void:
-	pass
+	tested = false
+	is_test_positive = false
+
+func is_healing() -> bool:
+	return false
 
 func _on_Area2D_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == BUTTON_LEFT:

@@ -3,6 +3,7 @@ extends Control
 signal crew_member_selected(crew)
 
 onready var color_rect := $Margin/Container/Selection as ColorRect
+onready var health_state := $Margin/Container/Infos/VBoxContainer/Virus/State as Label
 
 var is_selected
 var crew
@@ -28,4 +29,20 @@ func selected(selected: bool) -> void:
 	color_rect.color.a = 1.0 if is_selected else 0.0
 
 func _on_crew_updated() -> void:
-	print("update of %s" % crew.crew_name)
+	_update_contagion_state()
+
+func _update_contagion_state() -> void:
+	if not crew.is_alive():
+		health_state.text = tr("ui_health_state_dead")
+	elif crew.is_healing():
+		health_state.text = tr("ui_healing")
+	elif crew.tested:
+		if crew.is_test_positive:
+			health_state.text = tr("ui_viral_test_positive")
+		else:
+			health_state.text = tr("ui_viral_test_negative")
+	else:
+		if crew.is_visibly_contaminated:
+			health_state.text = tr("ui_viral_test_positive")
+		else:
+			health_state.text = tr("ui_no_diagnosis")

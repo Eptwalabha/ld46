@@ -4,7 +4,6 @@ extends ContagionState
 var hour_in_state = 0
 
 func enter() -> void:
-	crew.contagion_detected = false
 	hour_in_state = 0
 
 func update() -> String:

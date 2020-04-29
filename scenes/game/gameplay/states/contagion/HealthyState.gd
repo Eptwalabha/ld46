@@ -4,6 +4,9 @@ extends ContagionState
 var is_infected = false
 
 func enter() -> void:
+	crew.tested = false
+	crew.is_test_positive = false
+	crew.is_visibly_contaminated = false
 	is_infected = false
 
 func update() -> String:
@@ -23,7 +26,7 @@ func exposed_to_virus(contamination_factor: float) -> void:
 func productivity() -> float:
 	return 1.0
 
-func is_infected() -> bool:
+func is_crew_infected() -> bool:
 	return is_infected
 
 func update_crew_aspect() -> void:

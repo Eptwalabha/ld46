@@ -70,3 +70,6 @@ func healed() -> void:
 
 func is_protected() -> bool:
 	return mask_ttl > 0
+
+func is_healing() -> bool:
+	return current_health_state.state_name() == "healed"
