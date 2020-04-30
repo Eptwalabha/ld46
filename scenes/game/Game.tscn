@@ -60,11 +60,23 @@ layer = 2
 [node name="GameUI" parent="UI" instance=ExtResource( 2 )]
 mouse_default_cursor_shape = 11
 
+[node name="Button" type="Button" parent="UI"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -56.0
+margin_top = 8.0
+margin_right = -8.0
+margin_bottom = 32.0
+text = "en"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Ship" parent="." instance=ExtResource( 3 )]
 position = Vector2( 612, 384 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 512, 384 )
+position = Vector2( 560, 384 )
 current = true
 zoom = Vector2( 0.9, 0.9 )
 
@@ -75,6 +87,7 @@ visible = false
 position = Vector2( 297.419, 300.918 )
 [connection signal="next_event_toggled" from="UI/GameUI" to="." method="_on_GameUI_next_event_toggled"]
 [connection signal="next_hour_clicked" from="UI/GameUI" to="." method="_on_GameUI_next_hour_clicked"]
+[connection signal="pressed" from="UI/Button" to="." method="_on_Button_pressed"]
 [connection signal="give_mask_clicked" from="ContextWheel" to="." method="_on_ContextWheel_give_mask_clicked"]
 [connection signal="heal_crew_clicked" from="ContextWheel" to="." method="_on_ContextWheel_heal_crew_clicked"]
 [connection signal="move_crew_clicked" from="ContextWheel" to="." method="_on_ContextWheel_move_crew_clicked"]

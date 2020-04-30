@@ -4,6 +4,8 @@ signal crew_member_selected(crew)
 
 onready var color_rect := $Margin/Container/Selection as ColorRect
 onready var health_state := $Margin/Container/Infos/VBoxContainer/Virus/State as Label
+onready var picture := $Margin/Container/Infos/CenterContainer/Picture as TextureRect
+onready var mourning_ribbon := $Margin/Container/Infos/CenterContainer/MourningRibbon as TextureRect
 
 var is_selected
 var crew
@@ -15,7 +17,7 @@ func init(the_crew) -> void:
 	crew.connect("crew_updated", self, "_on_crew_updated")
 	if not the_crew.is_human():
 		return
-	$Margin/Container/Infos/Picture.texture = crew.portrait
+	picture.texture = crew.portrait
 
 func refresh() -> void:
 	pass
@@ -32,7 +34,9 @@ func _on_crew_updated() -> void:
 	_update_contagion_state()
 
 func _update_contagion_state() -> void:
+	mourning_ribbon.visible = not crew.is_alive()
 	if not crew.is_alive():
+		picture.modulate = Color(.8, .8, .8)
 		health_state.text = tr("ui_health_state_dead")
 	elif crew.is_healing():
 		health_state.text = tr("ui_healing")

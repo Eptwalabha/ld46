@@ -370,3 +370,12 @@ func _on_ContextWheel_test_crew_clicked(crew_name) -> void:
 		var menus = crew.get_contextual_menus()
 		wheel.open(crew, menus)
 	refresh_menu()
+
+
+func _on_Button_pressed() -> void:
+	if TranslationServer.get_locale() == "fr_FR":
+		TranslationServer.set_locale("en")
+	else:
+		TranslationServer.set_locale("fr_FR")
+	$UI/Button.text = TranslationServer.get_locale()
+	ui.refresh(hour)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://scenes/game/ui/crew/stats/UICrewLine.gd" type="Script" id=1]
 [ext_resource path="res://assets/imgs/ui/health.svg" type="Texture" id=2]
+[ext_resource path="res://assets/imgs/ui/mourning-black-ribbon.svg" type="Texture" id=3]
 [ext_resource path="res://assets/imgs/picture-1.png" type="Texture" id=4]
 
 [node name="CrewLine" type="Control"]
@@ -44,20 +45,35 @@ margin_bottom = 758.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Picture" type="TextureRect" parent="Margin/Container/Infos"]
-margin_right = 48.0
+[node name="CenterContainer" type="MarginContainer" parent="Margin/Container/Infos"]
+margin_right = 54.0
+margin_bottom = 758.0
+custom_constants/margin_right = 3
+custom_constants/margin_left = 3
+
+[node name="Picture" type="TextureRect" parent="Margin/Container/Infos/CenterContainer"]
+margin_left = 3.0
+margin_right = 51.0
 margin_bottom = 758.0
 texture = ExtResource( 4 )
 stretch_mode = 3
 
+[node name="MourningRibbon" type="TextureRect" parent="Margin/Container/Infos/CenterContainer"]
+visible = false
+margin_left = 3.0
+margin_right = 51.0
+margin_bottom = 758.0
+texture = ExtResource( 3 )
+stretch_mode = 3
+
 [node name="VBoxContainer" type="VBoxContainer" parent="Margin/Container/Infos"]
-margin_left = 52.0
+margin_left = 58.0
 margin_right = 1012.0
 margin_bottom = 758.0
 size_flags_horizontal = 3
 
 [node name="Virus" type="HBoxContainer" parent="Margin/Container/Infos/VBoxContainer"]
-margin_right = 960.0
+margin_right = 954.0
 margin_bottom = 16.0
 
 [node name="TextureRect" type="TextureRect" parent="Margin/Container/Infos/VBoxContainer/Virus"]

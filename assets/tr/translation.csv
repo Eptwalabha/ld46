@@ -1,64 +1,65 @@
 room_living_quarter,en,fr
-ui_task_list,Tasks list,Liste des tâches
-ui_crew_list,Crew members,Équipage
-ui_task_description,Task’s description,Détails
-ui_task_crew_members,Assigned crew member(s),Affecté(s) à cette tâche 
-ui_window_assign_crew_members,Assign,Affecter
-ui_confirm,Ok,Valider
-ui_btn_crew,Crew,Équipage
-ui_btn_tasks,Tasks,Tâches
-ui_btn_next,+1 hour,+1 heure
-ui_btn_next_10,+10 hours,+10 heures
-ui_time_spent,Time,Durée
-ui_progress_goal,Arrival,Arrivé
-ui_game_info,Infos,Informations
-ui_window_task_details,Task details,Détails
-ui_window_crew_details,Crew member,Membre d’équipage
-ui_crew_tasks,Crew assignment(s) :,Tâche(s) affectée(s) :
-ui_crew_stat_health,Health,Santée
-ui_crew_stat_thirst,Thirst,Soif
-ui_crew_stat_hunger,Hunger,Faim
-ui_crew_stat_exhaustion,Exhaustion,Fatigue
-ui_crew_stat_efficiency,Effictiency,Efficacité
-ui_crew_stat_maintenance,Maintenance,Maintenance
-ui_action_check,Check,Tester
-ui_action_heal,Heal,Soigner
-ui_action_mask,Mask,Masque
-ui_action_break,Break,Pause
-ui_action_drink,Drink,Eau
-ui_action_food,Food,Food
-task_title_clean_water,Clean water,Désinfecter de l’eau
-task_title_prepare_food,Prepare 5 meals,Préparer 5 repas
-task_title_clean_air_filter,Clean air filter,Nettoyer le filtre à air
+game_over,GAME OVER,GAME OVER
+game_over_details,All crew members are dead\nYou will never reach Earth again,Tout les membres de l’équipage sont décédés\nVous ne pouvez plus atteindre la Terre
 room_control,Control room,Salle de commandes
+room_engine,Engine room,Salle moteur
 room_kitchen,Kitchen,Cuisine
 room_living_quarter,Living quarter,Salle de repos
 room_medical_bay,Medical bay,Infirmerie
-room_engine,Engine room,Salle moteur
 room_technical_bay,Technical bay,Local technique
-ui_window_crew_selection,Crew selection,Sélection
-ui_selection_details,Details :,Détails :
-ui_assigne_crew_to_task,Select crew to assign to this task,Sélectionner les personnes à affecter à cette tâche
-ui_cancel,Cancel,Annuler
-ui_give_mask,Mask,Masque
-ui_test,Test,Dépister
+task_title_clean_air_filter,Clean air filter,Nettoyer le filtre à air
+task_title_clean_water,Clean water,Désinfecter de l’eau
+task_title_prepare_food,Prepare 5 meals,Préparer 5 repas
+ui_action_break,Break,Pause
+ui_action_check,Check,Tester
+ui_action_drink,Drink,Eau
+ui_action_food,Food,Food
+ui_action_heal,Heal,Soigner
+ui_action_mask,Mask,Masque
 ui_assigne_crew_to_give_mask,Select crew to equip with mask,Sélectionner les personnes à qui donner un masque
-ui_assigne_crew_to_test,Select crew to test,Sélectionner les personnes à dépister
-ui_btn_heal,Heal,Soigner
-ui_btn_clean,Clean,Nettoyer
 ui_assigne_crew_to_heal,Select who has to be healed,Sélectionner qui doit se faire soigner
-ui_room_selection_details,Move this crew member to,Déplacer cette personne 
-ui_window_room_selection,Move,Déplacer
-game_over,GAME OVER,GAME OVER
-game_over_details,All crew members are dead\nYou will never reach Earth again,Tout les membres de l’équipage sont décédés\nVous ne pouvez plus atteindre la Terre
-ui_replay,Replay,Rejouer
-victory,Congratulation !,Félicitation !
-victory_details,You came to Hearth...\nWith an extraterrestrial pathogen,Vous êtes arrivé sur Terre...\nAvec un agent pathogène extra-terrestre
+ui_assigne_crew_to_task,Select crew to assign to this task,Sélectionner les personnes à affecter à cette tâche
+ui_assigne_crew_to_test,Select crew to test,Sélectionner les personnes à dépister
+ui_btn_clean,Clean,Nettoyer
+ui_btn_crew,Crew,Équipage
+ui_btn_heal,Heal,Soigner
+ui_btn_next,+1 hour,+1 heure
+ui_btn_next_10,+10 hours,+10 heures
+ui_btn_tasks,Tasks,Tâches
+ui_cancel,Cancel,Annuler
+ui_confirm,Ok,Valider
 ui_contagion_state,Contagion,Contagion
-ui_no_diagnosis,No diagnosis,Pas de diagnostique
+ui_crew_list,Crew members,Équipage
+ui_crew_stat_efficiency,Effictiency,Efficacité
+ui_crew_stat_exhaustion,Exhaustion,Fatigue
+ui_crew_stat_health,Health,Santée
+ui_crew_stat_hunger,Hunger,Faim
+ui_crew_stat_maintenance,Maintenance,Maintenance
+ui_crew_stat_thirst,Thirst,Soif
+ui_crew_tasks,Crew assignment(s) :,Tâche(s) affectée(s) :
 ui_diagnosis_negative,Negative viral test,Test viral négatif
 ui_diagnosis_positive,Contaminated,Contamin
-ui_health_state_dead,Dead,Mort
+ui_game_info,Infos,Informations
+ui_give_mask,Mask,Masque
+ui_goal_time,%s hour%s (%s hour%s to go),%s heure%s (il reste %s heure%s de route)
 ui_healing,Healing,Soin
-ui_viral_test_positive,Negative viral test,Test viral négatif
-ui_viral_test_negative,Contaminated,Contamin
+ui_health_state_dead,Dead,Mort
+ui_no_diagnosis,No diagnosis,Pas de diagnostique
+ui_progress_goal,Arrival,Arrivé
+ui_replay,Replay,Rejouer
+ui_room_selection_details,Move this crew member to,Déplacer cette personne 
+ui_selection_details,Details :,Détails :
+ui_task_crew_members,Assigned crew member(s),Affecté(s) à cette tâche 
+ui_task_description,Task’s description,Détails
+ui_task_list,Tasks list,Liste des tâches
+ui_test,Test,Dépister
+ui_time_spent,Time,Durée
+ui_viral_test_negative,Negative viral test,Test viral négatif
+ui_viral_test_positive,Contaminated,Contaminé
+ui_window_assign_crew_members,Assign,Affecter
+ui_window_crew_details,Crew member,Membre d’équipage
+ui_window_crew_selection,Crew selection,Sélection
+ui_window_room_selection,Move,Déplacer
+ui_window_task_details,Task details,Détails
+victory,Congratulation !,Félicitation !
+victory_details,You came to Hearth...\nWith an extraterrestrial pathogen,Vous êtes arrivé sur Terre...\nAvec un agent pathogène extra-terrestre
